@@ -31,7 +31,10 @@ There are several guided exercises and workshops that are not yet part of this g
 
 **KIE Learning: {{ product.short }} and RHDM**
 : [This repository](https://github.com/KIE-Learning/rhpam-rhdm-labs) is a set of explanation and hands-on labs which you can try on your environment and follow at your own pace.
-    The step-by-step guides covers different topics, since basics to more advanced and specific features. The content is not sequential and it covers Decision Manager, Business Optimizer, Process Automation Manager and Kogito.
+    The step-by-step guides covers different topics, since basics to more advanced and specific features. The content is not sequential and it covers Decision Manager, Business Optimizer, Process Automation Manager and Kogito. 
+
+**DMN Handbook**
+: [This handbook](https://kiegroup.github.io/dmn-feel-handbook/#dmn-feel-handbook) is a vademecum for the FEEL expression language from the DMN specification, as implemented by the Drools DMN open source engine.
 <!-- 
         !!! attention ""
                 Notice that this guide brings updated versions of some of the guides listed below. -->
