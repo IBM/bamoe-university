@@ -11,7 +11,7 @@ In Red Hat PAM and DM you can author decisions using:
 - [Business Automation VSCode Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle)
   - A developer IDE ([Visual Studio Code](https://code.visualstudio.com/)) extension that allows the visualization and editing of BPMN, DMN and Test Scenarios inside VSCode.
 
-There is also a set of community tooling that's also available for use. All the tools below are backed by Red Hat:
+There is also a set of community tooling that's also available for use. All the tools below are backed by IBM and Red Hat:
 
 - [Learn DMN in 15 minutes](https://learn-dmn-in-15-minutes.com/)
   - A guided tour in a website through the elements of DMN
