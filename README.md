@@ -12,9 +12,11 @@ Environment setup to deploy locally:
 
 ~~~bin/bash
   pip install mkdocs
-  pip install -e mkdocs-material
+  pip install mkdocs-material
   pip install mkdocs-awesome-pages-plugin
   pip install mkdocs-enumerate-headings-plugin
+  pip install mkdocs-markdownextradata-plugin
+  pip install mkdocs-git-revision-date-localized-plugin
 ~~~
 
 Development:
