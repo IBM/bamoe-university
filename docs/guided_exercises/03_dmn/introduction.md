@@ -23,6 +23,8 @@ In {{ product.name }} you can author decisions in multiple ways - all using the 
 
 There is also a set of community tooling that's also available for use. All the tools below are backed by IBM and Red Hat:
 
+- [DMN FEEL Handbook](https://kiegroup.github.io/dmn-feel-handbook/#dmn-feel-handbook) 
+  -  A handbook for the FEEL expression language from the DMN specification, as implemented by the Drools DMN open source engine.
 - [Learn DMN in 15 minutes](https://learn-dmn-in-15-minutes.com/)
   - A guided tour in a website through the elements of DMN
 - [GitHub Chrome Extension](https://chrome.google.com/webstore/detail/bpmn-dmn-test-scenario-ed/mgkfehibfkdpjkfjbikpchpcfimepckf)
