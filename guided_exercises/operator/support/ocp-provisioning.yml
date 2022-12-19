@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  bu-wksp-pam-operator
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wksp-pam-operator
+  name: wksp-pam-operator
+  namespace: bu-wksp-pam-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wksp-pam-operator
+  template:
+    metadata:
+      labels:
+        app: wksp-pam-operator
+    spec:
+      containers:
+      - name: wksp-pam-operator-service
+        image: quay.io/osevg/workshopper:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+        - name: CONTENT_URL_PREFIX
+          value: "https://raw.githubusercontent.com/kmacedovarela/pam-operator-workshop/master/"
+        - name: WORKSHOPS_URLS
+          value: "https://raw.githubusercontent.com/kmacedovarela/pam-operator-workshop/master/_pam_operator_workshop.yml"
+        - name: LOG_TO_STDOUT
+          value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wksp-pam-operator-service
+  namespace: bu-wksp-pam-operator
+  labels:
+    app: wksp-pam-operator-service
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: wksp-pam-operator
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+    name: wksp-pam-operator-route
+    namespace: bu-wksp-pam-operator
+    labels:
+      app: wksp-pam-operator
+spec:
+  port:
+    targetPort: http
+  to:
+      kind: Service
+      name: wksp-pam-operator-service
