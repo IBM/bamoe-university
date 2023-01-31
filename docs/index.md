@@ -6,7 +6,7 @@ hide:
 
 # {{ product.name }} Enablement
 
-## Introduction to getting the tools kickstarted
+## Your Journey Begins Here
 
 [Get the tools :octicons-copilot-24:](guided_exercises/00_get_tools/introduction.md){ .md-button }
 [First Kogito Project Setup :octicons-zap-24:](guided_exercises/01_getting_started/introduction.md){ .md-button }
