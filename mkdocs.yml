@@ -24,6 +24,8 @@ plugins:
         - README.md
   - git-revision-date-localized:
       type: iso_date
+  - with-pdf:
+        author: IBM
 
 extra:
   product: 
