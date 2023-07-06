@@ -12,10 +12,10 @@ The maven repository have ~1.5GB. In order to facilitate the execution of this l
 
 3. Since this is a behavior only needed by the engine, place the library inside the `kie-server.war` folder, inside the `WEB-INF` directory.
 
-    **TIP:** If you downloaded the maven repository zip file in the Red Hat Customer Portal, you can find the jar inside the folder `maven-repository/org/jbpm/jbpm-event-emitters-kafka/{{ product.gav }}/jbpm-event-emitters-kafka-{{ product.gav }}.jar`
+    **TIP:** If you downloaded the maven repository zip file in the Red Hat Customer Portal, you can find the jar inside the folder `maven-repository/org/jbpm/jbpm-event-emitters-kafka/{{ product.legacygav }}/jbpm-event-emitters-kafka-{{ product.legacygav }}.jar`
 
     ~~~bash
-    cp jbpm-event-emitters-kafka-{{ product.gav }}.jar $JBOSS_EAP/standalone/deployments/kie-server.war/WEB-INF/lib/
+    cp jbpm-event-emitters-kafka-{{ product.legacygav }}.jar $JBOSS_EAP/standalone/deployments/kie-server.war/WEB-INF/lib/
     ~~~
 
 4. Next,start{{ product.short }} server.

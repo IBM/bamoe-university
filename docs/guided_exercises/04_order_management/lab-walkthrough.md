@@ -746,7 +746,7 @@ In this section we will create a simple Java client for our Order Management pro
     <dependency>
      <groupid>org.kie.server</groupid>
       <artifactId>kie-server-client</artifactId>
-      <version>{{ product.gav}}</version>
+      <version>{{ product.legacygav}}</version>
       <scope>compile</scope>
     </dependency> 
     ~~~
