@@ -99,13 +99,13 @@ At this point, you should already have a fully automated integration and deploym
 
 ## Maven Repository Setup
 
-Typically an environment would already have a Maven repository included, but if you wanted to set one up and use your own, this is a quick run through of what's required to get the Maven Repository to connect to the current location of the {{ product.name }} Maven artifacts which reside in the {{ product.maven }}.
+Typically an environment would already have a Maven repository included, but if you wanted to set one up and use your own, this is a quick run through of what's required to get the Maven Repository to connect to the current location of the {{ product.name }} Maven artifacts which reside in the {{ product.legacymaven }}.
 
 From the console log you got earlier, you would have received two messages with routes and password infromation for the Nexus repository location (the 3rd item) and the admin password (the commands to get these are found within the `provision.sh` file). If you hold Control (Linux/Windows) or Command (Mac) and click the link in VSCode, you will go to the location of your newly provisioned Nexus3 repository.
 
 ![Route and Password](../99_images/business_automation/cicd/route-and-password.png "Console")
 
-By default, the Nexus repository includes a Mirror of [Maven Central](https://repo1.maven.org/maven2/) which anyone can publish to following [this documentation](https://maven.apache.org/repository/guide-central-repository-upload.html) and is the typical environment for Community releases, but enterprise releases of Open Source Software can be found here as well. The practice within Red Hat, has been to publish artifacts to its own repository found [here](https://maven.repository.redhat.com/ga/) as these are the enterprise releases and outside of community. No access is required to pull from this repository. We will configure our newly minted Nexus repository to have a Mirror of the {{ product.maven }} so that for any product releases that are used, it will pull them from {{ product.maven }} and publish them in the Nexus repository as a proxy. This is common in most enterprise environments instead of a direct connection to the repositories to offset downtime, have security checks, etc.
+By default, the Nexus repository includes a Mirror of [Maven Central](https://repo1.maven.org/maven2/) which anyone can publish to following [this documentation](https://maven.apache.org/repository/guide-central-repository-upload.html) and is the typical environment for Community releases, but enterprise releases of Open Source Software can be found here as well. The practice within Red Hat, has been to publish artifacts to its own repository found [here](https://maven.repository.redhat.com/ga/) as these are the enterprise releases and outside of community. No access is required to pull from this repository. We will configure our newly minted Nexus repository to have a Mirror of the {{ product.legacymaven }} so that for any product releases that are used, it will pull them from {{ product.legacymaven }} and publish them in the Nexus repository as a proxy. This is common in most enterprise environments instead of a direct connection to the repositories to offset downtime, have security checks, etc.
 
 To setup the mirrow follow these steps:
 
@@ -127,16 +127,16 @@ To setup the mirrow follow these steps:
 
     ![Anonymous Access](../99_images/business_automation/cicd/anonymous-access.png "Enable Anonymous Access"){:width=50%}
 
-1. Now that the repository is ready to be configured, we are going to create a mirror of the {{ product.maven }} so that we can pull resources through the proxy instead of direct. To do this, click the Gear icon (:octicons-gear-16:) to open the settings screen.
+1. Now that the repository is ready to be configured, we are going to create a mirror of the {{ product.legacymaven }} so that we can pull resources through the proxy instead of direct. To do this, click the Gear icon (:octicons-gear-16:) to open the settings screen.
     ![Nexus Settings](../99_images/business_automation/cicd/settings-nexus.png "Open the settings screen")
 
 1. From here click `Repositories` to view the current repositories and also to be able to create another.
     ![Click Repositories](../99_images/business_automation/cicd/open-repos.png "Open Repositories")
 
-1. Here you will see a list of default repositorues. By default, Nexus will include the connection to _Maven_Central_, but we'd also like to add the {{ product.maven }} connection to pull the resources from this repository. To do so, click `Create Repository` to build a new repository.
+1. Here you will see a list of default repositorues. By default, Nexus will include the connection to _Maven_Central_, but we'd also like to add the {{ product.legacymaven }} connection to pull the resources from this repository. To do so, click `Create Repository` to build a new repository.
     ![Create Repository](../99_images/business_automation/cicd/create-repository.png "Click Create Repository")
 
-1. Scroll down and we're going to create a `maven2 (proxy)`. The reason we're doing a proxy is that we're going to allow our repository to reach out to the {{ product.maven }} to retrieve artifacts it does not already have, but if it has previously pulled them, will be stored in the Nexus repository's cache. This way if there are new releases, you can pull as required, but are not taking the entire repository as required.
+1. Scroll down and we're going to create a `maven2 (proxy)`. The reason we're doing a proxy is that we're going to allow our repository to reach out to the {{ product.legacymaven }} to retrieve artifacts it does not already have, but if it has previously pulled them, will be stored in the Nexus repository's cache. This way if there are new releases, you can pull as required, but are not taking the entire repository as required.
     ![Maven2 Proxy](../99_images/business_automation/cicd/maven2-proxy.png "Click maven2 (proxy)")
 
 1. On the form that opens, you will add the following information (the name red_hat_ga needs to be exact to match the lab expectations):
@@ -146,7 +146,7 @@ To setup the mirrow follow these steps:
 
     ![Form settings](../99_images/business_automation/cicd/nexus-form.png "Enter the values to match")
 
-1. Click `Create repository` at the bottom to deploy the proxy instance of the {{ product.maven }}
+1. Click `Create repository` at the bottom to deploy the proxy instance of the {{ product.legacymaven }}
 
     ![Finish the form](../99_images/business_automation/cicd/create-button.png)
 

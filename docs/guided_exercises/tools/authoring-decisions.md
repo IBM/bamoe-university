@@ -66,7 +66,7 @@ Open the `pom.xml` file and add the following dependencies:
 
 ### Adding the JUnit Runner
 
-In this scenario, the `version.org.kie` should be compatible with the product version you want to use. In this scenario, we are using {{ product.short }} 7.10, which would be `<version.org.kie>{{ product.gav }}</version.org.kie>`.
+In this scenario, the `version.org.kie` should be compatible with the product version you want to use. In this scenario, we are using {{ product.short }} 7.10, which would be `<version.org.kie>{{ product.legacygav }}</version.org.kie>`.
 
 1. Create a new folder testscenario: `/src/test/java/testscenario`
 

@@ -38,7 +38,7 @@ $ cd tooling-labs
 mvn archetype:generate \
     -DarchetypeGroupId=org.kie \
     -DarchetypeArtifactId=kie-kjar-archetype \
-    -DarchetypeVersion={{ product.gav }}
+    -DarchetypeVersion={{ product.legacygav }}
 ~~~
 
 ![](../99_images/business_automation/tools/vscode-new-project.png){:width="600px"}

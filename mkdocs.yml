@@ -3,7 +3,7 @@
 site_name: "Learning IBM Business Automation Open Edition"
 site_description: "A set of demos and guided-exercises about business automation with KIE projects"
 site_author: "Tim Wuthenow"
-repo_url: https://github.com/timwuthenow/ibamoe-enablement
+repo_url: https://github.com/ibm/bamoe-university
 edit_uri: ""
 extra_css:
   - stylesheets/extra.css
@@ -29,12 +29,15 @@ plugins:
 
 extra:
   product: 
-    name: "IBM Business Automation Open Edition 8.0"
+    name: "IBM Business Automation Open Edition 9.0"
     short: "IBAMOE"
     dm: "Decision Manager"
-    version: "8.0"
+    pam: "Process Automation Manager"
+    version: "9.0"
     maven: "Red Hat Maven General Access Repository"
-    gav: "7.67.0.Final-redhat-00008"
+    legacymaven: "Red Hat Maven General Access Repository"
+    legacygav: "7.67.2.Final-redhat-00006"
+    gav: "7.67.2.Final-redhat-00006"
     sandbox: "KIE Sandbox"
   sandbox:
     experimental: "https://kiegroup.github.io/kogito-online-staging/kie-sandbox-accelerators/#/"

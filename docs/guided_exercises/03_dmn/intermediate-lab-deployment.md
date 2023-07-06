@@ -170,7 +170,7 @@ In this section we will create a simple Java client for our DMN model.
      <dependency> 
        <groupId>org.kie.server</groupId> 
        <artifactId>kie-server-client</artifactId> 
-       <version>{{ product.gav }}</version> 
+       <version>{{ product.legacygav }}</version> 
        <scope>compile</scope> 
      </dependency>
    ~~~
