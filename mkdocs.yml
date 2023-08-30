@@ -30,6 +30,7 @@ plugins:
 extra:
   product: 
     name: "IBM Business Automation Open Edition 9.0"
+    legacy: "IBM Business Automation Open Edition 8.0"
     short: "IBAMOE"
     dm: "Decision Manager"
     pam: "Process Automation Manager"
@@ -38,10 +39,18 @@ extra:
     legacymaven: "Red Hat Maven General Access Repository"
     legacygav: "7.67.2.Final-redhat-00006"
     gav: "7.67.2.Final-redhat-00006"
+    kogitogav: "f"
+    kogitoplugin: "2.16.7.Final"
     sandbox: "KIE Sandbox"
+    canvas: "IBM Business Automation Manager Canvas"
+    extended: "Extended Services"
+    workspace: "quick-kogito"
+    bamAdmin: "bamAdmin"
+    bamPass: "ibmpam1!"
+    runner: "DMN Runner"
   sandbox:
     experimental: "https://kiegroup.github.io/kogito-online-staging/kie-sandbox-accelerators/#/"
-    production: "https://sandbox.kie.org"
+    production: "http://localhost:9090/#"
   generator: false
 
 theme:
@@ -76,6 +85,8 @@ theme:
     - navigation.prune
     - toc.follow
     - navigation.top
+    - search.highlight
+    - search.share
 
 markdown_extensions:
   - attr_list

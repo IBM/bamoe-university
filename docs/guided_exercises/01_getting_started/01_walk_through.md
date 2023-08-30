@@ -5,30 +5,35 @@ In the previous section, you setup Maven locally in your environment, so you sho
 1. We're going to create the service in Quarkus with the Maven commands below, this will create a Quarkus project called `quick-kogito` that will be versioned `1.0.0-SNAPSHOT` including the extensions `kogito-quarkus, dmn, resteasy-reactive-jackson, quarkus-smallrye-openapi, quarkus-smallrye-health` which will create a Quarkus DMN project with the openapi components to get the OpenAPI end points easily with health checks when deploying to OpenShift.
 
     ~~~ shell
-    mvn io.quarkus:quarkus-maven-plugin:create \
-        -DprojectGroupId=com.ibm.sample -DprojectArtifactId=quick-kogito \
-        -DprojectVersion=1.0.0-SNAPSHOT -Dextensions=kogito-quarkus,dmn,resteasy-reactive-jackson,quarkus-smallrye-openapi,quarkus-smallrye-health
+    mvn io.quarkus:quarkus-maven-plugin:{{product.kogitoplugin}}:create \
+        -DprojectGroupId=com.ibm.sample \
+        -DprojectArtifactId=quick-kogito \
+        -DprojectVersion=1.0.0-SNAPSHOT \
+        -DplatformVersion={{ product.kogitoplugin }} \
+        -Dextensions=kogito-quarkus,dmn,resteasy-reactive-jackson,quarkus-smallrye-openapi,quarkus-smallrye-health
     ~~~
 
 1. When you create this project you should get a bunch of Maven artifacts start to stream in your console that are being pulled and ultimately are left with a console message like the below:
 
-    ~~~ console
-    [INFO]
+    ~~~ log
+    [INFO] 
     [INFO] ========================================================================================
-    [INFO] Your new application has been created in /Users/developer/quick-kogito
+    [INFO] Your new application has been created in /Users/timwuthenow/techxchange/quick-kogito
     [INFO] Navigate into this directory and launch your application with mvn quarkus:dev
     [INFO] Your application will be accessible on http://localhost:8080
     [INFO] ========================================================================================
-    [INFO]
+    [INFO] 
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  24.548 s
-    [INFO] Finished at: 2022-09-27T10:22:31-04:00
+    [INFO] Total time:  8.555 s
+    [INFO] Finished at: 2023-07-17T13:35:03-04:00
     [INFO] ------------------------------------------------------------------------
     ~~~
 
-1. If you installed VSCode to your PATH variables, you can open the workspace by doing the below command, otherwise open VSCode and navigate to where you ran the command for quick-kogito to be created at:
+    > NOTE: If you are using an image provided by IBM for labs, the 8080 port location that is labeled here will not work immediately because another service is utilizing this port. We will show how to change this in the next steps.
+
+1. With VSCode installed to your PATH variables, you can open the workspace by doing the below command, otherwise open VSCode and navigate to where you ran the command for quick-kogito to be created at:
 
     ~~~ shell
     cd quick-kogito
@@ -63,16 +68,15 @@ In the previous section, you setup Maven locally in your environment, so you sho
 
     ![Viewing DMN Decision](../99_images/business_automation/introduction/dt-stable.png)
 
-
 ## Create a GitHub repository for the project
 
-One last thing we're going to do is to create a GitHub repository for this service, so you have somewhere to store our changes and also take advantage of building it into a cloud service running on OpenShift. 
+One last thing we're going to do is to create a GitHub repository for this service, so you have somewhere to store our changes and also take advantage of building it into a cloud service running on OpenShift.
 
 1. You can create a repository on [GitHub](https://github.com). To do this login to your GitHub username (or create one if you don't have one!) and from your home page and click the green `New` icon near the top left of the page (or you can navigate directly to [here](https://github.com/new))
 
-    [New Repo](../99_images/business_automation/introduction/new-repo.png)
+    ![New Repo](../99_images/business_automation/introduction/new-repo.png)
 
-2. Fill out the form with your values
+1. Fill out the form with your values
 
     - **Repository Name**: quick-openshift-kogito
     - Select **Public** for now
@@ -81,8 +85,8 @@ One last thing we're going to do is to create a GitHub repository for this servi
 
     ![Repo Form](../99_images/business_automation/introduction/repo-form.png)
 
-3. Copy the command for **...or create a new repository on the command line** as we're going to take exactly what's in our repository add a mostly empty `README.md` and push those changes to GitHub. The below command is an example **and will not be the exact same as what you have on your repository**. Copy _yours_.
+1. Copy the command for **...or create a new repository on the command line** as we're going to take exactly what's in our repository add a mostly empty `README.md` and push those changes to GitHub. The below command is an example **and will not be the exact same as what you have on your repository**. Copy *yours*.
 
     ![Sample Command](../99_images/business_automation/introduction/cli-create.png)
 
-4. When this is done, you are finsihed with this section. Proceed to either [deploying locally](01_deploy_local.md) or [deploying on OpenShift](01_deploy_openshift.md)
+1. When this is done, you are finished with this section. Proceed to either [deploying locally](01_deploy_local.md) or [deploying on OpenShift](01_deploy_openshift.md)
