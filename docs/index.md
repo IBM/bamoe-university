@@ -8,7 +8,7 @@ hide:
 
 ## Labs at IBM TechXChange 2023
 
-[:octicons-book-24:    Guided exercises for TechXchange](guided_exercises/001_techXchange/introduction.md){ .md-button }
+[:octicons-book-24:    Guided exercises for TechXchange](guided_exercises/02_techXchange/introduction.md){ .md-button }
 
 ## Your Journey Begins Here
 

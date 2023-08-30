@@ -1,0 +1,4 @@
+nav:
+    - TechXchange:
+        - Introduction: introduction.md
+        - DMN Labs: ../guided_exercises/03_dmn/introduction

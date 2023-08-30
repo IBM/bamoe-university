@@ -4,15 +4,13 @@ Welcome to Session 1717 at IBM TechXchange where we will cover using {{ product.
 
 ## Labs for creating your first Decision Manager Open Editions Projects
 
-[DMN Lab Intro :octicons-zap-24:](./techxchange-lab.md){ .md-button }
-
-## {{ product.name }} Decision Manager Exercises
-
 [First Kogito Project Setup :octicons-zap-24:](../01_getting_started/introduction.md){ .md-button }
+[Introduction to DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
 
-[Learn DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
+[DMN Lab Exercise :octicons-zap-24:](../03_dmn/intermediate-lab-intro.md){ .md-button }
+[Advanced DMN Lab Exercise :octicons-zap-24:](../03_dmn/advanced-lab-intro.md){ .md-button }
 
 [Implement a On-push CI/CD :octicons-git-compare-24:](../03c_CICD/introduction.md){ .md-button }
 
-## {  product.name } Process Automation Manager Exercises
+## {{  product.name }} Process Automation Manager Exercises
 
