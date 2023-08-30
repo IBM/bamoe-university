@@ -1,16 +1,44 @@
 # Deploying and testing the Decision Service
 
-With our decision model completed, we can now package our DMN model in a Deployment Unit (KJAR), deploy it on the Execution Server and test our decision. 
+With our decision model completed, we can now package our DMN model in a Kogito service. This can be done using the Accelerators included with {{ product.canvas }}. These accelerators will quickly take the DMN file and start building the basis of the project as a {{ product.name }} compatible decision service.
 
-## Deploying the decision service
+## Applying the Accelerator
 
-To deploy your business application, follow these steps:
+To take this decision service from a standalone DMN model to a full Kogito architected decision, you will use the accelerator by clickig the button at the top of the screen. To do so follow the instructions and then we will synchronize the project to your GitHub account and also be capable being deployed as an OpenShift service.
 
-1. In the bread-crumb navigation in the upper-left corner, click on `call-centre-decisions` to go back to the project’s Library View.
+1. At the top of the DMN model page for `call-center-decisions`, click the button `Apply Accelerator` and select **Quarkus...**.
+  
+    ![Apply Accelerator](../99_images/business_automation/dmn/canvas-apply-accelerator-advanced.png)
 
-1. Click on the **Deploy** button in the upper-right corner of the screen. This will package our DMN mode in a Deployment Unit (KJAR) and deploy it onto the Execution Server (KIE-Server).
+1. If you want to learn more about the accelerator, you can click the GitHub link and change the branch to the `9.0.0-quarkus-full` to learn more about it. Afterwards just click **Apply** to restructure your project into a Kogito service.
 
-1. Go to the **Execution Servers** perspective by clicking on "Menu → Deploy → Execution Servers". You will see the **Deployment Unit** deployed on the Execution Server.
+    ![Click Apply on the Accelerator to reconfigure the project](../99_images/business_automation/dmn/canvas-invoke-accelerator.png)
+
+1. The wizard will come with a pop-up asking for a commit message for the change since this will create a Git project. You can use the default message or put whatever you would like, to do so press **Commit**.
+
+    ![Accelerator Commit Message](../99_images/business_automation/dmn/accelerator-accept-message.png)
+
+1. To create the project in Git, click **Share**, use your GitHub tokened ID.
+
+    ![Use Git ID](../99_images/business_automation/dmn/sync-with-git.png)
+
+1. Once you select your ID, a new option **Create GitHub repository...** is now available, select this.
+
+    ![Create GitHub Repository](canvas-../99_images/business_automation/dmn/canvas-create-github.png)
+
+1. The repository you create, can be anything you want, for the purposes of this lab, it will be called **techxchange-call-center**.
+
+    ![Git Create Repository](../99_images/business_automation/dmn/git-create-repository.png)
+
+1. When you create the repository, a message will open at the top with a link to the Git repository that was created. In the case of the example it is at [this example repository](https://github.com/timwuthenow/techxchange-call-center).
+
+    ![Example Repository](../99_images/business_automation/dmn/example-repository-created.png)
+
+1. Now that this repository is created, you can work on it locally 
+
+2. Click on the **Deploy** button in the upper-right corner of the screen. This will package our DMN mode in a Deployment Unit (KJAR) and deploy it onto the Execution Server (KIE-Server).
+
+3. Go to the **Execution Servers** perspective by clicking on "Menu → Deploy → Execution Servers". You will see the **Deployment Unit** deployed on the Execution Server.
 
 ## Testing DMN Solution
 

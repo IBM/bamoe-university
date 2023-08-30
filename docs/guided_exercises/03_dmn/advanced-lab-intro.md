@@ -4,46 +4,39 @@ This is an advanced Decision Model & Notation lab that introduces DMN Decision S
 
 ## Goals
 
-- Implement a DMN model using the Red Hat DM/PAM DMN editor
-- Deploy the existing DMN project to Decision Server
+- Implement a DMN model using the {{product.canvas}} DMN editor
+- Deploy the existing DMN project to OpenShift
 
 ## Problem Statement
 
-In this lab we will create a decision that determines if a call-centre can take an incoming call. Whether a call will be accepted by a certain office depends on:
+In this lab we will create a decision that determines if a call-center can take an incoming call. Whether a call will be accepted by a certain office depends on:
 
 - The office accepts the call.
 
 - There are employees currently available at the office.
 
-Whether the office can accepts a call depends on: *whether the phone number has been banned.* the purpose of the phone call ("help" or "objection").
+Whether the office can accepts a call depends on:
 
-## Create a Decision Project
+- whether the phone number has been banned
 
-To define and deploy a DMN decision model, we first need to create a new project in which we can store the model. To create a new project:
+- the purpose of the phone call ("help" or "objection").
 
-1. Navigate to [Business Central](https://localhost:8080/business-central)
+## Create a new DMN Decision
 
-1. Login to the platform with the provided username and password.
+Similar to the first lab, we're going to use {{ product.canvas }} to define and deploy a DMN decision model, we first need to create a new model:
 
-1. Click on **Design** to navigate to the Design perspective.
+1. Navigate to [{{product.canvas}}](https://localhost:9090)
 
-    ![BC Splash Screen](../99_images/business_automation/dmn/business-central-design.png){:width="600px"}
+2. From the {{ product.canvas }} landing page, you can create and edit various types of open-standards models in BPMN, DMN and PMML using the editors here. We will be creating a DMN model for this lab, so to do this, you can click **New Decision** to create a new DMN model.
 
-1. In the Design perspective, create a new project. If your space is empty, this can be done by clicking on the blue **Add Project** button in the center of the page. If you already have projects in your space, you can click on the blue **Add Project** icon at the top right of the page.
+    ![{{ product.canvas }} Welcome Screen](../99_images/business_automation/dmn/canvas-welcome.png)
 
-1. Give the project the name `call-centre-decisions`, and the description "Call Centre Decisions".
+3. You will now have an empty canvas and can start working on your DMN model for designing the number of vacation days decision. Change the name at the top of the model from `Untitled` to `call-center-decisions` or whatever you want to call it.
 
-    ![Create Call Centre Decisions](../99_images/business_automation/dmn/add-project-call-centre-decisions.png){:width="600px"}
+    ![Change the name of the model](../99_images/business_automation/dmn/rename-advance-dmn.png)
 
-1. With the project created, we can now create our DMN model. Click on the blue **Add Asset** button.
+1. In the next section we will start to create the decision. 
 
-1. In the **Add Asset** page, select **Decision** in the dropdown filter selector.
-
-    ![Add new assets decision](../99_images/business_automation/dmn/new-asset-decisions-filter.png){:width="600px"}
-
-1. Click on the **DMN** tile to create a new DMN model. Give it the name `call-centre`. This will create the asset and open the DMN editor.
-
-![Create DMN called call-centre](../99_images/business_automation/dmn/add-dmn-call-centre.png){:width="600px"}
 
 ## Next Steps
 
@@ -52,3 +45,7 @@ You can do this lab in 2 ways:
 1. If you already have (some) DMN knowledge, we would like to challenge you to build the solution by yourself. After you’ve built solution, you can verify your answer by going to the next module in which we will explain the solution and will deploy it onto the runtime.
 
 1. Follow this step-by-step guide which will guide you through the implementation.
+
+To do this on your own without the walk-through your model will ultimately end up looking like the below model with 5 Decision Nodes (*Banned Phone Numbers, Is Banned, Call Purpose Accepted, Call Can Be Handled, Accept Call*). Four of these are built in a Decision Service to control what parts of the decision are exposed when calling the service and ultimately a final decision to *Accept Call*.
+
+   ![Final Advanced Decision](../99_images/business_automation/dmn/advance-dmn-final.png)
