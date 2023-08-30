@@ -21,7 +21,7 @@ hide:
 
 [Implement a On-push CI/CD :octicons-git-compare-24:](guided_exercises/03c_CICD/introduction.md){ .md-button }
 
-## {{ product.name }} Process Automation Exercises
+## {{ product.legacy }} Process Automation Exercises
 
 [Getting started with {{ product.short }} :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
 [Event-driven processes :octicons-rocket-24:](guided_exercises/05_bam_kafka/00_introduction.md){ .md-button }
