@@ -23,7 +23,7 @@ hide:
 
 ## {{ product.legacy }} Process Automation Exercises
 
-[Getting started with {{ product.short }} :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
+[Getting started with Process :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
 [Event-driven processes :octicons-rocket-24:](guided_exercises/05_bam_kafka/00_introduction.md){ .md-button }
 
 ## More topics

@@ -4,13 +4,20 @@ Welcome to Session 1717 at IBM TechXchange where we will cover using {{ product.
 
 ## Labs for creating your first Decision Manager Open Editions Projects
 
-[First Kogito Project Setup :octicons-zap-24:](../01_getting_started/introduction.md){ .md-button }
-[Introduction to DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
 
-[DMN Lab Exercise :octicons-zap-24:](../03_dmn/intermediate-lab-intro.md){ .md-button }
-[Advanced DMN Lab Exercise :octicons-zap-24:](../03_dmn/advanced-lab-intro.md){ .md-button }
+[Intro to DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
+[Explore DMN :octicons-zap-24:](../03_dmn/intermediate-lab-intro.md){ .md-button }
+[Deeper Dive into DMN :octicons-zap-24:](../03_dmn/advanced-lab-intro.md){ .md-button }
+
+
+## {{ product.legacy }} Exercises for Process
+
+[Getting started with Process :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
+[Event-driven processes :octicons-rocket-24:](guided_exercises/05_bam_kafka/00_introduction.md){ .md-button }
+
+## Other Exercises
+
+[First Kogito Project Setup from Scratch :octicons-zap-24:](../01_getting_started/introduction.md){ .md-button }
 
 [Implement a On-push CI/CD :octicons-git-compare-24:](../03c_CICD/introduction.md){ .md-button }
-
-## {{  product.name }} Process Automation Manager Exercises
 
