@@ -15,7 +15,9 @@ The following example describes an insurance price calculator based on an applic
 | :--:|
 |  **DMN Decision Table**|
 
-- The decision table was designed with using a DMN editor, this could be done in {{ product.canvas }}, VSCode, Business Central or realistically any DMN compatible design tool. With how {{product.name}} utilizes the DMN specification, we're easily able to import this diagram seamlessly in the tool that makes the most sense for our end user.
+The decision table was designed with using a DMN editor, this could be done in {{ product.canvas }}, VSCode, Business Central or realistically any DMN compatible design tool. With how {{product.name}} utilizes the DMN specification, we're easily able to import this diagram seamlessly in the tool that makes the most sense for our end user.
+
+Notice that: 
 
 - The DMN decision table includes a *hit policy*, *inputs*, and *outputs*.
 
@@ -27,9 +29,9 @@ The decision can also be represented by the following decision requirements diag
 
 ![Insurance Pricing Requirements Diagram](../99_images/business_automation/dmn/insurance-price-drd.png){:width="600px"}
 
-- In this decision requirements diagram, you may note that the applicant’s age and accident history are found in squared ovals, these indicate that these are the required inputs for the decision table "Insurance Total Price".
+In this decision requirements diagram, you may note that the applicant’s age and accident history are found in squared ovals, these indicate that these are the required inputs for the decision table "Insurance Total Price".
 
-- The DMN component is currently stored in the [DMN GitHub repository](https://github.com/timwuthenow/dmn-workshop-labs).
+You can find the DMN component in the [DMN GitHub repository](https://github.com/timwuthenow/dmn-workshop-labs).
 
 ## Import the DMN File into {{ product.canvas }}
 
@@ -57,7 +59,9 @@ In this section, you can import the GitHub repository to {{ product.canvas }} di
 
 5. This will have a section of the browser turn into a form and you can run the model right there. Modifying the checkbox based on the boolean of `had previous incidents` and set an `Age` based on the data type being a number.
 
-    > 📘 INFO: Within this form you may see that if you just put an age in that the result returns _(null)_. This is because the way that a typical form works when generated is that a non-checked box assumes _null_, which the rules by default do not check for null. To quickly get around this from the form you can check and uncheck the checkbox and move forward with your testing. This initializes the value, this is because the form when it sends it for initial execution has the boolean value as a null. How would you address this in the rules? _HINT_: since we're checking if the number of incidents has a checkbox or not, you can write it as `? = false or ? = null`. Why the `?`? This is a way that DMN through the Friendly Enough Expression Language uses the column header object that you're testing to simplify checking a variable against a condition!
+    !!! INFO 
+    
+        Within this form you may see that if you just put an age in that the result returns _(null)_. This is because the way that a typical form works when generated is that a non-checked box assumes _null_, which the rules by default do not check for null. To quickly get around this from the form you can check and uncheck the checkbox and move forward with your testing. This initializes the value, this is because the form when it sends it for initial execution has the boolean value as a null. How would you address this in the rules? _HINT_: since we're checking if the number of incidents has a checkbox or not, you can write it as `? = false or ? = null`. Why the `?`? This is a way that DMN through the Friendly Enough Expression Language uses the column header object that you're testing to simplify checking a variable against a condition!
 
     ![Form inputs](../99_images/business_automation/dmn/form-input-exec.png)
 
