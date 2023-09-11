@@ -8,7 +8,7 @@ hide:
 
 ## Labs at IBM TechXChange 2023
 
-[:octicons-book-24:    Guided exercises for TechXchange](guided_exercises/02_techXchange/introduction.md){ .md-button }
+[:octicons-book-24:    Guided exercises for TechXchange Session 1717](guided_exercises/02_techXchange/introduction.md){ .md-button }
 
 ## Your Journey Begins Here
 
@@ -23,7 +23,7 @@ hide:
 
 ## {{ product.legacy }} Process Automation Exercises
 
-[Getting started with Process :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
+[Getting started with Proces :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
 [Event-driven processes :octicons-rocket-24:](guided_exercises/05_bam_kafka/00_introduction.md){ .md-button }
 
 ## More topics
