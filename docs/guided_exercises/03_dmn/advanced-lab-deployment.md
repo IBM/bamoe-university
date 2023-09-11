@@ -24,13 +24,13 @@ To take this decision service from a standalone DMN model to a full Kogito archi
 
 1. Once you select your ID, a new option **Create GitHub repository...** is now available, select this.
 
-    ![Create GitHub Repository](canvas-../99_images/business_automation/dmn/canvas-create-github.png)
-
-1. The repository you create, can be anything you want, for the purposes of this lab, it will be called **techxchange-call-center**.
+    ![Create GitHub Repository](../99_images/business_automation/dmn/canvas-create-github.png)
+    
+2. The repository you create, can be anything you want, for the purposes of this lab, it will be called **techxchange-call-center**.
 
     ![Git Create Repository](../99_images/business_automation/dmn/git-create-repository.png)
 
-1. When you create the repository, a message will open at the top with a link to the Git repository that was created. In the case of the example it is at [this example repository](https://github.com/timwuthenow/techxchange-call-center).
+3. When you create the repository, a message will open at the top with a link to the Git repository that was created. In the case of the example it is at [this example repository](https://github.com/timwuthenow/techxchange-call-center).
 
     ![Example Repository](../99_images/business_automation/dmn/example-repository-created.png)
 

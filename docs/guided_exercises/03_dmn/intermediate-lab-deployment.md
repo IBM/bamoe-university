@@ -154,9 +154,9 @@ Next, we will evaluate our model with some input data. We need to provide our mo
     </tbody>
   </table>
 
-## Using the KIE Java Client
+## Using the KIE Java Client (if you were using {{ product.legacy }})
 
-IBM {{ product.dm }} provides a KIE Java Client API that allows the user to interact with the KIE-Server from a Java client using a higher level API. It abstracts the data marshalling and unmarshalling and the creation and execution of the RESTful commands from the developer, allowing him/her to focus on developing business logic.
+IBM {{ product.legacy }} provides a KIE Java Client API that allows the user to interact with the KIE-Server from a Java client using a higher level API. It abstracts the data marshalling and unmarshalling and the creation and execution of the RESTful commands from the developer, allowing him/her to focus on developing business logic.
 
 In this section we will create a simple Java client for our DMN model.
 
@@ -190,14 +190,14 @@ In this section we will create a simple Java client for our DMN model.
      private static final String PASSWORD = "ibmpam1!"; 
     ~~~
 
-    > 📘 INFO: If you're using the Linux environment on Skytap use the following.
+    !!! 📘 INFO: If you're using the Linux environment on Skytap use the following.
 
-     ~~~java
-     private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server"; 
-     private static final String CONTAINER_ID = "vacation-days-decisions"; 
-     private static final String USERNAME = "pamadmin"; 
-     private static final String PASSWORD = "pamadm1n"; 
-    ~~~
+        ~~~java
+        private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server"; 
+        private static final String CONTAINER_ID = "vacation-days-decisions"; 
+        private static final String USERNAME = "pamadmin"; 
+        private static final String PASSWORD = "pamadm1n"; 
+        ~~~
 
 1. KIE-Server client API classes can mostly be retrieved from the `KieServicesFactory` class. We first need to create a `KieServicesConfiguration` instance that will hold our credentials and defines how we want our client to communicate with the server:
 

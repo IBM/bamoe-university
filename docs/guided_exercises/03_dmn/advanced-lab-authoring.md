@@ -187,6 +187,7 @@ Notice that the line 1 is the invocation of the decision service "Can Handle Cal
 
     ~~~sh
     if Call can be handled then count(Employee at the Office) > 0 else false
+    ~~~
 
 The `Call can be handled` variable as then used to validate the decision result in the last line.
 

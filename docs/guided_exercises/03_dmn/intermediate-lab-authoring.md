@@ -12,19 +12,21 @@ The problem statement describes a number of different inputs to our decision:
 
 Therefore, we should create two input nodes, one for each input:
 
-1. Add an **Input** node to the diagram by clicking on the **Input** node icon and placing it in the DRD. ![Input](../99_images/business_automation/dmn/add-drd-input-node.png){:width="600px"}
+1. Add an **Input** node to the diagram by clicking on the **Input** node icon and placing it in the DRD. 
+   
+    ![Input](../99_images/business_automation/dmn/add-drd-input-node.png){:width="600px"}
 
-1. Double-click on the node to set the name. We will name this node `Age`.
+2. Double-click on the node to set the name. We will name this node `Age`.
 
-1. With the `Age` node selected, open the property panel. Set the **data type** to `number`.
+3. With the `Age` node selected, open the property panel. Set the **data type** to `number`.
 
     ![data type](../99_images/business_automation/dmn/drd-input-node-propery-output-data-type.png){:width="600px"}
 
-1. In the same way, create an **Input** node for `Years of Service`. This node should also have its **data type** set to `number`.
+4. In the same way, create an **Input** node for `Years of Service`. This node should also have its **data type** set to `number`.
 
     ![Nodes Complete](../99_images/business_automation/dmn/drd-decision-nodes-complete.png){:width="600px"}
 
-1. The model is constantly saved in browser storage, so you don't have to save it constantly.
+5. The model is constantly saved in browser storage, so you don't have to save it constantly.
 
 ## Constants
 
@@ -107,7 +109,7 @@ Although these decisions could be implemented in a single decision node, we’ve
 
 ## Decision Runner
 
-Your model will be saved throughout this process, if you want to see how the decision is starting to execute. You can start to use the {{ product.runner }} (which we could have started from the moment we added input values, but more fun with decisions in place!). To do this clikc **Run** just below the Black IBM banner.
+Your model will be saved throughout this process, if you want to see how the decision is starting to execute. You can start to use the {{ product.runner }} (which we could have started from the moment we added input values, but more fun with decisions in place!). To do this click **Run** just below the Black IBM banner.
 
 ![Decision Table Default Output](../99_images/business_automation/dmn/dmn-runner-start.png){:width="600px"}
 
@@ -154,6 +156,7 @@ The total vacation days needs to be determined from the base vacation days and t
     3. If case 2 adds extra days, add them to the total.
 
 5. The above logic can be implemented with the following FEEL expression - note that these are using the values that are produced by the Decision Nodes names and match the case *exactly*:
+
     ![Total Vacation Days Expression](../99_images/business_automation/dmn/total-vacation-days-expression.png){:width="600px"}
 
     ~~~sh
@@ -162,8 +165,8 @@ The total vacation days needs to be determined from the base vacation days and t
     Extra days case-2
     ~~~
 
-1. Using your {{ product.runner }} you can test your decision exactly as it sits today and return a Total Days based on the sample employee from before or any other changes.
+6. Using your {{ product.runner }} you can test your decision exactly as it sits today and return a Total Days based on the sample employee from before or any other changes.
 
     ![All decisions executing](../99_images/business_automation/dmn/form-decisions-running-vacation.png)
 
-2. Your model is now ready for consumption. There are a few ways to explore how to use it which we will cover in the next section!
+7. Your model is now ready for consumption. There are a few ways to explore how to use it which we will cover in the next section!
