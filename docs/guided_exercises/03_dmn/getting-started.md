@@ -77,7 +77,6 @@ If you are using the provided lab environment for TechXchange, the environment i
 
 2. From here you will login to OpenShift using your username and password created for the lab which is of the format `student01` through `student20` with password `Passw0rd`. If you get security issues with the link, accept them using the *Advanced* option in Chrome to proceed to the login screen.
 
-#TODO    ![OpenShift Login]()Insert it here
 
 ## Conclusion
 
