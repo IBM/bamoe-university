@@ -1,3 +1,9 @@
 # Introduction
 
-In this section, we will look at the different toolings that are available with {{ product.name }}. These will be both from what is in the community (and soon to be enterprise supported) in the {{ product.sandbox }} to setting up your local workstation with the VSCode Plugins, Maven, GraalVM and more. This section will cover Business Central as it is what is enterprise supported (and what most customers will already be using), but our goal with this enablement will be to move the product towards Kogito and its Cloud Native strategies over the legacy runtimes found within KIE Server and Business Central.
+Before getting started with **{{ product.name }}**, we must first explore and prepare the different tools we'll need in order to go beyond the basics on this Business Automation journey.
+
+We'll be using different tools as we move through the guided exercises: 
+- During development, we'll use IBM Business Automation Open Editions **Canvas**, which is known in the open-source as {{ product.sandbox }}.
+- To set up the local workstation, we'll use VSCode Plugins, Maven, GraalVM and more. 
+- Since our goal with this enablement is to move towards Kogito adoption and its cloud-native approach, we'll mostly use 
+Canvas and VSCode. Although, you can also find extra exercises covering the usage of Business Central, supported on the 8.x version. 
