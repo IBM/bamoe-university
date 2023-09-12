@@ -1,10 +1,10 @@
 # Overview of Order Management Process
 
-This is a Process Management lab in which will implement an Order Management process. The process will use BPMN2 constructs like **Swimlanes**, **User Tasks**, **Gateways**, combined with decision-based routing based on a **DMN Model** (Decision Model & Notation). It also introduces more dynamic concepts of the {{ product.name }} process engine, like dynamic assignments of tasks based on process instance data.
+This is a Process Management lab in which will implement an Order Management process. The process will use BPMN2 constructs like **Swimlanes**, **User Tasks**, **Gateways**, combined with decision-based routing based on a **DMN Model** (Decision Model & Notation). It also introduces more dynamic concepts of the {{ product.legacy }} process engine, like dynamic assignments of tasks based on process instance data.
 
 ## Goals
 
-- Create an Order Management project in {{ product.name }}
+- Create an Order Management project in {{ product.legacy }}
 - Define and create the process' domain model using the platform’s
     Data Modeller.
 - Implement an order management process in the process designer

@@ -1,6 +1,6 @@
 # Auditing with Kafka
 
-When using the Kafka extension in {{ product.name }}, every transaction for processes, cases and tasks execution can be tracked via events. For each of these categories, we'll have an event emitted to a Kafka topic, in other words, we'll have three topics here: `jbpm-processes-events`, `jbpm-tasks-events`, `jbpm-cases-events`.
+When using the Kafka extension in {{ product.legacy }}, every transaction for processes, cases and tasks execution can be tracked via events. For each of these categories, we'll have an event emitted to a Kafka topic, in other words, we'll have three topics here: `jbpm-processes-events`, `jbpm-tasks-events`, `jbpm-cases-events`.
 
 To enable this feature, you need to add the `jbpm-event-emitters-kafka` library to the engine, KIE Server. This can either be downloaded in the [community repository for jBPM](https://search.maven.org/artifact/org.jbpm/jbpm-event-emitters-kafka/) or via the Red Hat customer portal: [rhpam-7.10.0-maven-repository.zip](https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&product=rhpam&version=7.10.0).
 

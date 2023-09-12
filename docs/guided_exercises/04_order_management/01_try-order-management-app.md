@@ -1,6 +1,6 @@
 # Getting started with {{ product.short }}
 
-This guide shows you the experience of using {{ product.name }} to author, deploy, and execute your business automation applications. With three steps, this guide will get you from installation to deployment and testing of a business application:
+This guide shows you the experience of using {{ product.legacy }} to author, deploy, and execute your business automation applications. With three steps, this guide will get you from installation to deployment and testing of a business application:
 
 ![Three steps](../99_images/business_automation/order_management/01_try/3-steps.png)
 
@@ -12,11 +12,11 @@ We expect you to have installed in your machine:
 
 * Java JDK 11 ( if you don't have it yet, you can download OpenJDK built by Red Hat https://developers.redhat.com/openjdk-install )
 * GIT client (https://git-scm.com/)
-* *{{ product.name }} Installation Demo*:
+* *{{ product.legacy }} Installation Demo*:
   **NOTE**: You should use this installer to quickly install EAP, PAM and pre-configure the environment and user access you'll need.
   `$ git clone https://github.com/timwuthenow/ibamoe-setup.git`
 
-You should now have successfully installed {{ product.name }}.
+You should now have successfully installed {{ product.legacy }}.
 
 You have two key components deployed in your Red Hat EAP right now: **Business Central** and **KIE Server**.
 
@@ -24,7 +24,7 @@ You have two key components deployed in your Red Hat EAP right now: **Business C
 
 **KIE Server** is a lightweight engine capable of executing business assets like processes, cases and decisions. It can be easily integrated with your services, for example via REST or JMS.
 
-Luckily, {{ product.name }} comes with a number of out-of-the-box template and example applications that can be used to quickly build and deploy a process microservice.
+Luckily, {{ product.legacy }} comes with a number of out-of-the-box template and example applications that can be used to quickly build and deploy a process microservice.
 
 ## Explore the Asset
 
@@ -155,7 +155,7 @@ What about finishing this process by your own? Following the same idea, In Busin
 
 ## Conclusion
 
-Congratulations, you successfully concluded a Hello World in {{ product.name }}.
+Congratulations, you successfully concluded a Hello World in {{ product.legacy }}.
 
 In this guide, we installed Red Hat PAM, imported a project directly from GitHub, checked out the a process definition modeled and an automation decision.
 
