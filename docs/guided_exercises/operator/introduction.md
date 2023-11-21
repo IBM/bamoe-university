@@ -5,7 +5,7 @@ In this lab we will use the enhanced Business Automation Operator **7.10+** to d
 ## Goal
 
 - Install the Business Automation Operator on OCP 4.
-- Use the Business Automation Operator 7.10 to deploy a number of Process Automation Manager environments.
+- Use the Business Automation Operator {{product.versionLegacy}} to deploy a number of {{ product.name }} environments.
 - Change the KIE-App deployment CRDs to show reconciliation.
 - Change Operator ConfigMaps to make advanced configuration changes to the KIE-App.
 
@@ -25,7 +25,7 @@ In this lab, the goal is to provision and manage various {{ product.name }} arch
 
 **If you are using your own OpenShift environment**, follow the steps below to create a project and install the operator. If you are trying this lab in an environment provisioned by the Red Hat team, skip to the section `Inspect the Lab environment`.
 
-1. Create a new project in OpenShift. We suggest the name `rhpam710-operator-lab-user1`.
+1. Create a new project in OpenShift. We suggest the name `ibamoe-install`.
 
     ![new-ocp-project](../99_images/business_automation/operator/new-ocp-project.png){:width="650px"}
 
@@ -45,7 +45,7 @@ In this lab, the goal is to provision and manage various {{ product.name }} arch
 
     ![operator-subscription](../99_images/business_automation/operator/operator-subscription.png){:width="650px"}
 
-## Inspect the Lab environment
+<!-- ## Inspect the Lab environment
 
 If you attending to an enablement with a provisioned environment. We provisioned an environment where each user already has a subscription to the Business Automation Operator. These Operator subscriptions are managed by the OpenShift cluster admin.
 
@@ -64,4 +64,4 @@ If you attending to an enablement with a provisioned environment. We provisioned
 
 1. Click on **Business Automation** to access the **Business Automation** Operator instance in your project. 
 
-    ![{{ product.short }} Operator](../99_images/business_automation/operator/operator-lab-ba-operator-overview.png){:width="650px"}
+    ![{{ product.short }} Operator](../99_images/business_automation/operator/operator-lab-ba-operator-overview.png){:width="650px"} -->

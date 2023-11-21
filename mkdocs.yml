@@ -35,6 +35,7 @@ extra:
     dm: "Decision Manager"
     pam: "Process Automation Manager"
     version: "9.0"
+    versionLegacy: "8.0.4"
     maven: "Red Hat Maven General Access Repository"
     legacymaven: "Red Hat Maven General Access Repository"
     legacygav: "7.67.2.Final-redhat-00006"
