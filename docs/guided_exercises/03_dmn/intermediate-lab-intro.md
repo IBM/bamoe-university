@@ -15,13 +15,13 @@ In this lab we will create a decision service that determines the number of vaca
 
 - Every employee receives at least 22 days.
 
-- Additional days are provided according to the following criteria:
+- Additional days are provided according to the following criteria which will be broken into separate decision nodes:
 
     1. Only employees younger than 18 or at least 60 years, or employees with at least 30 years of service will receive 5 extra days;
 
-    1. Employees with at least 30 years of service and also employees of age 60 or more, receive 3 extra days, on top of possible additional days already given;
+    1. Employees with at least 30 years of service get 3 more days and also employees of age 60 or more, receive 4 extra days, on top of possible additional days already given;
 
-    1. If an employee has at least 15 but less than 30 years of service, 2 extra days are given. These 2 days are also provided for employees of age 45 or more. These 2 extra days can not be combined with the 5 extra days.
+    1. If an employee has at least 15 but less than 30 years of service, 3 extra days are given. These 3 days are also provided for employees of age 45 or more. These 2 extra days can not be combined with the 5 extra days.
 
 ## Link {{ product.canvas }} to your GitHub account and create a project in GitHub using {{ product.extended }}
 
