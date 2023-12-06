@@ -17,7 +17,7 @@ In this lab we will create a decision service that determines the number of vaca
 
 - Additional days are provided according to the following criteria which will be broken into separate decision nodes:
 
-    1. Only employees younger than 18 or at least 60 years, or employees with at least 30 years of service will receive 5 extra days;
+    1. Only employees younger than 18 or at least 60 years, will receive 5 days of vacation or employees with at least 30 years of service will receive an 7 extra days;
 
     1. Employees with at least 30 years of service get 3 more days and also employees of age 60 or more, receive 4 extra days, on top of possible additional days already given;
 
