@@ -67,17 +67,6 @@ In this section, you can import the GitHub repository to {{ product.canvas }} di
 
 6. This service can be deployed as a sample Quarkus service to OpenShift right away as a sample service that you can invoke immediately. In the next section we will show how this is done from a development point of view.
 
-## Deploying this sample service to OpenShift
-
-If you are using the provided lab environment for TechXchange, the environment itself provides access to a shared cluster for all attendees to login to OpenShift there is a bookmark in Chrome called `OpenShift Token` that will take you to a login page to create an OpenShift login token. Every user for the TechXchange environment has a created namespace to the student id that was given to your workstation at the start of the lab (student01 through student20 with the namespace to that username with `-namespace`). The password for all of these instances is `Passw0rd`.
-
-1. To create the OpenShift token to connect to the console at the bookmarked link **OpenShift Token** from Chrome.
-
-    ![OpenShift Token Bookmark](../99_images/business_automation/dmn/openshift-bookmark.png)
-
-2. From here you will login to OpenShift using your username and password created for the lab which is of the format `student01` through `student20` with password `Passw0rd`. If you get security issues with the link, accept them using the *Advanced* option in Chrome to proceed to the login screen.
-
-
 ## Conclusion
 
 Congratulations, you've finished the first part of the DMN exercise. Next, you will have an intermediate level exercise that will guide you through the implementation, deployment and testing of the Vacation Days use case.
