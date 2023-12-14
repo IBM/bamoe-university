@@ -1,6 +1,6 @@
-# {{ product.name }} labs at IBM TechXchange 2023
+# {{ product.name }} labs at IBM TechXchange 2024
 
-Welcome to the Session 1717, at IBM TechXchange 2023. 
+Welcome to the Session 1717, at IBM TechXchange 2024. 
 
 In this session you'll have a hands-on experience with cloud-native decision automation using {{ product.name }}. As part of our learning journey, we'll explore many capabilities of {{ product.short }}, along with having a better understanding of its architecture, how its components work together and ultimately, allows to create cloud-native decision services that can be deployed on cloud platforms such as Red Hat OpenShift Container Platform (OCP). 
 
