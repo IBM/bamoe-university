@@ -6,7 +6,7 @@ In this guided lab let’s see in practice how we can use process automation app
 - From within the process, we can emit events to notify the ecosystem about key activities in the business process and interact with external services via events;
 - We can track every transaction committed either for business processes, cases (case management), or human tasks by publishing events for.
 
-## The alignment of tech evolution and business standards like BMPN
+## The alignment of tech evolution and business standards like BPMN
 
 When providing an implementation for a specification, each provider has the opportunity to deliver the solution of choice. It is not different for the BPMN specification. It allows different implementations for its diagram elements, and this is how {{ product.short }} delivers the most recent tech concepts by still allowing business users to use the modeling notation they are used to.
 
