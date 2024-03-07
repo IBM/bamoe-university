@@ -1,6 +1,6 @@
 # Learn business automation
 
-Access the labs currently at: https://timwuthenow.github.io will be coming to IBM Open Source community soon!
+Access the labs currently at: https://bamoe.university will be coming to IBM Open Source community soon!
 
 ---
 
