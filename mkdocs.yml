@@ -25,25 +25,25 @@ plugins:
   - git-revision-date-localized:
       type: iso_date
   - with-pdf:
-        author: IBM
+         author: IBM
 
 extra:
   product: 
-    name: "IBM Business Automation Open Edition 9.0"
+    name: "IBM Business Automation Open Edition 9.1"
     legacy: "IBM Business Automation Open Edition 8.0"
     short: "IBAMOE"
     dm: "Decision Manager"
     pam: "Process Automation Manager"
-    version: "9.0"
-    versionLegacy: "8.0.4"
+    version: "9.1"
+    versionLegacy: "8.0.5"
     maven: "Red Hat Maven General Access Repository"
     legacymaven: "Red Hat Maven General Access Repository"
-    legacygav: "7.67.2.Final-redhat-00006"
-    gav: "7.67.2.Final-redhat-00006"
+    legacygav: "7.67.2.Final-redhat-00017"
+    gav: "7.67.2.Final-redhat-00017"
     kogitogav: "f"
     kogitoplugin: "2.16.7.Final"
     sandbox: "KIE Sandbox"
-    canvas: "IBM Business Automation Manager Canvas"
+    canvas: "BAMOE Canvas"
     extended: "Extended Services"
     workspace: "quick-kogito"
     bamAdmin: "bamAdmin"

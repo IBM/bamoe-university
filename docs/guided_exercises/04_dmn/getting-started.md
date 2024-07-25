@@ -81,11 +81,11 @@ If you are using the provided lab environment for TechXchange, the environment i
 
 3. After logging in to the token screen, you will need to copy the token, server and use your assigned namespace (`student##-namespace`) to login. Please be sure to check the `Insecurely disable TLS certificate validation` as this is a local instance of OpenShift and does not have all the proper certificates in place.
 
-    ![OpenShift Token process to connect Canvas](../99_images/business_automation/dmn/token-creation-gif.gif)
+    ![OpenShift Token process to connect {{ product.canvas }}](../99_images/business_automation/dmn/token-creation-gif.gif)
 
 4. After you're successfully connected, you can use the deploy feature found on {{product.canvas}} by clicking the `Deploy` button and selecting the `insurance-pricing` decision to deploy. Confirm to deploy it to your namespace and let it load for approximately 30-45 seconds after. Then you can click the link to load the Quarkus service that was created from the DMN file. *Just a note you need to click the checkbox for `had previous incidents` to initialize the value*.
 
-    ![GIF detailing the DMN Deploy Service from Canvas to OpenShift](../99_images/business_automation/dmn/intro-dmn-deploy-service.gif)
+    ![GIF detailing the DMN Deploy Service from {{ product.canvas }} to OpenShift](../99_images/business_automation/dmn/intro-dmn-deploy-service.gif)
 
 
 

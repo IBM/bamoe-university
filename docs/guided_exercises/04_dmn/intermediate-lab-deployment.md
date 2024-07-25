@@ -1,6 +1,6 @@
 # Vacation Days - Consuming Decisions
 
-There are several ways to consume decisions, but the first way we will explore is through the utilization of the Canvas provided methods, but there will also be methods showing how to do it with {{ product.legacy }} provided as informational and not required for these exercises.
+There are several ways to consume decisions, but the first way we will explore is through the utilization of the {{ product.canvas }} provided methods, but there will also be methods showing how to do it with {{ product.legacy }} provided as informational and not required for these exercises.
 
 ## Deploying and testing the Decision Service
 

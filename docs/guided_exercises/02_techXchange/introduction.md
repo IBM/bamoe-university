@@ -1,37 +1,39 @@
-# {{ product.name }} labs at IBM TechXchange 2024
+# TechXchange Session 1108
 
-Welcome to the Session 1717, at IBM TechXchange 2024. 
+Welcome to TechXchange 2024! This series of hands-on exercises is designed to guide you through the essential aspects of process automation using BAMOE. Whether you are a developer or an architect, these labs will equip you with the skills needed to effectively leverage BAMOE for modern, cloud-native business automation solutions.
 
-In this session you'll have a hands-on experience with cloud-native decision automation using {{ product.name }}. As part of our learning journey, we'll explore many capabilities of {{ product.short }}, along with having a better understanding of its architecture, how its components work together and ultimately, allows to create cloud-native decision services that can be deployed on cloud platforms such as Red Hat OpenShift Container Platform (OCP). 
+Throughout this bootcamp, you will gain practical experience in designing, implementing, and deploying business processes. You will also explore how to integrate decision services and external systems within your automation workflows, all while utilizing the powerful tools provided by BAMOE.
 
-To create our decision models, we'll use a new tool made available in 9.0, {{ product.canvas }}, and we'll combine it with the developer joy brought by Quarkus, and how we can quickly deploy our automation solutions to a cloud environment. 
-
-We will focus predominantly on the {{ product.short }} 9.0 release, exploring how to automate a decision using Open Standards such as DMN, and running it with a Kogito-based Decision Service. 
-
-!!! note "Note"
-        
-    If you want to go a step further, you'll also have available to you, labs focused on the 8.0.3 version of Open Editions, specially, on the Process Automation capabilities. Aligned with the evolution of the technology landscape and the future of this solution, the process automation capabilities are currently shifting towards a cloud-native architecture as we'll learn today. We hope to see you around in TechXchange 2024, to experience together all the exciting innovation we're building for this IBM's open source business automation solution!
-
-Now, let's get started!
-
-## Create your first Decision Service using IBM Decision Manager Open Edition
+!!! info
+    Some features covered in this bootcamp may be in tech preview. For the latest information on fully supported and tech preview features, please refer to the [product documentation](https://www.ibm.com/docs/en/ibamoe/9.1.x?topic=technology-preview-developing-process-services).
 
 
-[Intro to DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
-[Explore DMN :octicons-zap-24:](../03_dmn/intermediate-lab-intro.md){ .md-button }
-[Deeper Dive into DMN :octicons-zap-24:](../03_dmn/advanced-lab-intro.md){ .md-button }
+By the end of these labs, you will:
 
+- Understand the core components and architecture of BAMOE.
+- Gain practical skills in designing, implementing, and deploying business processes.
+- Learn to integrate decision services and external systems within your processes.
+- Develop proficiency in using {{ product.canvas }} and VS Code for process authoring.
 
-### Go one step further (Optional)
+## About the Bootcamp
 
-#### Explore process automation with {{ product.legacy }}
+In today's rapidly evolving business landscape, lightweight automation is key to efficiency and scalability on the cloud. Through these guides, developers and architects can gain hands-on experience with the latest capabilities of IBM Business Automation Manager Open Edition.
 
-[Getting started with Process :octicons-rocket-24:](guided_exercises/04_order_management/01_try-order-management-app.md){ .md-button }
-[Event-driven processes :octicons-rocket-24:](guided_exercises/05_bam_kafka/00_introduction.md){ .md-button }
+Participants will explore the development experience and experiment with multiple capabilities for efficiently creating process automation solutions backed by open-source practices and IBM.
 
-#### More Exercises
+### Who Is This For
 
-[First Kogito Project Setup from Scratch :octicons-zap-24:](../01_getting_started/introduction.md){ .md-button }
+This bootcamp is designed for technical users, such as developers and architects, who are seeking to explore the latest in business automation. It is ideal for professionals looking to deepen their knowledge of IBM BAMOE and how it can be used to create cloud-native solutions.
 
-[Implement a On-push CI/CD :octicons-git-compare-24:](../03c_CICD/introduction.md){ .md-button }
+### What You'll Learn
 
+- **Get Started with Cloud-Native Business Automation**: Discover the principles and benefits of cloud-native business automation and how IBM BAMOE enables it.
+- **Explore the Features of Development Tools**: Dive into IBM BAMOE Canvas and IBM BAMOE Developer Tools for Microsoft VSCode, understanding their functionalities and how they enhance the development experience.
+- **Getting Started with Process Services**: Learn the basics of creating and managing process services, and understand their role in business automation.
+- **Explore the Concepts of Process Automation**: Understand the fundamental concepts and workflows involved in process automation, including modeling, execution, and monitoring.
+- **Leverage Event-Driven Capabilities in Process Automation**: Explore how event-driven architecture can be integrated into process automation to enhance responsiveness and scalability.
+- **Deploying on OpenShift**: Gain insights into deploying process and decision services on OpenShift, ensuring scalable and resilient operations.
+
+---
+
+This bootcamp will equip you with the skills and knowledge needed to effectively utilize IBM Business Automation Manager Open Editions for modern, cloud-native business automation.
