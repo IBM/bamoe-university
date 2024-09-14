@@ -72,19 +72,101 @@ In this section, we'll modify our process to incorporate a decision that we have
 
    ![Data Inputs](images/dmn-data-assignments.png)
 
-7. Make sure to save your diagram changes.
+7. Your BPMN should now look like the one in the screenshot below. As long as it does, Press Control + S to save your diagram changes (you may have to do it two or three times, make sure the dot next to approval.bpmn disappears.
+
+    ![Updated BPMN](images/bpmn-dmn.png)
 
 ## Running the Process with DMN Automation
 
-8. As long as you left the http://localhost:8080/q/dev-ui closed from the previous lab, open it up again. If mvn quarkus:dev is running, it will hot reload as we change our process and project.
+8. As long as you left the http://localhost:8080/q/dev-ui closed from the previous lab, re-open it . If mvn quarkus:dev is running, it will hot reload as we change our process and project as long as the browser currently isn't engaged with the service.
+
+    ![Quarkus Reload](images/mvn-dev-reload.png)
 
 9. After this is reloaded from the saves, open the Dev UI, navigate to http://localhost:8080/q/dev-ui and go to Process Instances.
 
+    ![Process Instances](images/open-pi.png)
+
 10. From here, click on **Process Definitions** and click the arrow again on the approval process to start a new process instance from the process definition.
+
+    ![Process Definition](images/process-def.png)
 
 11. Test with different data that will result in different outcomes in the decision.
 
+    
+    |Scenario	| Is Student |Annual Income |Credit Score | Age |
+    |-----|-------|-------|-------|-------|
+    |Automatic Approval | 	false |	15000 |	750 |	25 |
+    |Automatic Rejection |	false |	15000 |	750 |	17 |
+    |Manual Review |	false |	30000	| 600| 	20 |
+
 12. After you submit any of the test scenarios, you can navigate to the green banner's to check the process details.
 
+    ![Check process details](images/process-exec-dec.png)
+
 13. Check Process Variables: Verify the variables of the completed instance to ensure the DMN decision was executed correctly.
+
+1.	You can stop Quarkus, but at minimum, you must close the Dev-UI in your browser for further updates in the next sections. This is very important in the current release of BAMOE 9.1 with the live application trying to maintain contact with the mvn quarkus:dev and can cause issues.
+
+
+## Configuring the process to handle different outcomes
+Now, with the process working, let's add the gateways to handle the three possible scenarios: Automatic approval, Automatic rejection, Manual Approval. To do this we will continue to modify the approval process.
+
+1.	We need to add an exclusive gateway after the decision node by changing the diagram a little. You will be moving some the last task and end node first to create some room. Click and draw a square around the two nodes and drag to the right to make them further away from the Is Eligible decision.
+
+    ![Space process](images/space-process.png)
+ 
+2.	Now let’s configure the process to have an exclusive gateway. To do this, click the gateway icon (orange diamond on the palette) and click and drag Exclusive Gateway onto the line separating Is Eligible and Generate CC details. If placed correctly, the gateway will turn the line blue and you will have new arrows form. Otherwise, just reconnect the arrows between the two existing nodes.
+
+3.	 From the gateway you can now click it and click the Red End Node twice to create two extra pathways. You can adjust the lines how you want, to put right angles on them double click the line to create the bend.
+
+    ![Process with gateways](images/process-gateway.png)
+ 
+4.	Now let’s configure the various pathways. To do this you will click each pathway and use the properties window to specify the condition. Let's configure the possible outcomes:
+
+    ![Configuring Gateways](images/configure-gateway.png)
+
+    -	Automatic Approval: - For the sequence flow leading to the approval end event, click the arrow going to Generate CC Details and type the name as Automatic Approval and expand Implementation/Execution and use the condition:
+
+    ~~~java
+    return approval.toLowerCase().equals("approved");
+    ~~~
+ 
+    -	Repeat the process for Manual Approval: - For the sequence flow leading to the manual review end event, now using  the condition:
+
+    ~~~java
+    return approval.toLowerCase().equals("manual");
+    ~~~
+    
+    -	Lastly, set Automatic Rejection: - For the sequence flow leading to the rejection end event, use the condition:
+    
+    ~~~java
+    return approval.toLowerCase().equals("rejected");
+    ~~~
+
+8.	Add three different paths from the gateway, each leading to an end event.
+ 
+9.	Save your diagram and then repeat the process from earlier to generate the SVG diagram in VSCode to visualize the process. This can be done by clicking the SVG icon above the BPMN diagram editor.
+
+    ![Generate SVG](images/generate-svg.png)
+ 
+10.	Make sure there are no active connections to the local Quarkus service and then return to the terminal and run: mvn quarkus:dev if you have stopped it to restart Quarkus in development mode. Return to the http://localhost:8080/q/dev-ui environment and go back to the jBPM Quarkus Dev UI and click Process Instances.
+
+    ![Process Instance Dev-UI](images/open-pi.png)
+ 
+11.	Start a new process instance and test the three different scenarios (approved, manual, rejected). Using the data from earlier:
+
+    |Scenario	| Is Student |Annual Income |Credit Score | Age |
+    |-----|-------|-------|-------|-------|
+    |Automatic Approval | 	false |	15000 |	750 |	25 |
+    |Automatic Rejection |	false |	15000 |	750 |	17 |
+    |Manual Review |	false |	30000	| 600| 	20 |
+
+
+12.	Notice if you do the Automatic Rejection scenario, you get the path that exits the bottom of the exclusive gateway as seen in the instance details.
+
+    ![Automatic Rejection](images/automatic-rejection.png)
+ 
+13.	Close the browser for Dev-UI window to continue to the next section.
+ 
+
 
