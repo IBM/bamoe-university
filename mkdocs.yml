@@ -24,8 +24,8 @@ plugins:
         - README.md
   - git-revision-date-localized:
       type: iso_date
-  - with-pdf:
-        author: IBM
+  # - with-pdf:
+  #       author: IBM
 
 extra:
   product: 
@@ -38,8 +38,8 @@ extra:
     versionLegacy: "8.0.4"
     maven: "Red Hat Maven General Access Repository"
     legacymaven: "Red Hat Maven General Access Repository"
-    legacygav: "7.67.2.Final-redhat-00006"
-    gav: "7.67.2.Final-redhat-00006"
+    legacygav: "7.67.2.Final-redhat-00017"
+    gav: "7.67.2.Final-redhat-00017"
     kogitobom: "9.1.0-ibm-0001"
     kogitogroup: "com.ibm.bamoe"
     kogitoplugin: "2.16.7.Final"

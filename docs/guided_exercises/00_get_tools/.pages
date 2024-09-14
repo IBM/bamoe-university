@@ -2,3 +2,4 @@ nav:
     - Get the tools for IBAMOE:
         - Introduction: introduction.md
         - Environment Setup: env-setup.md
+        - Git Token Setup: git-token.md
