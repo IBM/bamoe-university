@@ -6,18 +6,23 @@ hide:
 
 # {{ product.name }} Enablement
 
-## Labs at IBM TechXChange 2023
-
-[:octicons-book-24:    Guided exercises for TechXchange Session 1108](guided_exercises/02_techXchange/introduction.md){ .md-button }
-
 ## Your Journey Begins Here
 
 [:octicons-copilot-24:    Get the tools    :octicons-copilot-24:](guided_exercises/00_get_tools/introduction.md){ .md-button }
 [:octicons-zap-24:    First Kogito Project Setup    :octicons-zap-24:](guided_exercises/01_getting_started/introduction.md){ .md-button }
 
+## Labs at IBM TechXChange 2024
+
+[:octicons-book-24:    Guided exercises for TechXchange Session 1108](guided_exercises/02_techXchange/introduction.md){ .md-button }
+
+
+## TechXchange 2023
+
+[:octicons-book-24:    Guided exercises for TechXchange Session 1124](guided_exercises/05_techXchange/introduction.md){ .md-button }
+
 ## {{ product.name }} Decision Manager Exercises
 
-[Learn DMN :octicons-rocket-24:](guided_exercises/03_dmn/introduction.md){ .md-button }
+[Learn DMN :octicons-rocket-24:](guided_exercises/04_dmn/introduction.md){ .md-button }
 
 [Implement a On-push CI/CD :octicons-git-compare-24:](guided_exercises/03c_CICD/introduction.md){ .md-button }
 

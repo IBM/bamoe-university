@@ -8,7 +8,7 @@ The maven repository have ~1.5GB. In order to facilitate the execution of this l
 
 1. Stop {{ product.short }}.
 
-2. Download the `jbpm-event-emitters-kafka`. It's name will be similar to `jbpm-event-emitters-kafka-7.x.x.Final-redhat-x.jar`.
+2. Download the `jbpm-event-emitters-kafka`. It's name will be similar to `jbpm-event-emitters-kafka-{{ product.legacygav }}.jar`.
 
 3. Since this is a behavior only needed by the engine, place the library inside the `kie-server.war` folder, inside the `WEB-INF` directory.
 

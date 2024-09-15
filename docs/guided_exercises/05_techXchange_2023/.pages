@@ -1,6 +1,6 @@
 nav:
     - TechXchange 2023 (Session 1717):
         - Introduction: introduction.md
-        - DMN Introduction Labs: /guided_exercises/03_dmn/introduction
-        - DMN Intermediate Labs: /guided_exercises/03_dmn/intermediate-lab-intro
-        - Advanced DMN Lab: /guided_exercises/03_dmn/advanced-lab-intro
+        - DMN Introduction Labs: guided_exercises/04_dmn/introduction/
+        - DMN Intermediate Labs: guided_exercises/04_dmn/intermediate-lab-intro/
+        - Advanced DMN Lab: guided_exercises/04_dmn/advanced-lab-intro/

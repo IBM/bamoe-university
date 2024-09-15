@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
 site_name: "Learning IBM Business Automation Open Edition"
-site_description: "A set of demos and guided-exercises about business automation with KIE projects"
+site_description: "A set of demos and guided-exercises about business automation with Apache KIE projects"
 site_author: "Tim Wuthenow"
 repo_url: https://github.com/ibm/bamoe-university
 edit_uri: ""
@@ -25,7 +25,7 @@ plugins:
   - git-revision-date-localized:
       type: iso_date
   - with-pdf:
-        author: IBM
+         author: Tim Wuthenow at IBM - tim.wuthenow@ibm.com
 
 extra:
   product: 
@@ -38,8 +38,8 @@ extra:
     versionLegacy: "8.0.4"
     maven: "Red Hat Maven General Access Repository"
     legacymaven: "Red Hat Maven General Access Repository"
-    legacygav: "7.67.2.Final-redhat-00006"
-    gav: "7.67.2.Final-redhat-00006"
+    legacygav: "7.67.2.Final-redhat-00017"
+    gav: "7.67.2.Final-redhat-00017"
     kogitobom: "9.1.0-ibm-0001"
     kogitogroup: "com.ibm.bamoe"
     kogitoplugin: "2.16.7.Final"

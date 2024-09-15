@@ -1,6 +1,6 @@
 # Running a basic process service
 
-## About BPMN in BAMOE
+## About BPMN in {{ product.short }}
 
 BPMN nodes provide a variety of functionalities to automate business processes. Here's a quick overview of some key BPMN nodes and their purposes:
 

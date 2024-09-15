@@ -17,9 +17,9 @@ Now, let's get started!
 ## Create your first Decision Service using IBM Decision Manager Open Edition
 
 
-[Intro to DMN :octicons-rocket-24:](../03_dmn/introduction.md){ .md-button }
-[Explore DMN :octicons-zap-24:](../03_dmn/intermediate-lab-intro.md){ .md-button }
-[Deeper Dive into DMN :octicons-zap-24:](../03_dmn/advanced-lab-intro.md){ .md-button }
+[Intro to DMN :octicons-rocket-24:](../04_dmn/introduction.md){ .md-button }
+[Explore DMN :octicons-zap-24:](../04_dmn/intermediate-lab-intro.md){ .md-button }
+[Deeper Dive into DMN :octicons-zap-24:](../04_dmn/advanced-lab-intro.md){ .md-button }
 
 
 ### Go one step further (Optional)
