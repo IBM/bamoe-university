@@ -1,6 +1,3 @@
 nav:
-    - TechXchange:
+    - TechXchange 2024 (Session 1108):
         - Introduction: introduction.md
-        - DMN Introduction Labs: /guided_exercises/03_dmn/introduction
-        - DMN Intermediate Labs: /guided_exercises/03_dmn/intermediate-lab-intro
-        - Advanced DMN Lab: /guided_exercises/03_dmn/advanced-lab-intro

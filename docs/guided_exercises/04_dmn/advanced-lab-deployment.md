@@ -69,18 +69,18 @@ Now that this repository is created, you can work on it locally or deploy it to 
 
 1. From here a modal will pop up explaining that the deployment can take a few minutes and it is only intended for development, etc. Click **Confirm** on this modal and your service will be deployed.
 
-    ![Canvas deploy modal](../99_images/business_automation/dmn/canvas-deploy-modal.png)
+    ![{{ product.canvas }} deploy modal](../99_images/business_automation/dmn/canvas-deploy-modal.png)
 
 1. This process will take several minutes to complete.
 
-    ![Canvas deploy in progress](canvas-../99_images/business_automation/dmn/canvas-deployment-in-progress.png)
+    ![{{ product.canvas }} deploy in progress](canvas-../99_images/business_automation/dmn/canvas-deployment-in-progress.png)
 
-1. The pulldown with deploy will refresh every 30 seconds, when the service is available, it will reflect as such. The way that the deployments from these services work are is that they are completely immutable and unaware of one another, so you could have all versions deployed as you make changes to validate how you want to eventually promote your DMN model to later environments. So if you were to deploy it again, there would be multiple different versions of it deployed. Canvas can manage these deployment samples, which can later be removed when you're done with them if you choose. If you click the green check marked box, it will take you to the service.
+1. The pulldown with deploy will refresh every 30 seconds, when the service is available, it will reflect as such. The way that the deployments from these services work are is that they are completely immutable and unaware of one another, so you could have all versions deployed as you make changes to validate how you want to eventually promote your DMN model to later environments. So if you were to deploy it again, there would be multiple different versions of it deployed. {{ product.canvas }} can manage these deployment samples, which can later be removed when you're done with them if you choose. If you click the green check marked box, it will take you to the service.
 
-    ![Deployment successful from Canvas](../99_images/business_automation/dmn/canvas-deployment-successful.png)
+    ![Deployment successful from {{ product.canvas }}](../99_images/business_automation/dmn/canvas-deployment-successful.png)
 
 1. When you access the service with a form similar to the one you had in {{ product.canvas }} and from that page you can explore it more using the kebab icon in the top right to access the Swagger-UI page to get access to the auto-generated DMN service's API page. The first post can be used to execute the decision itself.
 
-    ![Canvas Sample DMN Swagger UI page](../99_images/business_automation/dmn/canvas-swagger-ui-example.png)
+    ![{{ product.canvas }} Sample DMN Swagger UI page](../99_images/business_automation/dmn/canvas-swagger-ui-example.png)
 
 1. This completes this lab as you can see how the deployment to OpenShit works with {{ product.canvas }}!
