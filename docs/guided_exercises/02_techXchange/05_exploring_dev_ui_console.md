@@ -10,7 +10,7 @@ The biggest change from previous versions of the jBPM runtime is that everything
 
 2. Clone the following repository using the terminal:
    ```
-   git clone https://github.com/kmacedovarela/cc-application-approval-starter
+   git clone https://github.com/timwuthenow/cc-application-approval-starter
    ```
 
 3. Navigate to the folder and open Visual Studio Code:
