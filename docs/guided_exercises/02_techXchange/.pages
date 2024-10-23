@@ -9,4 +9,4 @@ nav:
         - Adding DMN to Process: 06_using_dmn_in_processes.md
         - Adding Service Tasks: 07_adding_service_task.md
         - Adding Human Task: 08_adding_human_task.md
-        # - Running on OpenShift: 09_running_on_openshift.md
+        - Running on OpenShift: 09_running_on_openshift.md
