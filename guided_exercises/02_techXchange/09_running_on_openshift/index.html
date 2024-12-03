@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
+<meta content="Tim Wuthenow" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
+<title>Running on OpenShift - Learning IBM Business Automation Open Edition</title>
+<link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#running-on-openshift">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Learning IBM Business Automation Open Edition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Running on OpenShift
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      IBM Business Automation Open Edition 9.0 Enablement
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../more/">
+      Learn more
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../00_get_tools/introduction/">
+        Guided exercises
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Learning IBM Business Automation Open Edition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        IBM Business Automation Open Edition 9.0 Enablement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../more/">
+        Learn more
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Guided exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Guided exercises" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Guided exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1">
+          Get the tools for IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get the tools for IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Get the tools for IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/env-setup/">
+        Environment Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/git-token/">
+        Git Token Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../00_intro/">Getting Started</a>
+<label for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/02_bamoe_basics/">
+        Overview of IBM Business Automation Manager Open Editions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/03_use_case_overview/">
+        Use Case Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/04_env_setup/">
+        Environment Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Getting Started with Kogito
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Getting Started with Kogito" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started with Kogito
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_walk_through/">
+        Project Creation and Walk through
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_local/">
+        Deploy Locally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_openshift/">
+        Deploy in OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          TechXchange 2024 (Session 1108)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2024 (Session 1108)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2024 (Session 1108)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_exploring_canvas_features-new/">
+        Exploring Canvas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_creating_versioning_business_services/">
+        Versioning Business Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_running_on_openshift/">
+        Running sample on OpenShift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_exploring_dev_ui_console/">
+        Exploring the Dev-UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_using_dmn_in_processes/">
+        Adding DMN to Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_adding_service_task/">
+        Adding Service Tasks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08_adding_human_task/">
+        Adding Human Task
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Running on OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../03_process_automation/">Process Automation: Getting Started</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Process Automation: Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Process Automation: Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/00_intro_process/">
+        Running a basic process service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/01_using_dmn_bpmn/">
+        Using DMN Decisions in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/02_using_service_tasks/">
+        Custom Logic with Service Tasks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03c_CICD/introduction/">
+        IBM Business Automation Open Edition 9.0 CI/CD Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          DMN Exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DMN Exercises" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          DMN Exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/getting-started/">
+        Getting Started DMN Exercises - Insurance Price - Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        Intermediate DMN Exercises - Vacation Days - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-authoring/">
+        Vacation Days - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-deployment/">
+        Vacation Days - Consuming Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Exercises - Call Centre - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-authoring/">
+        Call Centre - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-deployment/">
+        Call Centre - Consuming Decisions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          Order Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Order Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          Order Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/01_try-order-management-app/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/02_create-order-management-app/">
+        Order Management Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/lab-walkthrough/">
+        Lab Walk Through
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Working with event driven processes in IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Working with event driven processes in IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Working with event driven processes in IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/00_introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/01_lab-one-setup/">
+        Setup - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/02_start-event/">
+        Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/03_emitting-events/">
+        Emitting Events in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/04_auditing-events/">
+        Auditing through events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10">
+          TechXchange 2023 (Session 1717)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2023 (Session 1717)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2023 (Session 1717)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_techXchange_2023/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        DMN Introduction Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        DMN Intermediate Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06_KIE_BC/getting-started-bc/">
+        Getting started bc
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_12" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12">
+          Deploying PAM on OpenShift with Operators
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploying PAM on OpenShift with Operators" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          Deploying PAM on OpenShift with Operators
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/introduction/">
+        Using the Business Automation Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/trial-environment/">
+        Deploying a trial environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/version-upgrade/">
+        Versions and the Operator - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/reconciliation/">
+        Automatic reconciliation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configuration/">
+        Kie App Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configmaps-deleteapp/">
+        ConfigMaps and Deleteting Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/installer/">
+        Operator Wizard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_13" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/getting-started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/authoring-decisions/">
+        Authoring and testing decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/deploying-project/">
+        Deploying and consuming services
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="running-on-openshift"><span class="enumerate-headings-plugin enumerate-heading-plugin">20.</span> Running on OpenShift</h1>
+<p>6.1 Deploying the business service on OpenShift
+With the base project that was applied, we have a great kick start on the environment to get it deployed. Within the technical preview of BAMOE 9.1, there is a 1 to 1 ratio of Process Microservice to Task and Process Management consoles (one of each as they are connected via the services to exchange information). To simplify this roll out, the workspace includes several scripts that can be used for after this lab to assist in the roll out of your services. The one that we are most interested in because our environments are operating right now all locally, is to see this working in OpenShift to get the true benefit of Cloud Native Process.</p>
+<ol>
+<li>
+<p>Log in to OpenShift with the command line. The easiest way is to use https://ibm.biz/bamoe-ocp-token and get the oc login command from the browser. This will link you to the Development Sandbox token of Red Hat OpenShift. </p>
+</li>
+<li>
+<p>Within the project itself, we have a few scripts that will assist in the roll out of the architecture. There are some limitations within the Technical Preview of IBM Business Automation Manager Open Editions in that for security, we are utilizing Keycloak and there is a one to one ratio for roll out of services. In the full release for BAMOE 9.2, these limitations will start to be greatly reduced and can be explained within a product roadmap session with your IBM account team! The script that we’re most interested in is the one that will help us roll out all of these services. This will be handled through deploy-ocp-lab.sh and deploy-ocp-lab.bat depending on how you’re accessing it, if you have time you can always refer to the scripts that can be used to setup a Keycloak instance at a high level utilizing the new-keycloak.sh. </p>
+</li>
+</ol>
+<p>3.  This script when you run it through the usage of Package and deploy the application on OpenShift using the Quarkus Extension Maven. So if you look at the script there will be a section that looks like the below if using the Windows Batch File (deploy-to-ocp.bat):</p>
+<p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">:</span><span class="c1">: Build and deploy the application</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">call</span> mvn clean package <span class="se">^</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="se"> </span>   -Dquarkus.container-image.build=true <span class="se">^</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="se"> </span>   -Dquarkus.kubernetes-client.namespace=<span class="nv">%NAMESPACE%</span> <span class="se">^</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="se"> </span>   -Dquarkus.openshift.deploy=true <span class="se">^</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="se"> </span>   -Dquarkus.openshift.expose=true <span class="se">^</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="se"> </span>   -Dquarkus.application.name=<span class="nv">%SERVICE_NAME%</span> <span class="se">^</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="se"> </span>   -Dkogito.service.url=https://<span class="nv">%SERVICE_NAME%</span>-<span class="nv">%NAMESPACE%</span>.<span class="nv">%BASE_URL%</span> <span class="se">^</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="se"> </span>   -Dkogito.jobs-service.url=https://<span class="nv">%SERVICE_NAME%</span>-<span class="nv">%NAMESPACE%</span>.<span class="nv">%BASE_URL%</span> <span class="se">^</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="se"> </span>   -Dkogito.dataindex.http.url=https://<span class="nv">%SERVICE_NAME%</span>-<span class="nv">%NAMESPACE%</span>.<span class="nv">%BASE_URL%</span>
+</code></pre></div>
+If using the script version (deploy-to-ocp.sh):
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">    </span>mvn<span class="w"> </span>clean<span class="w"> </span>package<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span>-Dquarkus.container-image.build<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span>-Dquarkus.kubernetes-client.namespace<span class="o">=</span><span class="nv">$NAMESPACE</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span>-Dquarkus.openshift.deploy<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span>-Dquarkus.openshift.expose<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span>-Dquarkus.application.name<span class="o">=</span><span class="nv">$SERVICE_NAME</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span>-Dkogito.service.url<span class="o">=</span>https://<span class="nv">$SERVICE_NAME</span>-<span class="nv">$NAMESPACE</span>.<span class="nv">$BASE_URL</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span>-Dkogito.jobs-service.url<span class="o">=</span>https://<span class="nv">$SERVICE_NAME</span>-<span class="nv">$NAMESPACE</span>.<span class="nv">$BASE_URL</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span>-Dkogito.dataindex.http.url<span class="o">=</span>https://<span class="nv">$SERVICE_NAME</span>-<span class="nv">$NAMESPACE</span>.<span class="nv">$BASE_URL</span>
+</code></pre></div></p>
+<ol>
+<li>
+<p>After this script is started, the Process/DMN package will be built as a Kogito-enabled service that will start building a base quarkus image of the service and from there it will publish it to the OpenShift Image Registry. After this is pushed, the deployment gets modified and exposed. After this is completed more deployments take place for the task-console and management-console. There is a 1:1 ratio of task/management console to process service in the 9.1 technical preview.</p>
+</li>
+<li>
+<p>When the script is completed, you will see something similar to the message below if running the deploy-dev-ocp.sh script, the important aspect of this is that the links in VSCode if you hold the control or command key (depending on operating system), you can click and open the links for the respective units.:</p>
+</li>
+<li>
+<p>Now, let's check if the service is up and running by accessing the Swagger UI:<br/>
+GET {yourserviceurl}/q/swagger-ui  - this will open your process’s Swagger-UI. If you do a POST, you can start your process similar to how it was done within the Dev-UI, the only difference is now your process is executing within a Quarkus Container on OpenShift and can interact with the different consoles. </p>
+</li>
+<li>
+<p>After you submit a sample process run, you can access the other links to see the process. Note, if there are any timers, they start the moment you submit the process, so keep this in mind if there are any present. If you navigate to the management console, it is setup in Development mode and has no security. When you use the Task Console, login with user jdoe or mscott depending on how your process was deployed at the Keycloak login.</p>
+</li>
+<li>
+<p>You will notice when you login, there is a task assigned to you and a form was autogenerated based on the task process data associated with the task to help you get quickly started with the development of the workflow.</p>
+</li>
+</ol>
+<!-- ## Deploying the business service on OpenShift
+
+1. Log in to OpenShift with the command line using the token from https://ibm.biz/bamoe-ocp-token
+
+2. Package and deploy the application on OpenShift using the Quarkus Extension Maven:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mvn clean package -Dquarkus.openshift.deployment=true
+</code></pre></div>
+
+3. Get the service URL using the oc cli tool:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>oc get route/cc-application-approval
+</code></pre></div>
+
+4. Check if the service is up and running by accessing the Swagger UI:
+   GET {yourserviceurl}/q/swagger-ui
+
+## Deploying the Management Console
+
+5. Open the OpenShift environment and locate the "mngmt-console" deployment.
+
+6. Set the environment variable RUNTIME_TOOLS_MANAGEMENT_CONSOLE_DATA_INDEX_ENDPOINT with your-service-url/graphql.
+
+7. Expose the service route using the following commands:
+   ```
+   oc expose pod mgmt-console --port=8080 --name=mgmt-console-service
+   oc expose svc/mgmt-console-service
+   oc get route mgmt-console-service
+   ``` -->
+<h1 id="additional-information"><span class="enumerate-headings-plugin enumerate-heading-plugin">21.</span> Additional Information</h1>
+<h2 id="common-troubleshooting-tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">21.1</span> Common troubleshooting tips</h2>
+<p>Use this section to document common troubleshooting issues that users may experience.</p>
+<h2 id="getting-help"><span class="enumerate-headings-plugin enumerate-heading-plugin">21.2</span> Getting help</h2>
+<p>For assistance, please refer to the lab instructions or consult with an instructor if available.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Adding Human Task" class="md-footer__link md-footer__link--prev" href="../08_adding_human_task/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Adding Human Task
+            </div>
+</div>
+</a>
+<a aria-label="Next: Getting Started with Process Automation" class="md-footer__link md-footer__link--next" href="../../03_process_automation/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Getting Started with Process Automation
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "toc.follow", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
+<meta content="Tim Wuthenow" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
+<title>Vacation Days - Consuming Decisions - Learning IBM Business Automation Open Edition</title>
+<link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#vacation-days-consuming-decisions">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Learning IBM Business Automation Open Edition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Vacation Days - Consuming Decisions
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      IBM Business Automation Open Edition 9.0 Enablement
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../more/">
+      Learn more
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../00_get_tools/introduction/">
+        Guided exercises
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Learning IBM Business Automation Open Edition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        IBM Business Automation Open Edition 9.0 Enablement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../more/">
+        Learn more
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Guided exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Guided exercises" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Guided exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1">
+          Get the tools for IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get the tools for IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Get the tools for IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/env-setup/">
+        Environment Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/git-token/">
+        Git Token Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../00_intro/">Getting Started</a>
+<label for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/02_bamoe_basics/">
+        Overview of IBM Business Automation Manager Open Editions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/03_use_case_overview/">
+        Use Case Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/04_env_setup/">
+        Environment Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Getting Started with Kogito
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Getting Started with Kogito" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started with Kogito
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_walk_through/">
+        Project Creation and Walk through
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_local/">
+        Deploy Locally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_openshift/">
+        Deploy in OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          TechXchange 2024 (Session 1108)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2024 (Session 1108)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2024 (Session 1108)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/02_exploring_canvas_features-new/">
+        Exploring Canvas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/03_creating_versioning_business_services/">
+        Versioning Business Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/04_running_on_openshift/">
+        Running sample on OpenShift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/05_exploring_dev_ui_console/">
+        Exploring the Dev-UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/06_using_dmn_in_processes/">
+        Adding DMN to Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/07_adding_service_task/">
+        Adding Service Tasks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/08_adding_human_task/">
+        Adding Human Task
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/09_running_on_openshift/">
+        Running on OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../03_process_automation/">Process Automation: Getting Started</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Process Automation: Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Process Automation: Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/00_intro_process/">
+        Running a basic process service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/01_using_dmn_bpmn/">
+        Using DMN Decisions in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/02_using_service_tasks/">
+        Custom Logic with Service Tasks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03c_CICD/introduction/">
+        IBM Business Automation Open Edition 9.0 CI/CD Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          DMN Exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DMN Exercises" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          DMN Exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../getting-started/">
+        Getting Started DMN Exercises - Insurance Price - Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-intro/">
+        Intermediate DMN Exercises - Vacation Days - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-authoring/">
+        Vacation Days - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Vacation Days - Consuming Decisions
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Vacation Days - Consuming Decisions
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-and-testing-the-decision-service">
+    Deploying and testing the Decision Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#applying-the-accelerator">
+    Applying the Accelerator
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-to-openshift">
+    Deploying to OpenShift
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-the-decision-service-in-kie-server-not-for-techxchange">
+    Deploying the Decision Service in KIE Server (Not for TechXchange)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-dmn-solution">
+    Testing DMN Solution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-solution-via-rest-api">
+    Testing the solution via REST API
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-kie-java-client-if-you-were-using-ibm-business-automation-open-edition-80">
+    Using the KIE Java Client (if you were using IBM Business Automation Open Edition 8.0)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-intro/">
+        Advanced DMN Exercises - Call Centre - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-authoring/">
+        Call Centre - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-deployment/">
+        Call Centre - Consuming Decisions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          Order Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Order Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          Order Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/01_try-order-management-app/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/02_create-order-management-app/">
+        Order Management Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/lab-walkthrough/">
+        Lab Walk Through
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Working with event driven processes in IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Working with event driven processes in IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Working with event driven processes in IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/00_introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/01_lab-one-setup/">
+        Setup - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/02_start-event/">
+        Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/03_emitting-events/">
+        Emitting Events in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/04_auditing-events/">
+        Auditing through events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10">
+          TechXchange 2023 (Session 1717)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2023 (Session 1717)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2023 (Session 1717)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_techXchange_2023/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+        DMN Introduction Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-intro/">
+        DMN Intermediate Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-intro/">
+        Advanced DMN Lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06_KIE_BC/getting-started-bc/">
+        Getting started bc
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_12" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12">
+          Deploying PAM on OpenShift with Operators
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploying PAM on OpenShift with Operators" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          Deploying PAM on OpenShift with Operators
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/introduction/">
+        Using the Business Automation Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/trial-environment/">
+        Deploying a trial environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/version-upgrade/">
+        Versions and the Operator - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/reconciliation/">
+        Automatic reconciliation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configuration/">
+        Kie App Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configmaps-deleteapp/">
+        ConfigMaps and Deleteting Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/installer/">
+        Operator Wizard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_13" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/getting-started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/authoring-decisions/">
+        Authoring and testing decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/deploying-project/">
+        Deploying and consuming services
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-and-testing-the-decision-service">
+    Deploying and testing the Decision Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#applying-the-accelerator">
+    Applying the Accelerator
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-to-openshift">
+    Deploying to OpenShift
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-the-decision-service-in-kie-server-not-for-techxchange">
+    Deploying the Decision Service in KIE Server (Not for TechXchange)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-dmn-solution">
+    Testing DMN Solution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-solution-via-rest-api">
+    Testing the solution via REST API
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-kie-java-client-if-you-were-using-ibm-business-automation-open-edition-80">
+    Using the KIE Java Client (if you were using IBM Business Automation Open Edition 8.0)
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="vacation-days-consuming-decisions"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.</span> Vacation Days - Consuming Decisions</h1>
+<p>There are several ways to consume decisions, but the first way we will explore is through the utilization of the IBM Business Automation Manager Canvas provided methods, but there will also be methods showing how to do it with IBM Business Automation Open Edition 8.0 provided as informational and not required for these exercises.</p>
+<h2 id="deploying-and-testing-the-decision-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.1</span> Deploying and testing the Decision Service</h2>
+<p>With our decision model completed, we can now package our DMN model in a Kogito service. This can be done using the Accelerators included with IBM Business Automation Manager Canvas. These accelerators will quickly take the DMN file and start building the basis of the project as a IBM Business Automation Open Edition 9.0 compatible decision service.</p>
+<h2 id="applying-the-accelerator"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.2</span> Applying the Accelerator</h2>
+<p>To take this decision service from a standalone DMN model to a full Kogito architected decision, you will use the accelerator by clickig the button at the top of the screen. To do so follow the instructions and then we will synchronize the project to your GitHub account and also be capable being deployed as an OpenShift service.</p>
+<ol>
+<li>
+<p>At the top of the DMN model page for <code>vacation-days</code>, click the button <code>Apply Accelerator</code> and select <strong>Quarkus...</strong>.</p>
+<p><img alt="Apply Accelerator" src="../../99_images/business_automation/dmn/canvas-apply-accelerator-intermediate.png"/></p>
+</li>
+<li>
+<p>If you want to learn more about the accelerator, you can click the GitHub link and change the branch to the <code>9.0.0-quarkus-full</code> to learn more about it. Afterwards just click <strong>Apply</strong> to restructure your project into a Kogito service.</p>
+<p><img alt="Click Apply on the Accelerator to reconfigure the project" src="../../99_images/business_automation/dmn/canvas-invoke-accelerator.png"/></p>
+</li>
+<li>
+<p>The wizard will come with a pop-up asking for a commit message for the change since this will create a Git project. You can use the default message or put whatever you would like, to do so press <strong>Commit</strong>.</p>
+<p><img alt="Accelerator Commit Message" src="../../99_images/business_automation/dmn/intermediate-accelerator-accept-message.png"/></p>
+</li>
+<li>
+<p>To create the project in Git, click <strong>Share</strong>, use your GitHub tokened ID.</p>
+<p><img alt="Use Git ID" src="../../99_images/business_automation/dmn/sync-with-git-intermediate.png"/></p>
+</li>
+<li>
+<p>Once you select your ID, a new option <strong>Create GitHub repository...</strong> is now available, select this.</p>
+<p><img alt="Create GitHub Repository" src="../../99_images/business_automation/dmn/canvas-create-github-intermediate.png"/></p>
+</li>
+<li>
+<p>The repository you create, can be anything you want, for the purposes of this lab, it will be called <strong>techxchange-vacation-days</strong>.</p>
+<p><img alt="Git Create Repository" src="../../99_images/business_automation/dmn/git-create-repository-intermediate.png"/></p>
+</li>
+<li>
+<p>When you create the repository, a message will open at the top with a link to the Git repository that was created. In the case of the example it is at <a href="https://github.com/timwuthenow/techxchange-vacation-days">this example repository</a>.</p>
+<p><img alt="Example Repository" src="../../99_images/business_automation/dmn/example-repository-created-intermediate.png"/></p>
+</li>
+</ol>
+<h2 id="deploying-to-openshift"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.3</span> Deploying to OpenShift</h2>
+<p>Now that this repository is created, you can work on it locally or deploy it to OpenShift. For this lab, we will choose OpenShift since we have a cluster ready to use for TechXchange or you can use the <a href="https://developers.redhat.com/developer-sandbox">Red Hat OpenShift Sandbox</a> to provision a small environment to try it out on your own.</p>
+<ol>
+<li>
+<p>Login to get an OpenShift Token using the bookmark on Chrome. This will be used to connect IBM Business Automation Manager Canvas to OpenShift and deploy a sample development environment of the decision service.</p>
+<p><img alt="OpenShift Bookmark" src="../../99_images/business_automation/dmn/openshift-login.png"/></p>
+</li>
+<li>
+<p>In the login screen use your username and password - this will be some combination of <code>student01</code> to <code>student20</code> with password <code>Passw0rd</code>. The username is all lowercase. This will</p>
+<p><img alt="OpenShift login with student01 through student20 with password Passw0rd" src="../../99_images/business_automation/dmn/openshift-log-on.png"/></p>
+</li>
+<li>
+<p>Click the <strong>Display Token</strong> link and switch back to the tab with IBM Business Automation Manager Canvas open on it. You will use the token contents from the OpenShift token page shortly by clicking on <strong>Dev deployments</strong> and then selecting the pull down <strong>Select authentication</strong> and then <strong>Connect to an account</strong>.</p>
+<p><img alt="Connect to an OpenShift Dev environment" src="../../99_images/business_automation/dmn/canvas-connect-to-dev.png"/></p>
+</li>
+<li>
+<p>On the next wizard, select the <strong>OpenShift Tile</strong> to connect to an OpenShift instance.</p>
+<p><img alt="Connect to OCP" src="../../99_images/business_automation/dmn/canvas-connect-to-ocp.png"/></p>
+</li>
+<li>
+<p>From here you will use the information from the OpenShift token page. Your namespace will be your <code>student##-namespace</code>, so if your username is student07, then you would connect to <em>student07-namespace</em>. The token and the console locations are both a part of the token as well. You will see a checkbox to Insecurely disable TLS validation, check it as this is a self contained environment with certificates not present. Press <strong>Connect</strong> when the form is completed.</p>
+<p><img alt="OpenShift Form Filled out" src="../../99_images/business_automation/dmn/connect-to-openshift-form.png"/></p>
+</li>
+<li>
+<p>As long as it was successful to connect, you will be greeted with a Connect to OpenShift successful modal, click <strong>Continue</strong>.</p>
+<p><img alt="Successfully connected" src="../../99_images/business_automation/dmn/canvas-successful-connect-ocp.png"/></p>
+</li>
+<li>
+<p>Now you can press the <strong>Deploy</strong> button and have the capability to select the namespace that you connected to and deploy a sample of your service to it.</p>
+<p><img alt="Pressing deploy to deploy sample service" src="../../99_images/business_automation/dmn/canvas-deploy-intermediate.png"/></p>
+</li>
+<li>
+<p>From here a modal will pop up explaining that the deployment can take a few minutes and it is only intended for development, etc. Click <strong>Confirm</strong> on this modal and your service will be deployed.</p>
+<p><img alt="Canvas deploy modal" src="../../99_images/business_automation/dmn/canvas-deploy-modal.png"/></p>
+</li>
+<li>
+<p>This process will take several minutes to complete.</p>
+<p><img alt="Canvas deploy in progress" src="../../99_images/business_automation/dmn/dev-deployment-in-progress-intermediate.png"/></p>
+</li>
+<li>
+<p>The pulldown with deploy will refresh every 30 seconds, when the service is available, it will reflect as such. The way that the deployments from these services work are is that they are completely immutable and unaware of one another, so you could have all versions deployed as you make changes to validate how you want to eventually promote your DMN model to later environments. So if you were to deploy it again, there would be multiple different versions of it deployed. Canvas can manage these deployment samples, which can later be removed when you're done with them if you choose. If you click the green check marked box, it will take you to the service.</p>
+<p><img alt="Deployment successful from Canvas" src="../../99_images/business_automation/dmn/canvas-deployment-successful-intermediate.png"/></p>
+</li>
+<li>
+<p>When you access the service with a form similar to the one you had in IBM Business Automation Manager Canvas and from that page you can explore it more using the kebab icon in the top right to access the Swagger-UI page to get access to the auto-generated DMN service's API page. The first post can be used to execute the decision itself.</p>
+<p><img alt="Canvas Sample DMN Swagger UI page" src="../../99_images/business_automation/dmn/canvas-swagger-ui-example-intermediate.png"/></p>
+</li>
+<li>
+<p>This completes this lab as you can see how the deployment to OpenShit works with IBM Business Automation Manager Canvas!</p>
+</li>
+</ol>
+<h2 id="deploying-the-decision-service-in-kie-server-not-for-techxchange"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.4</span> Deploying the Decision Service in KIE Server (Not for TechXchange)</h2>
+<p>This section is not needed for TechXchange, but is just to provide some extra ways to showcase now you can deploy your decision. With our decision model completed, we can now package our DMN model in a Deployment Unit (KJAR) and deploy it on the Execution Server. To do this:</p>
+<ol>
+<li>
+<p>In the bread-crumb navigation in the upper-left corner, click on <code>vacation-days-decisions</code> to go back to the project’s Library View.</p>
+</li>
+<li>
+<p>Click on the <strong>Deploy</strong> button in the upper-right corner of the screen. This will package our DMN mode in a Deployment Unit (KJAR) and deploy it onto the Execution Server (KIE-Server).</p>
+</li>
+<li>
+<p>Go to the <strong>Execution Servers</strong> perspective by clicking on "Menu → Deploy → Execution Servers". You will see the <strong>Deployment Unit</strong> deployed on the Execution Server.</p>
+</li>
+</ol>
+<h2 id="testing-dmn-solution"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.5</span> Testing DMN Solution</h2>
+<p>In this section, you will test the DMN solution with Execution Server’s Swagger interface and via Java KIE Client API.</p>
+<h2 id="testing-the-solution-via-rest-api"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.6</span> Testing the solution via REST API</h2>
+<p>In this section, you will test the DMN solution with KIE Server’s Swagger interface.</p>
+<p>The Swagger interface provides the description and documentation of the Execution Server’s RESTful API. At the same time, it allows the APIs to be called from the UI. This enables developers and users to quickly test, in this case, a deployed DMN Service.</p>
+<ol>
+<li>
+<p>Navigate to <a href="http://localhost:8080/kie-server/docs">KIE Server</a></p>
+</li>
+<li>
+<p>Locate the <strong>DMN Models</strong> section. The DMN API provides the DMN model as a RESTful resources, which accepts 2 operations:</p>
+<ol>
+<li>
+<p><code>GET</code>: Retrieves the DMN model.</p>
+</li>
+<li>
+<p><code>POST</code>: Evaluates the decisions for a given input.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Expand the <code>GET</code> operation by clicking on it.</p>
+</li>
+<li>
+<p>Click on the <strong>Try it out</strong> button.</p>
+</li>
+<li>
+<p>Set the <strong>containerId</strong> field to <code>vacation-days-decisions</code> and set the <strong>Response content type</strong> to <code>application/json</code> and click on <strong>Execute</strong> <img alt="DMN Swagger Get" src="../../99_images/business_automation/dmn/dmn-swagger-get.png" width="600px"/></p>
+</li>
+<li>
+<p>If requested, provide the username and password of your <strong>Business Central</strong> and <strong>KIE-Server</strong> user.</p>
+</li>
+<li>
+<p>The response will be the model-description of your DMN model.</p>
+</li>
+</ol>
+<p>Next, we will evaluate our model with some input data. We need to provide our model with the <strong>age</strong> of an employee and the number of <strong>years of service</strong>. Let’s try a number of different values to test our deicions.</p>
+<ol>
+<li>
+<p>Expand the <code>POST</code> operation and click on the <strong>Try it out</strong> button</p>
+</li>
+<li>
+<p>Set the <strong>containerId</strong> field to <code>vacation-days-decisions</code>. Set the <strong>Parameter content type</strong> and <strong>Response content type</strong> fields to <code>application/json</code>.</p>
+</li>
+<li>
+<p>Pass the following request to lookup the number of vacation days for an employee of 16 years old with 1 year of service (note that the namespace of your model is probably different as it is generated. You can lookup the namespace of your model in the response/result of the <code>GET</code> operation you executed ealier, which returned the model description).</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="nt">"dmn-context"</span><span class="p">:{</span><span class="w"> </span><span class="nt">"Age"</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="nt">"Years of Service"</span><span class="p">:</span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>
+<p>Click on <strong>Execute</strong>. The result value of the <code>Total Vacation Days</code> should be 27.</p>
+</li>
+<li>
+<p>Test the service with a number of other values. See the following table for some sample values and expected output.</p>
+</li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>
+<p>Age</p>
+</td>
+<td>
+<p>Years of Service</p>
+</td>
+<td>
+<p>Total Vacation Days</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>16</p>
+</td>
+<td>
+<p>1</p>
+</td>
+<td>
+<p>27</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>25</p>
+</td>
+<td>
+<p>5</p>
+</td>
+<td>
+<p>22</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>44</p>
+</td>
+<td>
+<p>20</p>
+</td>
+<td>
+<p>24</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>44</p>
+</td>
+<td>
+<p>30</p>
+</td>
+<td>
+<p>30</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>50</p>
+</td>
+<td>
+<p>20</p>
+</td>
+<td>
+<p>24</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>50</p>
+</td>
+<td>
+<p>30</p>
+</td>
+<td>
+<p>30</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>60</p>
+</td>
+<td>
+<p>20</p>
+</td>
+<td>
+<p>30</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="using-the-kie-java-client-if-you-were-using-ibm-business-automation-open-edition-80"><span class="enumerate-headings-plugin enumerate-heading-plugin">31.7</span> Using the KIE Java Client (if you were using IBM Business Automation Open Edition 8.0)</h2>
+<p>IBM IBM Business Automation Open Edition 8.0 provides a KIE Java Client API that allows the user to interact with the KIE-Server from a Java client using a higher level API. It abstracts the data marshalling and unmarshalling and the creation and execution of the RESTful commands from the developer, allowing him/her to focus on developing business logic.</p>
+<p>In this section we will create a simple Java client for our DMN model.</p>
+<p><strong>IMPORTANT:</strong> If your KIE Server is exposed via https you need to configure the <code>`javax.net.ssl.trustStore and</code>javax.net.ssl.trustStorePassword<code>in the Java client code using the Remote Java API. If not, you may get a</code>rest.NoEndpointFoundException`. For more information check <a href="https://access.redhat.com/solutions/5424601">this solution</a> Red Hat's knowledge base.</p>
+<ol>
+<li>
+<p>Create a new Maven Java JAR project in your favourite IDE (e.g. IntelliJ, Eclipse, Visual Studio Code).</p>
+</li>
+<li>
+<p>Add the following dependency to your project:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">  </span><span class="nt">&lt;dependency&gt;</span><span class="w"> </span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.kie.server<span class="nt">&lt;/groupId&gt;</span><span class="w"> </span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>kie-server-client<span class="nt">&lt;/artifactId&gt;</span><span class="w"> </span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>7.67.2.Final-redhat-00017<span class="nt">&lt;/version&gt;</span><span class="w"> </span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span><span class="w"> </span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<ol>
+<li>
+<p>Create a Java package in your <code>src/main/java</code> folder with the name <code>org.kie.dmn.lab</code>.</p>
+</li>
+<li>
+<p>In the package you’ve just created, create a Java class called <code>Main.java</code>.</p>
+</li>
+<li>
+<p>Add a <code>public static void main(String[] args)</code> method to your main class.</p>
+</li>
+<li>
+<p>Before we implement our method, we first define a number of constants that we will need when implementing our method (note that the values of your constants can be different depending on your environment, model namespace, etc.):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">KIE_SERVER_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"http://localhost:8080/kie-server/services/rest/server"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CONTAINER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vacation-days-decisions"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">USERNAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"bamAdmin"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ibmpam1!"</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<p>!!! 📘 INFO: If you're using the Linux environment on Skytap use the following.</p>
+<div class="highlight"><pre><span></span><code>~~~java
+private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server"; 
+private static final String CONTAINER_ID = "vacation-days-decisions"; 
+private static final String USERNAME = "pamadmin"; 
+private static final String PASSWORD = "pamadm1n"; 
+~~~
+</code></pre></div>
+</li>
+<li>
+<p>KIE-Server client API classes can mostly be retrieved from the <code>KieServicesFactory</code> class. We first need to create a <code>KieServicesConfiguration</code> instance that will hold our credentials and defines how we want our client to communicate with the server:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">KieServicesConfiguration</span><span class="w"> </span><span class="n">kieServicesConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServicesFactory</span><span class="p">.</span><span class="na">newRestConfiguration</span><span class="p">(</span><span class="n">KIE_SERVER_URL</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EnteredCredentialsProvider</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span><span class="w"> </span><span class="n">PASSWORD</span><span class="p">));</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>Next, we create the <code>KieServicesClient</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">KieServicesClient</span><span class="w"> </span><span class="n">kieServicesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServicesFactory</span><span class="p">.</span><span class="na">newKieServicesClient</span><span class="p">(</span><span class="n">kieServicesConfig</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>From this client we retrieve our DMNServicesClient: </p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">DMNServicesClient</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieServicesClient</span><span class="p">.</span><span class="na">getServicesClient</span><span class="p">(</span><span class="n">DMNServicesClient</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>To pass the input values to our model to the Execution Server, we need to create a <code>DMNContext</code>: </p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">DMNContext</span><span class="w"> </span><span class="n">dmnContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="p">.</span><span class="na">newContext</span><span class="p">();</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">dmnContext</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"Age"</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span><span class="w"> </span><span class="n">dmnContext</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"Years of Service"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>We now have defined all the required instances needed to send a DMN evaluation request to the server: </p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">DMNResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dmnResultResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="p">.</span><span class="na">evaluateAll</span><span class="p">(</span><span class="n">CONTAINER_ID</span><span class="p">,</span><span class="w"> </span><span class="n">dmnContext</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally we can retrieve the DMN evaluation result and print it in the console:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">DMNDecisionResult</span><span class="w"> </span><span class="n">decisionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnResultResponse</span><span class="p">.</span><span class="na">getResult</span><span class="p">().</span><span class="na">getDecisionResultByName</span><span class="p">(</span><span class="s">"Total Vacation Days"</span><span class="p">);</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total vacation days: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">decisionResult</span><span class="p">.</span><span class="na">getResult</span><span class="p">());</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>Compile your project and run it. Observe the output in the console, which should say: <strong>Total vacation days: 27</strong></p>
+<p>The complete project can be found <a href="https://github.com/kmacedovarela/dmn-workshop-labs/tree/master/vacation-days-dmn-lab-client">here</a></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">org.kie.dmn.lab</span><span class="p">;</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.api.builder.KieScannerFactoryService</span><span class="p">;</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.api.internal.weaver.KieWeaverService</span><span class="p">;</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.dmn.api.core.DMNContext</span><span class="p">;</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.dmn.api.core.DMNDecisionResult</span><span class="p">;</span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.dmn.api.core.DMNResult</span><span class="p">;</span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.api.model.ServiceResponse</span><span class="p">;</span>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.CredentialsProvider</span><span class="p">;</span>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.DMNServicesClient</span><span class="p">;</span>
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.KieServicesClient</span><span class="p">;</span>
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.KieServicesConfiguration</span><span class="p">;</span>
+<a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.KieServicesFactory</span><span class="p">;</span>
+<a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.kie.server.client.credentials.EnteredCredentialsProvider</span><span class="p">;</span>
+<a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a>
+<a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="cm">/**</span>
+<a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="cm"> * Vacation Days DMN Client</span>
+<a href="#__codelineno-10-18" id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="cm"> */</span>
+<a href="#__codelineno-10-19" id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-20" id="__codelineno-10-20" name="__codelineno-10-20"></a>
+<a href="#__codelineno-10-21" id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">KIE_SERVER_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"http://localhost:8080/kie-server/services/rest/server"</span><span class="p">;</span>
+<a href="#__codelineno-10-22" id="__codelineno-10-22" name="__codelineno-10-22"></a>
+<a href="#__codelineno-10-23" id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CONTAINER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vacation-days-decisions"</span><span class="p">;</span>
+<a href="#__codelineno-10-24" id="__codelineno-10-24" name="__codelineno-10-24"></a>
+<a href="#__codelineno-10-25" id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">USERNAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"bamAdmin"</span><span class="p">;</span>
+<a href="#__codelineno-10-26" id="__codelineno-10-26" name="__codelineno-10-26"></a>
+<a href="#__codelineno-10-27" id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ibmpam1!"</span><span class="p">;</span>
+<a href="#__codelineno-10-28" id="__codelineno-10-28" name="__codelineno-10-28"></a><span class="w">    </span><span class="c1">// Comment out the above 2 lines if using the Skytap image and uncomment the two below to use those logins</span>
+<a href="#__codelineno-10-29" id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="w">    </span><span class="c1">// private static final String USERNAME = "pamadmin";</span>
+<a href="#__codelineno-10-30" id="__codelineno-10-30" name="__codelineno-10-30"></a><span class="w">    </span><span class="c1">// private static final String PASSWORD = "pamadm1n";</span>
+<a href="#__codelineno-10-31" id="__codelineno-10-31" name="__codelineno-10-31"></a>
+<a href="#__codelineno-10-32" id="__codelineno-10-32" name="__codelineno-10-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-33" id="__codelineno-10-33" name="__codelineno-10-33"></a><span class="w">        </span><span class="n">CredentialsProvider</span><span class="w"> </span><span class="n">credentialsProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EnteredCredentialsProvider</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span><span class="w"> </span><span class="n">PASSWORD</span><span class="p">);</span>
+<a href="#__codelineno-10-34" id="__codelineno-10-34" name="__codelineno-10-34"></a><span class="w">        </span><span class="n">KieServicesConfiguration</span><span class="w"> </span><span class="n">kieServicesConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServicesFactory</span><span class="p">.</span><span class="na">newRestConfiguration</span><span class="p">(</span><span class="n">KIE_SERVER_URL</span><span class="p">,</span><span class="w"> </span><span class="n">credentialsProvider</span><span class="p">);</span>
+<a href="#__codelineno-10-35" id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="w">        </span><span class="n">KieServicesClient</span><span class="w"> </span><span class="n">kieServicesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServicesFactory</span><span class="p">.</span><span class="na">newKieServicesClient</span><span class="p">(</span><span class="n">kieServicesConfig</span><span class="p">);</span>
+<a href="#__codelineno-10-36" id="__codelineno-10-36" name="__codelineno-10-36"></a>
+<a href="#__codelineno-10-37" id="__codelineno-10-37" name="__codelineno-10-37"></a><span class="w">        </span><span class="n">DMNServicesClient</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieServicesClient</span><span class="p">.</span><span class="na">getServicesClient</span><span class="p">(</span><span class="n">DMNServicesClient</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a href="#__codelineno-10-38" id="__codelineno-10-38" name="__codelineno-10-38"></a>
+<a href="#__codelineno-10-39" id="__codelineno-10-39" name="__codelineno-10-39"></a><span class="w">        </span><span class="n">DMNContext</span><span class="w"> </span><span class="n">dmnContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="p">.</span><span class="na">newContext</span><span class="p">();</span>
+<a href="#__codelineno-10-40" id="__codelineno-10-40" name="__codelineno-10-40"></a><span class="w">        </span><span class="n">dmnContext</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"Age"</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<a href="#__codelineno-10-41" id="__codelineno-10-41" name="__codelineno-10-41"></a><span class="w">        </span><span class="n">dmnContext</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"Years of Service"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a href="#__codelineno-10-42" id="__codelineno-10-42" name="__codelineno-10-42"></a>
+<a href="#__codelineno-10-43" id="__codelineno-10-43" name="__codelineno-10-43"></a><span class="w">        </span><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">DMNResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dmnResultResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnServicesClient</span><span class="p">.</span><span class="na">evaluateAll</span><span class="p">(</span><span class="n">CONTAINER_ID</span><span class="p">,</span><span class="w"> </span><span class="n">dmnContext</span><span class="p">);</span>
+<a href="#__codelineno-10-44" id="__codelineno-10-44" name="__codelineno-10-44"></a>
+<a href="#__codelineno-10-45" id="__codelineno-10-45" name="__codelineno-10-45"></a><span class="w">        </span><span class="n">DMNDecisionResult</span><span class="w"> </span><span class="n">decisionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmnResultResponse</span><span class="p">.</span><span class="na">getResult</span><span class="p">().</span><span class="na">getDecisionResultByName</span><span class="p">(</span><span class="s">"Total Vacation Days"</span><span class="p">);</span>
+<a href="#__codelineno-10-46" id="__codelineno-10-46" name="__codelineno-10-46"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total vacation days: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">decisionResult</span><span class="p">.</span><span class="na">getResult</span><span class="p">());</span>
+<a href="#__codelineno-10-47" id="__codelineno-10-47" name="__codelineno-10-47"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-10-48" id="__codelineno-10-48" name="__codelineno-10-48"></a><span class="p">}</span>
+</code></pre></div>
+</li>
+</ol>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Vacation Days - Authoring Decisions" class="md-footer__link md-footer__link--prev" href="../intermediate-lab-authoring/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Vacation Days - Authoring Decisions
+            </div>
+</div>
+</a>
+<a aria-label="Next: Advanced DMN Exercises - Call Centre - Introduction" class="md-footer__link md-footer__link--next" href="../advanced-lab-intro/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Advanced DMN Exercises - Call Centre - Introduction
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "toc.follow", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>

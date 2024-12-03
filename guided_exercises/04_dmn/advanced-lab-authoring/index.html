@@ -1,0 +1,967 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
+<meta content="Tim Wuthenow" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
+<title>Call Centre - Authoring Decisions - Learning IBM Business Automation Open Edition</title>
+<link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#authoring-the-decisioning-for-the-call-center">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Learning IBM Business Automation Open Edition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Call Centre - Authoring Decisions
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      IBM Business Automation Open Edition 9.0 Enablement
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../more/">
+      Learn more
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../00_get_tools/introduction/">
+        Guided exercises
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Learning IBM Business Automation Open Edition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        IBM Business Automation Open Edition 9.0 Enablement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../more/">
+        Learn more
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Guided exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Guided exercises" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Guided exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1">
+          Get the tools for IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get the tools for IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Get the tools for IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/env-setup/">
+        Environment Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/git-token/">
+        Git Token Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../00_intro/">Getting Started</a>
+<label for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/02_bamoe_basics/">
+        Overview of IBM Business Automation Manager Open Editions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/03_use_case_overview/">
+        Use Case Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/04_env_setup/">
+        Environment Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Getting Started with Kogito
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Getting Started with Kogito" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started with Kogito
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_walk_through/">
+        Project Creation and Walk through
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_local/">
+        Deploy Locally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_openshift/">
+        Deploy in OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          TechXchange 2024 (Session 1108)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2024 (Session 1108)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2024 (Session 1108)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/02_exploring_canvas_features-new/">
+        Exploring Canvas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/03_creating_versioning_business_services/">
+        Versioning Business Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/04_running_on_openshift/">
+        Running sample on OpenShift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/05_exploring_dev_ui_console/">
+        Exploring the Dev-UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/06_using_dmn_in_processes/">
+        Adding DMN to Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/07_adding_service_task/">
+        Adding Service Tasks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/08_adding_human_task/">
+        Adding Human Task
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/09_running_on_openshift/">
+        Running on OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../03_process_automation/">Process Automation: Getting Started</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Process Automation: Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Process Automation: Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/00_intro_process/">
+        Running a basic process service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/01_using_dmn_bpmn/">
+        Using DMN Decisions in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/02_using_service_tasks/">
+        Custom Logic with Service Tasks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03c_CICD/introduction/">
+        IBM Business Automation Open Edition 9.0 CI/CD Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          DMN Exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DMN Exercises" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          DMN Exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../getting-started/">
+        Getting Started DMN Exercises - Insurance Price - Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-intro/">
+        Intermediate DMN Exercises - Vacation Days - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-authoring/">
+        Vacation Days - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-deployment/">
+        Vacation Days - Consuming Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-intro/">
+        Advanced DMN Exercises - Call Centre - Introduction
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Call Centre - Authoring Decisions
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Call Centre - Authoring Decisions
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accept-call-decision-structure">
+    . Accept Call Decision Structure
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#decision-service">
+    Decision Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accept-call-decision-logic">
+    "Accept Call" Decision Logic
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
+    Next steps
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-deployment/">
+        Call Centre - Consuming Decisions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          Order Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Order Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          Order Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/01_try-order-management-app/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/02_create-order-management-app/">
+        Order Management Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/lab-walkthrough/">
+        Lab Walk Through
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Working with event driven processes in IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Working with event driven processes in IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Working with event driven processes in IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/00_introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/01_lab-one-setup/">
+        Setup - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/02_start-event/">
+        Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/03_emitting-events/">
+        Emitting Events in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/04_auditing-events/">
+        Auditing through events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10">
+          TechXchange 2023 (Session 1717)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2023 (Session 1717)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2023 (Session 1717)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_techXchange_2023/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+        DMN Introduction Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intermediate-lab-intro/">
+        DMN Intermediate Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../advanced-lab-intro/">
+        Advanced DMN Lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06_KIE_BC/getting-started-bc/">
+        Getting started bc
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_12" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12">
+          Deploying PAM on OpenShift with Operators
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploying PAM on OpenShift with Operators" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          Deploying PAM on OpenShift with Operators
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/introduction/">
+        Using the Business Automation Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/trial-environment/">
+        Deploying a trial environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/version-upgrade/">
+        Versions and the Operator - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/reconciliation/">
+        Automatic reconciliation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configuration/">
+        Kie App Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configmaps-deleteapp/">
+        ConfigMaps and Deleteting Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/installer/">
+        Operator Wizard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_13" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/getting-started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/authoring-decisions/">
+        Authoring and testing decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/deploying-project/">
+        Deploying and consuming services
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accept-call-decision-structure">
+    . Accept Call Decision Structure
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#decision-service">
+    Decision Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#accept-call-decision-logic">
+    "Accept Call" Decision Logic
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
+    Next steps
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="authoring-the-decisioning-for-the-call-center"><span class="enumerate-headings-plugin enumerate-heading-plugin">33.</span> Authoring the decisioning for the Call Center</h1>
+<p>With this lab, it is highly recommended to use DMN Runner and while you're building your model and the various custom data types to have the example right next to you. Taking advantage of the tools at hand will make your decision design much smoother and faster!</p>
+<p>The problem statement describes a number of different inputs to our decision:</p>
+<ul>
+<li>
+<p><strong>Call</strong>: the incoming call into the call-center</p>
+</li>
+<li>
+<p><strong>Employees</strong>: the employees of certain office.</p>
+</li>
+<li>
+<p><strong>Office</strong>: an office to which the call could potentially be routed.</p>
+</li>
+</ul>
+<p>Furthermore, the problem statement describes that phone numbers could be banned. So, also <strong>banned numbers</strong> can be regarded as an input to our model (although we will not implement it as an input in this lab).</p>
+<p>With the given input, we need to make the following decisions:</p>
+<ul>
+<li><strong>Accept Call</strong>: the final decision we need to make is whether the given office will accept the call.</li>
+<li><strong>Can Handle Call</strong>: whether the office can actually accept the call. As defined in the problem statement, this depends on:</li>
+<li>whether the phone number has been banned;</li>
+<li>the purpose of the phone call (“help” or “objection”).</li>
+</ul>
+<h2 id="accept-call-decision-structure"><span class="enumerate-headings-plugin enumerate-heading-plugin">33.1</span> . Accept Call Decision Structure</h2>
+<ul>
+<li>
+<p><strong>Accept Call</strong>: the final decision we need to make is whether the given office will accept the call.</p>
+<ol>
+<li>
+<p>Add a <strong>Decision</strong> node to the diagram by clicking on the <strong>Decision</strong> node icon and placing it in the DRD. </p>
+<p><img alt="Input" src="../../99_images/business_automation/dmn/add-drd-decision-node.png" width="800px"/></p>
+</li>
+<li>
+<p>Double-click on the node to set the name. We will name this node <code>Accept Call</code>.</p>
+<p><img alt="Accept Call Name Change" src="../../99_images/business_automation/dmn/accept-call-add-node.png"/></p>
+</li>
+<li>
+<p>With the <code>Accept Call</code> node selected, open the property panel. Set the <strong>Output data type</strong> to <code>boolean</code>.</p>
+<p><img alt="Output Data Type" src="../../99_images/business_automation/dmn/drd-decision-node-propery-output-data-type.png" width="800px"/></p>
+</li>
+<li>
+<p>The input of this decision is the <strong>incoming call</strong>, <strong>office</strong> and <strong>employee</strong>. Create these 3 input nodes and connect them to the <strong>Accept Call</strong> decision.</p>
+<p><img alt="Decision and Inputs" src="../../99_images/business_automation/dmn/drd-first-decision-and-inputs.png" width="600px"/></p>
+</li>
+<li>
+<p>We can now set data types of our input nodes.</p>
+<ol>
+<li>
+<p>Click on the <code>incoming call</code> node, open the property panel and in the <strong>Output data type</strong> section and click on the <strong>Manage</strong> button. This will open the <strong>Custom Data Types</strong> window.</p>
+<p><img alt="Manage Data Types" src="../../99_images/business_automation/dmn/canvas-incoming-call-data-type.png"/></p>
+</li>
+<li>
+<p>In the <strong>Custom Data Types</strong> window, click on the <strong>+ Add</strong> button.</p>
+<p><img alt="Add a custom Data Type" src="../../99_images/business_automation/dmn/add-a-custom-data-type.png"/></p>
+</li>
+<li>
+<p>Define the data type <code>Phone Number</code> as a structure and be sure to press the blue checkmark.</p>
+<p><img alt="Data Type Phone Number" src="../../99_images/business_automation/dmn/data-type-phonenumber.png" width="400px"/></p>
+</li>
+<li>
+<p>When you click the blue checkmark, a new row will open for the next type, for the first element, call it <code>phone number</code> with type <code>string</code> and then press the blue checkmark.</p>
+<p><img alt="Add phone number type" src="../../99_images/business_automation/dmn/phone-number-type.png"/></p>
+</li>
+<li>
+<p>Now to create one more item, press the plus sign in the circle that appears where the checkmark was.</p>
+<p><img alt="Add another data type" src="../../99_images/business_automation/dmn/add-new-data-type.png"/></p>
+</li>
+<li>
+<p>For this data type call it <code>country prefix</code> with a type <code>string</code>. You can add a constraint to the limited values if you want, but not required, the example will use "+421" and "+420". These are more used for the forms rendering than anything else at this time. Make sure you check the blue checkmark when you're finished.</p>
+<p><img alt="Add country prefix" src="../../99_images/business_automation/dmn/add-country-prefix.png"/></p>
+</li>
+<li>
+<p>Define another data type <code>tCall</code> as a <strong>Structure</strong> which will contain both the <code>tPhoneNumber</code> structure and an additional field <code>purpose</code> of type <code>string</code>:</p>
+<p><img alt="Data Type tCall" src="../../99_images/business_automation/dmn/call-structure.png" width="400px"/></p>
+</li>
+<li>
+<p>When you’ve created the <code>tCall</code> type, go back to the DRD by clicking on the <strong>Editor</strong> tab.</p>
+<p><img alt="Call Editor Tab Change" src="../../99_images/business_automation/dmn/call-editor-tab.png"/></p>
+</li>
+<li>
+<p>Select the <code>incoming call</code> node, and in the property panel, under <strong>Information item</strong>, set the node’s <strong>Output data type</strong> to <code>tCall</code></p>
+<p><img alt="Incoming Call Data Type" src="../../99_images/business_automation/dmn/canvas-incoming-data.png" width="800px"/></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Next, define the following data type similar to <code>tCall</code> called <code>tOffice</code> with a field <code>location</code> and set it as the <strong>Output data type</strong> of the <code>office</code> input as such:</p>
+<p><img alt="Data Type Office" src="../../99_images/business_automation/dmn/canvas-office-definition.png" width="350px"/></p>
+</li>
+<li>
+<p>Define the data type for <code>employees</code> as follows. Note that we’ve first defined the type <code>tEmployee</code>, and afterwards we’ve defined <code>tEmployees</code> as a <code>List</code> of <code>tEmployee</code>.</p>
+<p><img alt="Employee Type" src="../../99_images/business_automation/dmn/canvas-employee-definition.png" width="800px"/></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="decision-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">33.2</span> Decision Service</h2>
+<p>With the main structure defined, we can now look at the requirements of the decision whether the office can actually accept the call. As defined in the problem statement, this depends on:</p>
+<ul>
+<li>
+<p>whether the phone number has been banned.</p>
+</li>
+<li>
+<p>the purpose of the phone call ("help" or "objection").</p>
+</li>
+</ul>
+<p>We will model this decision as a DMN <strong>Decision Service</strong> that can be called by our main decision <code>Accept Call</code>.</p>
+<ol>
+<li>
+<p>First, model the <strong>Decision Service</strong> in the DRD and give it the name <code>Can Handle Call</code>. Set it’s <strong>Output data type</strong> to <code>boolean</code>.</p>
+<p><img alt="Decision Service Can Handle Call" src="../../99_images/business_automation/dmn/canvas-decision-service-can-handle-call.png" width="800px"/></p>
+</li>
+<li>
+<p>Add a <strong>Decision Node</strong> to the <strong>Decision Service</strong>. Name it <code>Call Can Be Handled</code> and set it’s <strong>Output data type</strong> to <code>boolean</code>.</p>
+<p><img alt="Decision Service With Decision Node" src="../../99_images/business_automation/dmn/canvas-decision-service-with-decision-node.png" width="800px"/></p>
+</li>
+<li>
+<p>Add 2 additional <strong>Decision Nodes</strong> and name them <code>Is Banned</code> and <code>Call Purpose Accepted</code>. Both should have an <strong>Output data type</strong> of type <code>boolean</code>. These will be put "below the bar" on the Decision Service node, so the decisions will be evaluated, but the results will not be passed back from final service by default.</p>
+</li>
+<li>
+<p>Connect the 2 <strong>Decision Nodes</strong> to the <code>Call Can Be Handled</code> node.</p>
+<p width="800px"><img alt="Decision Service With Decision Node" src="../../99_images/business_automation/dmn/canvas-add-is-banned-purpose.png"/></p>
+</li>
+<li>
+<p>The input to both the <code>Is Banned</code> and <code>Call Purpose Accepted</code> decisions is going to be a separate item called <code>call</code>. You will create the input node called <code>call</code> with data type <code>tCall</code>. While it will look like you're creating a separate call item here (and that is definitely how it looks), this decision service could be called independently of the whole service, which is why this call object can be used. Later in the lab, you will see how this ultimately works!</p>
+<p><img alt="Decision Service Call Input" src="../../99_images/business_automation/dmn/canvas-set-tCall-diagram.png" width="800px"/></p>
+</li>
+<li>
+<p>The <code>Is Banned</code> decision also needs a collection of banned phone numbers. Instead of implementing this as an <strong>Input</strong> node, we will implement this as a DMN <strong>Relation Decision</strong>.</p>
+<ol>
+<li>
+<p>Create a new <strong>Decision Node</strong> and name it <code>Banned Phone Numbers</code>. Connect it to the <code>Is Banned</code> decision node.</p>
+<p><img alt="Decision Service Banned Phone Number" src="../../99_images/business_automation/dmn/decision-service-banned-phone-number.png" width="400px"/></p>
+</li>
+<li>
+<p>The <strong>Ouput data type</strong> of this nodes is a new custom data type, which is a list of <code>tPhoneNumber</code>. We’ll name this type <code>tPhoneNumbers</code>, similar to how <code>tEmployees</code> was setup before:</p>
+<p><img alt="Data Type Phone Numbers" src="../../99_images/business_automation/dmn/canvas-create-tPhonenumbers.png" width="400px"/></p>
+</li>
+<li>
+<p>Click on the <strong>Edit</strong> button of the <code>Banned Phone Numbers</code> node. Set the <strong>logic type</strong> of the decision to <code>Relation</code>. Create the following table, you will need to add one extra column and use the headers as shown of <code>country prefix</code> with type <code>string</code> and <code>phone number</code> with type <code>string</code>:</p>
+<p><img alt="Banned Phone Number Relation" src="../../99_images/business_automation/dmn/canvas-banned-phone-number-relation.png" width="500px"/></p>
+</li>
+</ol>
+</li>
+<li>
+<p>We can now implement the logic of the <code>Is Banned</code> decision. Click on the <strong>Edit</strong> button of the decision node. We will implement the logic as a <strong>Literal Expression</strong>. Define the following FEEL expression as below showing that we're going to take the Relational List from <code>Banned Phone Numbers</code> and comparing it to <code>call.phone</code> which is using the tCall's phone number input:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="n">Banned</span><span class="w"> </span><span class="n">Phone</span><span class="w"> </span><span class="n">Numbers</span><span class="p">,</span><span class="w"> </span><span class="n">call</span><span class="p">.</span><span class="na">phone</span><span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<p><img alt="Is Banned decisions" src="../../99_images/business_automation/dmn/is-banned-dmn.png"/></p>
+</li>
+<li>
+<p>The next node for which we want to implement the decision logic is <code>Call Purpose Accepted</code>. Click on the node, and click on the <strong>Edit</strong> button. </p>
+<p><img alt="Edit the Call Purpose Accepted Node" src="../../99_images/business_automation/dmn/call-purpose-accepted-edit.png"/></p>
+</li>
+<li>
+<p>Implement the following logic as a <strong>Decision Table</strong>:</p>
+<p><img alt="Call Purpose Accepted Decision" src="../../99_images/business_automation/dmn/canvas-CallPurposeAccepted-decision.png" width="600px"/></p>
+</li>
+<li>
+<p>Click on the <code>Call Can Be Handled</code> node and click on the node’s <strong>Edit</strong> button. </p>
+<p><img alt="Call Can Be Handled" src="../../99_images/business_automation/dmn/canvas-call-can-be-handled-edit.png" width="600px"/></p>
+</li>
+<li>
+<p>In the decision editor, click the <strong>Select expression</strong> to <strong>Decision Table</strong> and implement the following table:</p>
+<p><img alt="Can Handle Call Decision" src="../../99_images/business_automation/dmn/canvas-CanHandleCall-decision.png" width="600px"/></p>
+</li>
+<li>
+<p>We can now implement the decision of <code>Accept Call Decision</code>. To do this we need to link the Decision Service to the <code>Accept Call</code>, to do this, you will click the outside of the Decision Service node and use the <code>Create DMN Knowledge Requirement</code> to connect the Decision Service to the <code>Accept Call</code>.</p>
+<p><img alt="Create DMN Knowledge Requirement between Call Can Be Handled and Accept Call" src="../../99_images/business_automation/dmn/canvas-create-dmn-knowledge-requirement.png" width="800px"/></p>
+</li>
+</ol>
+<h2 id="accept-call-decision-logic"><span class="enumerate-headings-plugin enumerate-heading-plugin">33.3</span> "Accept Call" Decision Logic</h2>
+<ol>
+<li>
+<p>Finally we need to Implement the <code>Accept Call</code> decision. This is going to be built as a <code>Context</code> since this can be built as a boxed expression that will have multiple steps yielding the final decision to either Accept or Deny the call!</p>
+<p><img alt="Create a Context Decisions" src="../../99_images/business_automation/dmn/canvas-create-context.png" width="800px"/></p>
+</li>
+<li>
+<p>With the Context now the Decision Type. The first row is going to be <code>Call can be handled</code> with type <code>boolean</code>.</p>
+<p><img alt="Set Context Row One Type" src="../../99_images/business_automation/dmn/canvas-context-row-one.png"/></p>
+</li>
+<li>
+<p>Now we need to set the expression for the first row, this is going to be of type <code>Invocation</code>.</p>
+<p><img alt="Set invocation to a function" src="../../99_images/business_automation/dmn/canvas-context-invocation.png"/></p>
+</li>
+<li>
+<p>For the invocation, we need to use it to call the Decision Service that was created. </p>
+</li>
+<li>
+<p><img alt="Accept Call Decision" src="../../99_images/business_automation/dmn/Accept-Call-decision.png" width="800px"/></p>
+</li>
+</ol>
+<p>Notice that the line 1 is the invocation of the decision service "Can Handle Call". This is an <strong>Invocation</strong> of the <code>Can Handle Call</code> service, passing the <code>incoming call</code> input as the variable <code>call</code>. The output of this invocation will be the <code>boolean</code> variable <code>Call can be handled</code>. This will be done using a Literal FEEL function to do this.</p>
+<ol>
+<li>
+<p>Next create a new line with a data type <code>Employee at the Office</code> with data type <code>boolean</code>. Set the expression as another Literal expression. In this function, you will be mapping the Office locations of the employees who are working to the location of the office location. Since this is a list, you're essentially getting a collection of the employees office location and the location of the office that the call is coming from and trying to map them. </p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>employees<span class="o">[</span>office<span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>office.location<span class="o">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>After this is set, the last row, <code>&lt;result&gt;</code> can be set with a <code>Literal</code> expression again with the following:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span>Call<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>handled<span class="w"> </span><span class="k">then</span><span class="w"> </span>count<span class="o">(</span>Employee<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>Office<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+</li>
+</ol>
+<p>The <code>Call can be handled</code> variable as then used to validate the decision result in the last line.</p>
+<p><img alt="Final Accept Call Decision" src="../../99_images/business_automation/dmn/canvas-accept-call-dmn.png"/></p>
+<h2 id="next-steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">33.4</span> Next steps</h2>
+<p>Next, we should deploy the project in OpenShift as a sample service.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Advanced DMN Exercises - Call Centre - Introduction" class="md-footer__link md-footer__link--prev" href="../advanced-lab-intro/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Advanced DMN Exercises - Call Centre - Introduction
+            </div>
+</div>
+</a>
+<a aria-label="Next: Call Centre - Consuming Decisions" class="md-footer__link md-footer__link--next" href="../advanced-lab-deployment/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Call Centre - Consuming Decisions
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "toc.follow", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>

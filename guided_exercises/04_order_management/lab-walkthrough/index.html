@@ -1,0 +1,1890 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
+<meta content="Tim Wuthenow" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
+<title>Lab Walk Through - Learning IBM Business Automation Open Edition</title>
+<link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#create-a-project">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Learning IBM Business Automation Open Edition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Lab Walk Through
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      IBM Business Automation Open Edition 9.0 Enablement
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../more/">
+      Learn more
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../00_get_tools/introduction/">
+        Guided exercises
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Learning IBM Business Automation Open Edition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        IBM Business Automation Open Edition 9.0 Enablement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../more/">
+        Learn more
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Guided exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Guided exercises" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Guided exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1">
+          Get the tools for IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get the tools for IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Get the tools for IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/env-setup/">
+        Environment Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/git-token/">
+        Git Token Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../00_intro/">Getting Started</a>
+<label for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/02_bamoe_basics/">
+        Overview of IBM Business Automation Manager Open Editions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/03_use_case_overview/">
+        Use Case Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/04_env_setup/">
+        Environment Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Getting Started with Kogito
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Getting Started with Kogito" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started with Kogito
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_walk_through/">
+        Project Creation and Walk through
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_local/">
+        Deploy Locally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_openshift/">
+        Deploy in OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          TechXchange 2024 (Session 1108)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2024 (Session 1108)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2024 (Session 1108)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/02_exploring_canvas_features-new/">
+        Exploring Canvas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/03_creating_versioning_business_services/">
+        Versioning Business Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/04_running_on_openshift/">
+        Running sample on OpenShift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/05_exploring_dev_ui_console/">
+        Exploring the Dev-UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/06_using_dmn_in_processes/">
+        Adding DMN to Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/07_adding_service_task/">
+        Adding Service Tasks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/08_adding_human_task/">
+        Adding Human Task
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/09_running_on_openshift/">
+        Running on OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../03_process_automation/">Process Automation: Getting Started</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Process Automation: Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Process Automation: Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/00_intro_process/">
+        Running a basic process service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/01_using_dmn_bpmn/">
+        Using DMN Decisions in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/02_using_service_tasks/">
+        Custom Logic with Service Tasks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03c_CICD/introduction/">
+        IBM Business Automation Open Edition 9.0 CI/CD Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          DMN Exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DMN Exercises" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          DMN Exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/getting-started/">
+        Getting Started DMN Exercises - Insurance Price - Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        Intermediate DMN Exercises - Vacation Days - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-authoring/">
+        Vacation Days - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-deployment/">
+        Vacation Days - Consuming Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Exercises - Call Centre - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-authoring/">
+        Call Centre - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-deployment/">
+        Call Centre - Consuming Decisions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          Order Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Order Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          Order Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_try-order-management-app/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_create-order-management-app/">
+        Order Management Background
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab Walk Through
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Lab Walk Through
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-project">
+    Create a Project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lab-walk-through">
+    Lab Walk through
+  </a>
+<nav aria-label="Lab Walk through" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-domain-model">
+    The Domain Model
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#process-design">
+    Process Design
+  </a>
+<nav aria-label="Process Design" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-offer">
+    Prepare Offer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exclusive-gateway">
+    Exclusive Gateway
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#business-rules-and-decisions">
+    Business Rules and Decisions
+  </a>
+<nav aria-label="Business Rules and Decisions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-the-dmn-inputs-and-bkm">
+    Creating the DMN Inputs and BKM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writing-the-dmn-decision">
+    Writing the DMN Decision
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connecting-the-decision-to-the-process">
+    Connecting the Decision to the Process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-forms">
+    Creating Forms
+  </a>
+<nav aria-label="Creating Forms" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#process-start-form">
+    Process Start Form
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-offer-form">
+    Prepare Offer Form
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-the-process-service">
+    Deploying the Process Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#execute-the-process">
+    Execute the process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#correcting-problems-and-errors">
+    Correcting problems and errors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#execute-the-process-via-apis">
+    Execute the process via APIs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-kie-server-client">
+    Using the KIE-Server Client
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Working with event driven processes in IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Working with event driven processes in IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Working with event driven processes in IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/00_introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/01_lab-one-setup/">
+        Setup - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/02_start-event/">
+        Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/03_emitting-events/">
+        Emitting Events in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/04_auditing-events/">
+        Auditing through events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10">
+          TechXchange 2023 (Session 1717)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2023 (Session 1717)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2023 (Session 1717)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_techXchange_2023/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        DMN Introduction Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        DMN Intermediate Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06_KIE_BC/getting-started-bc/">
+        Getting started bc
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_12" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12">
+          Deploying PAM on OpenShift with Operators
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploying PAM on OpenShift with Operators" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          Deploying PAM on OpenShift with Operators
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/introduction/">
+        Using the Business Automation Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/trial-environment/">
+        Deploying a trial environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/version-upgrade/">
+        Versions and the Operator - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/reconciliation/">
+        Automatic reconciliation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configuration/">
+        Kie App Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configmaps-deleteapp/">
+        ConfigMaps and Deleteting Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/installer/">
+        Operator Wizard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_13" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/getting-started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/authoring-decisions/">
+        Authoring and testing decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/deploying-project/">
+        Deploying and consuming services
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-project">
+    Create a Project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lab-walk-through">
+    Lab Walk through
+  </a>
+<nav aria-label="Lab Walk through" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-domain-model">
+    The Domain Model
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#process-design">
+    Process Design
+  </a>
+<nav aria-label="Process Design" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-offer">
+    Prepare Offer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exclusive-gateway">
+    Exclusive Gateway
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#business-rules-and-decisions">
+    Business Rules and Decisions
+  </a>
+<nav aria-label="Business Rules and Decisions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-the-dmn-inputs-and-bkm">
+    Creating the DMN Inputs and BKM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writing-the-dmn-decision">
+    Writing the DMN Decision
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connecting-the-decision-to-the-process">
+    Connecting the Decision to the Process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-forms">
+    Creating Forms
+  </a>
+<nav aria-label="Creating Forms" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#process-start-form">
+    Process Start Form
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-offer-form">
+    Prepare Offer Form
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-the-process-service">
+    Deploying the Process Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#execute-the-process">
+    Execute the process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#correcting-problems-and-errors">
+    Correcting problems and errors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#execute-the-process-via-apis">
+    Execute the process via APIs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-kie-server-client">
+    Using the KIE-Server Client
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">37.</span> Lab Walk Through</h1>
+<h2 id="create-a-project"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.1</span> Create a Project</h2>
+<p>To define and deploy a business process, we first need to create a new project in which we can store the BPMN2 model, our domain model and the forms required for user interaction. To create a new project:</p>
+<ol>
+<li>Navigate to <a href="http://localhost:8080/business-central">Business Central</a></li>
+<li>Login to the platform with the provided username and password.</li>
+<li>
+<p>Click on <strong>Design</strong> to navigate to the Design perspective.</p>
+<p><img alt="Empty Business Central Space" src="../../99_images/business_automation/order_management/bc-design-empty.png"/></p>
+</li>
+<li>
+<p>In the Design perspective, create a new project. If your space is empty, this can be done by clicking on the blue <strong>Add Project</strong> button in the center of the page. If you already have projects in your space, you can click on the blue <strong>Add Project</strong> icon at the top right of the page.</p>
+</li>
+<li>
+<p>Give the project the name <code>order-management</code>, and the description "Order Management".</p>
+<p><img alt="Create project" src="../../99_images/business_automation/order_management/create-order-management-project.png"/></p>
+</li>
+</ol>
+<p>With the project created, we can now start building our solution.</p>
+<h2 id="lab-walk-through"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.2</span> Lab Walk through</h2>
+<p>In this section we will first create the Domain Model within Business Central and then walk through the creation of the assets associated with the Process.</p>
+<h3 id="the-domain-model"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.2.1</span> The Domain Model</h3>
+<p>The business process will collect and carry data through the execution of the process. This data is stored in a data model or domain model. In this lab, we collect two types of data:</p>
+<ul>
+<li><code>OrderInfo</code>: contains information about the order, like the item and the price.</li>
+<li><code>SupplierInfo</code>: contains information about the supplier, like the name and the expected delivery date.</li>
+</ul>
+<hr/>
+<ol>
+<li>
+<p>In your project, click on the <em>Add Asset</em> button in the middle of the screen.</p>
+<p><img alt="Add Asset" src="../../99_images/business_automation/order_management/add-asset-button.png"/></p>
+</li>
+<li>
+<p>In the drop-down menu in the upper-left corner, select <code>Model</code>. Click on the <em>Data Object</em>
+   tile.</p>
+<p><img alt="New Data Object" src="../../99_images/business_automation/order_management/new-data-object.png"/></p>
+</li>
+<li>
+<p>Give the <em>Data Object</em> the name <code>OrderInfo</code>. Leave the package set to default.</p>
+<p><img alt="Order Info creation" src="../../99_images/business_automation/order_management/new-data-object-order-info.png"/></p>
+</li>
+<li>
+<p>Add the following fields to the <code>OrderInfo</code> data object:</p>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Label</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item</td>
+<td>item name</td>
+<td>String</td>
+</tr>
+<tr>
+<td>urgency</td>
+<td>urgency</td>
+<td>String</td>
+</tr>
+<tr>
+<td>targetPrice</td>
+<td>target price</td>
+<td>double</td>
+</tr>
+<tr>
+<td>managerApproval</td>
+<td>approved</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>When you’ve added the fields, save the data object by clicking on the <em>Save</em> button in the top menu.</p>
+</li>
+<li>Use the _breadcrumb` navigator at the top-left of the screen to navigate back to our <code>order-management</code> project.</li>
+<li>Click on the blue <em>Add Asset</em> button in the top-right corner and create a new <em>Data Object</em></li>
+<li>
+<p>Give it the name <code>SupplierInfo</code></p>
+<p><img alt="Supplier Info creation" src="../../99_images/business_automation/order_management/new-data-object-supplier-info.png"/></p>
+</li>
+<li>
+<p>Give the <code>SupplierInfo</code> object the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Label</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offer</td>
+<td>best offer</td>
+<td>double</td>
+</tr>
+<tr>
+<td>deliveryDate</td>
+<td>delivery date</td>
+<td>Date</td>
+</tr>
+<tr>
+<td>user</td>
+<td>user</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>We’re done creating our data model.</p>
+<p><img alt="Data Model Created" src="../../99_images/business_automation/order_management/data-model-created.png"/></p>
+</li>
+</ol>
+<p>We can now start with our process design.</p>
+<hr/>
+<h2 id="process-design"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.3</span> Process Design</h2>
+<p>With the domain model defined, we can now sketch out the main flow of the process, the actors, the user task nodes and the required automation decisions.</p>
+<p><img alt="Completed Process View" src="../../99_images/business_automation/order_management/order-management-process.png"/></p>
+<ol>
+<li>
+<p>Create a new <code>Business Process</code> asset. Name it <code>OrderManagement</code>. You can do this by clicking <code>Add an Asset</code> and then selecting <code>Business Process</code> and then setting the name as <code>OrderManagement</code>.</p>
+</li>
+<li>
+<p>When the process designer opens, scroll down in the property panel on the right side of the screen, until you see the section <em>Process Data</em>.</p>
+</li>
+<li>
+<p>Expand the <em>Process Data</em> section and add the following 3 <em>Process Variables</em> by clicking on the <em>+</em> sign.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderInfo</td>
+<td>OrderInfo</td>
+</tr>
+<tr>
+<td>supplierInfo</td>
+<td>SupplierInfo</td>
+</tr>
+<tr>
+<td>approved</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Process Variables Set" src="../../99_images/business_automation/order_management/process-variables.png"/></p>
+</li>
+</ol>
+<h3 id="prepare-offer"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.3.1</span> Prepare Offer</h3>
+<ol>
+<li>
+<p>In the palette on the left-side of the editor, select the <code>Lane</code> component:</p>
+<p><img alt="palette-swimlane" src="../../99_images/business_automation/order_management/palette-swimlane.png"/></p>
+</li>
+<li>
+<p>Create the following 3 swimlanes:  <strong>Supplier</strong> , <strong>Purchase</strong> ,  <strong>Manager</strong></p>
+<p><img alt="Three Swimlanes" src="../../99_images/business_automation/order_management/three-swimlanes.png"/></p>
+</li>
+<li>
+<p>Create the <strong>Start Event</strong> node in the <code>Purchase</code> swimlane.</p>
+</li>
+<li>
+<p>Create the <code>Prepare Offer</code> <strong>User Task</strong> node in the <code>Supplier</code> swimlane and connect it to the <strong>Start Event</strong> node. Set the following properties on the node via the properties panel on the right side of the screen:</p>
+<ol>
+<li>Task Name: <code>PrepareOffer</code></li>
+<li>Subject: <code>Prepare Offer for #{orderInfo.item}</code></li>
+<li>Actors: <code>#{supplierInfo.user}</code></li>
+<li>Input:</li>
+</ol>
+<p><table>
+<caption>Data Inputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Source</p></td>
+</tr>
+<tr class="even">
+<td><p>orderInfo</p></td>
+<td><p>OrderInfo</p></td>
+<td><p>orderInfo</p></td>
+</tr>
+<tr class="odd">
+<td><p>supplierInfo</p></td>
+<td><p>SupplierInfo</p></td>
+<td><p>supplierInfo</p></td>
+</tr>
+</tbody>
+</table></p>
+<ol>
+<li>Output</li>
+</ol>
+<p><table>
+<caption>Data Outputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Source</p></td>
+</tr>
+<tr class="odd">
+<td><p>supplierInfo</p></td>
+<td><p>SupplierInfo</p></td>
+<td><p>supplierInfo</p></td>
+</tr>
+</tbody>
+</table></p>
+<p><img alt="Prepare Offer Node" src="../../99_images/business_automation/order_management/prepare-offer-node.png"/></p>
+</li>
+<li>
+<p>Create the <code>Auto Approve Order</code> <strong>Business Rule</strong> node in the <code>Purchase</code> swimlane and connect it to the <code>Prepare Offer</code> node. Set the following properties:</p>
+</li>
+<li>Rule language: <code>DMN</code></li>
+<li>Assigments:</li>
+</ol>
+<table>
+<caption>Data Inputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Source</p></td>
+</tr>
+<tr class="even">
+<td><p>Order Information</p></td>
+<td><p>OrderInfo</p></td>
+<td><p>orderInfo</p></td>
+</tr>
+<tr class="odd">
+<td><p>Supplier Information</p></td>
+<td><p>SupplierInfo</p></td>
+<td><p>supplierInfo</p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Data Outputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Target</p></td>
+</tr>
+<tr class="even">
+<td><p>Approve</p></td>
+<td><p>Boolean</p></td>
+<td><p>approved</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Auto Approval Rules" src="../../99_images/business_automation/order_management/auto-approval-rules-node.png"/></p>
+<blockquote>
+<p>📘 INFO: After we've created our DMN Decision Model, we will revisit the configuration of this node to reference this DMN model via its <code>name</code> and <code>namespace</code> properties.</p>
+</blockquote>
+<h3 id="exclusive-gateway"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.3.2</span> Exclusive Gateway</h3>
+<ol>
+<li>
+<p>Create an <strong>X-OR Gateway</strong>/<strong>Exclusive Gateway</strong> in the <code>Manager</code> swimlane, below the <code>Auto Approve Order</code> node and connect it to that node.</p>
+<p><img alt="Exclusive Gateway" src="../../99_images/business_automation/order_management/xor-gateway-auto-approve-order.png"/></p>
+</li>
+<li>
+<p>Create the <code>Approve</code> <strong>User Task</strong> in the <code>Manager</code> swimlane and connect it to the <strong>X-OR</strong> gateway. Set the following properties:</p>
+<ul>
+<li>Task Name: <code>Approve</code></li>
+<li>Subject: <code>Approve Order of #{orderInfo.item}</code></li>
+<li>group: <code>rest-all</code></li>
+<li>Assignments:</li>
+</ul>
+<p><table>
+<caption>Data Inputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Source</p></td>
+</tr>
+<tr class="even">
+<td><p>orderInfo</p></td>
+<td><p>OrderInfo</p></td>
+<td><p>orderInfo</p></td>
+</tr>
+<tr class="odd">
+<td><p>supplierInfo</p></td>
+<td><p>SupplierInfo</p></td>
+<td><p>supplierInfo</p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Data Outputs and Assignments</caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p>Name</p></td>
+<td><p>Data Type</p></td>
+<td><p>Target</p></td>
+</tr>
+<tr class="even">
+<td><p>orderInfo</p></td>
+<td><p>OrderInfo</p></td>
+<td><p>orderInfo</p></td>
+</tr>
+</tbody>
+</table></p>
+<p><img alt="Human Task Approve" src="../../99_images/business_automation/order_management/approve-node.png"/></p>
+</li>
+<li>
+<p>Create an <strong>X-OR Gateway</strong>/<strong>Exclusive Gateway</strong> in the <code>Manager</code> swimlane, after the <code>Approve</code> node and connect it to that node.</p>
+<p><img alt="Gateway Approve" src="../../99_images/business_automation/order_management/xor-gateway-approve.png"/></p>
+</li>
+<li>
+<p>Create another <strong>X-OR Gateway</strong>/<strong>Exclusive Gateway</strong> under the <code>Manager</code> swimlane (so outside of the swimlane) and connect it to the two other <strong>X-OR Gateways</strong>/<strong>Exclusive Gateways</strong> as shown in image below:</p>
+<p><img alt="Gateway Merge" src="../../99_images/business_automation/order_management/xor-gateway-approved.png"/></p>
+</li>
+<li>
+<p>Create the <code>Place Order in ERP</code> <strong>Script Task</strong> under the <code>Manager</code> swimlane (so outside of the swimlanes) and connect it to the <strong>X-OR Gateway</strong> we created earlier. Set the following script in the node’s properties properties:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Place Order in ERP"</span><span class="p">);</span>
+</code></pre></div>
+<p><img alt="Script Task" src="../../99_images/business_automation/order_management/place-order-in-erp-node.png"/></p>
+</li>
+<li>
+<p>Create an <strong>End Event</strong> node under the <code>Manager</code> swimlane (so outside of the swimlanes) and connect it to the <code>Place Order in ERP</code> node. Name it <code>Approved</code>.</p>
+<p><img alt="Happy Path End Event" src="../../99_images/business_automation/order_management/approved-end-event.png"/></p>
+</li>
+<li>
+<p>Create an <strong>End Event</strong> node in the <code>Purchase</code> swimlane and connect it to the <strong>X-OR Gateway</strong>. Name it <code>Rejected</code>.</p>
+<p><img alt="Rejected End Event" src="../../99_images/business_automation/order_management/rejected-end-event.png"/></p>
+</li>
+<li>
+<p>On the <strong>Sequence Flow</strong> from the <strong>X/OR Gateway</strong> before the <code>Approve</code> node that is connnected ot the other <strong>X/OR Gateway</strong>, set the following condition, which tells the process engine that this path should be taken when the order is not automatically approved:</p>
+<ul>
+<li>Process Variable: <code>approved</code></li>
+<li>Condition: <code>Is true</code></li>
+</ul>
+<p><img alt="Approved Flow" src="../../99_images/business_automation/order_management/sequence-flow-approved-condition.png"/></p>
+</li>
+<li>
+<p>On the <strong>Gateway</strong> before the <code>Approve node</code>, set the <strong>Default Route</strong> property to <code>Approve</code>.</p>
+<p><img alt="Set default route" src="../../99_images/business_automation/order_management/xor-gateway-default-route-approve.png"/></p>
+</li>
+<li>
+<p>On the <strong>Sequence Flow</strong> from the <strong>X/OR Gateway</strong> after the <code>Approve</code> task, which is connected to the <strong>X/OR Gateway</strong> before the <code>Place Order in ERP</code> task, set the following condition:</p>
+<ul>
+<li>Process Variable: <code>orderInfo.managerApproval</code></li>
+<li>Condition: <code>Is true</code></li>
+</ul>
+<p><img alt="Manager Approval Needed" src="../../99_images/business_automation/order_management/sequence-flow-manager-approval-condition.png"/></p>
+</li>
+<li>
+<p>On the <strong>X/OR Gateway</strong> after the <code>Approval</code> node , set the <strong>Default Route</strong> to <code>Rejected</code>.</p>
+<p><img alt="Default Rejected" src="../../99_images/business_automation/order_management/xor-gateway-default-route-rejected.png"/></p>
+</li>
+<li>
+<p>Save the process definition.</p>
+<p><img alt="Completed process drawn" src="../../99_images/business_automation/order_management/completed-process.png"/></p>
+</li>
+</ol>
+<p>With the overall layout of the process definition complete, the routing logic implemented, and the I/O assignments defined, we can now implement the business rules of our automated approval decision.</p>
+<h2 id="business-rules-and-decisions"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.4</span> Business Rules and Decisions</h2>
+<p>Our <strong>Order Management</strong> process contains a <strong>Business Rule Task</strong>, but we have not yet defined the <em>Decision Model</em> that will be used in the task. In this paragraph we will implement the automatic approval rules in the form of a DMN model.</p>
+<h3 id="creating-the-dmn-inputs-and-bkm"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.4.1</span> Creating the DMN Inputs and BKM</h3>
+<ol>
+<li>
+<p>In the main project page, the so called <strong>library view</strong>, click on the <strong>Add Asset</strong> button.</p>
+</li>
+<li>
+<p>In the next screen, set the drop-down filter to <strong>Decision</strong>. Select the <strong>DMN</strong> asset. Give it the name <code>order-approval</code>.</p>
+<p><img alt="Add DMN Asset" src="../../99_images/business_automation/order_management/add-asset-dmn-order-approval.png"/></p>
+</li>
+<li>
+<p>In the DMN editor, open the property-panel on the right-side of the screen and set the
+      <em>Namespace</em> property to: <code>http://www.redhat.com/dmn/demo/order-management-dmn</code> . First we need to import our data-model, so we can use it in our DMN decisions. In the DMN editor, click on the <em>Data Types</em> tab and click on the <em>Import Data Object</em> button at the right-hand side of the screen:</p>
+<p><img alt="Import Data Object" src="../../99_images/business_automation/order_management/dmn-import-data-object.png"/></p>
+</li>
+<li>
+<p>Select both the <code>OrderInfo</code> and <code>SupplierInfo</code> objects and click on the <em>Import</em> button:</p>
+<p><img alt="dmn-import-data-objects-select.png[]" src="../../99_images/business_automation/order_management/dmn-import-data-objects-select.png%5B%5D.png"/></p>
+</li>
+</ol>
+<p>​ With the 2 datatypes imported, we need to create a third type that will hold the possible values for the <code>urgency</code> field of our <code>Order Information</code>. Click on the blue <em>Add</em> button in the top-right corner.</p>
+<ol>
+<li>
+<p>In the entry that opens, give the data type the <em>Name</em> <code>Urgency</code> and the <em>Type</em> <code>string</code>:</p>
+<p><img alt="Data type urgency" src="../../99_images/business_automation/order_management/dmn-data-type-urgency.png"/></p>
+</li>
+<li>
+<p>Click on the <em>Add Constraints</em> button, select <code>Enumeration</code> as the <em>constraint type</em>, and set the values  low<code>and</code>high`.</p>
+<p><img alt="Urgency enumeration" src="../../99_images/business_automation/order_management/dmn-data-type-urgency-enumeration.png"/></p>
+</li>
+<li>
+<p>Click on the blue checkmark button to save the type.</p>
+<p><img alt="Data type save" src="../../99_images/business_automation/order_management/dmn-datatype-save.png"/></p>
+</li>
+<li>
+<p>Navigate back to the model via the <em>Model</em> tab. Add 2 <code>Input</code> nodes to the model and name them <code>Order Information</code> and <code>Supplier Information</code></p>
+<p><img alt="DMN Inputs" src="../../99_images/business_automation/order_management/dmn-input-nodes.png"/></p>
+</li>
+<li>
+<p>Select the <code>Order Information</code> node. Open the properties panel on the right-hand side of the screen, and set the <em>Data type</em> to <code>OrderInfo</code>.</p>
+<p><img alt="Order Info Type" src="../../99_images/business_automation/order_management/dmn-orderinfo-datatype.png"/></p>
+</li>
+<li>
+<p>Do the same for the <code>Supplier Information</code> node. Set the <em>Data type</em> to <code>SupplierInfo</code>. Create a new <code>Business Knowledge Model</code> node, name it <code>Price Tolerance</code>.</p>
+</li>
+<li>
+<p>Click on the node, and click on the <em>Edit</em> button to start editting the node:</p>
+<p><img alt="BKM Price Tolerance" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-edit.png"/></p>
+<p><img alt="Price Tolerance Function" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-feel-function.png"/></p>
+</li>
+<li>
+<p>Click in the <em>Edit parameters</em>. An editor will open. Click on <em>Add parameter</em>. Name the parameter <code>order information</code> and set the type to <code>OrderInfo</code>.</p>
+<p><img alt="BKM Parameter" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-feel-function-parameter.png"/></p>
+</li>
+<li>
+<p>Right click in the empty white cell under the parameter definitions and select <em>Clear</em>. The text <em>Select expression</em> will appear in the cell. Click on the cell and select <code>Decision Table</code>.</p>
+<p><img alt="BKM Table" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-decision-table.png"/></p>
+</li>
+<li>
+<p>Add an <em>input clause</em> to the decision table. The name of the <em>input clause</em> is <code>order information.urgency</code>, which references the <code>urgency</code>  attribute of the <code>order information</code> parameter. Set the type to <code>Urgency</code>, which references the <code>Urgency</code> enumeration we created earlier.</p>
+<p><img alt="BKM Input Clause" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-dtable-input-clause.png"/></p>
+</li>
+<li>
+<p>Set the <em>output clause</em> data type to <code>number</code>. Leave the name empty.</p>
+<p><img alt="BKM Output Clause" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-dtable-output-clause.png"/></p>
+</li>
+<li>
+<p>Click on the <code>Price Tolerance</code> cell (top cell of the table), and set the data type to <code>number</code>.</p>
+<p><img alt="BKM Tolerance" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-data-type.png"/></p>
+</li>
+<li>
+<p>Implement the rest of the decision table as shown below. And save the DMN model.</p>
+<p><img alt="BKM Complete" src="../../99_images/business_automation/order_management/dmn-bkm-price-tolerance-dtable-complete.png"/></p>
+</li>
+</ol>
+<h3 id="writing-the-dmn-decision"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.4.2</span> Writing the DMN Decision</h3>
+<p>In this section we will complete the writing of the DMN decision.</p>
+<ol>
+<li>
+<p>Navigate back to the model by clicking on the <em>Back to order-approval</em> link at the top-left of the editor. Create a new <em>Decision Node</em> and name it <code>Approve</code>. Connect the 2 input nodes and out <code>Price Tolerance</code> busines knowledge model node to the new decision node.</p>
+<p><img alt="DMN Complete" src="../../99_images/business_automation/order_management/dmn-complete.png"/></p>
+</li>
+<li>
+<p>Select the <code>Approve</code> decision node and click on the edit button.</p>
+<p><img alt="Click approve" src="../../99_images/business_automation/order_management/dmn-decision-node-approve-edit.png"/></p>
+</li>
+<li>
+<p>Click on _Select Expression, and set the logic type to <code>Literal Expression</code>.</p>
+<p><img alt="Select literal expression" src="../../99_images/business_automation/order_management/dmn-decision-node-approve-literal-expression-type.png"/></p>
+</li>
+<li>
+<p>Enter the following expression: <code>Supplier Information.offer &lt; Price Tolerance(Order  Information) * Order Information.targetPrice</code></p>
+<p><img alt="Literal expression implemented" src="../../99_images/business_automation/order_management/dmn-decision-node-aprove-literal-expression.png"/></p>
+</li>
+<li>
+<p>Click on the <code>Approve</code> cell (top cell of the table), and set the data type to <code>boolean</code>.</p>
+<p><img alt="Approval data type select" src="../../99_images/business_automation/order_management/dmn-decision-node-approve-type.png"/></p>
+</li>
+</ol>
+<h2 id="connecting-the-decision-to-the-process"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.5</span> Connecting the Decision to the Process</h2>
+<ol>
+<li>Navigate back to the model by clicking on the <em>Back to order-approval</em> link at the top-left of the editor.</li>
+<li>Our DMN model is now complete. Make sure to save your model.</li>
+<li>With our DMN model implemented, we can now revisit our <strong>Business Rules Task</strong> in our BPMN2 model. Open the <code>order-management</code> process definition and click on the<code>Auto Approval Order</code> node.</li>
+<li>Open the node’s properties in the property-panel on the right side of the editor, open the
+       <strong>Implementation/Execution</strong> section and set:<ul>
+<li>Namespace: <code>http://www.redhat.com/dmn/lab/order-approval-dmn</code></li>
+<li>Name:<code>order-approval</code></li>
+</ul>
+</li>
+<li>In the same properties panel, expand the <em>Data Assignments</em> section and open the <em>Assignments</em> editor</li>
+<li>
+<p>Implement the following data input and output assignments.</p>
+<p><img alt="Process data mapping" src="../../99_images/business_automation/order_management/decision-auto-approve-order-data-io.png"/></p>
+</li>
+<li>
+<p>Our BPMN model is now complete. Make sure to save the model.</p>
+</li>
+</ol>
+<p>Now, we should be able to create and implement our forms.</p>
+<h2 id="creating-forms"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.6</span> Creating Forms</h2>
+<p>In this section we are going to create the process start and user-task forms. We could simply generate these forms with the click of a button, which gives us some standard forms based on the process and task data.</p>
+<p>In this lab however, we will be creating these forms using the <strong>Form Modeler</strong> tool. This allows us to design these forms to our specific needs.</p>
+<h3 id="process-start-form"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.6.1</span> Process Start Form</h3>
+<p>Let’s start with the process start form. We want to create the following form:</p>
+<p><img alt="OrderManagement Task Form" src="../../99_images/business_automation/order_management/OrderManagement-taskform-form.png"/></p>
+<ol>
+<li>
+<p>In the project’s library view, click on <strong>Add Asset</strong>. Filter on <strong>Form</strong>, click on the <strong>Form</strong> tile. Enter the details as shown in the screenshot below:</p>
+<p><img alt="Create Process Start Form" src="../../99_images/business_automation/order_management/create-process-start-form.png"/></p>
+</li>
+<li>
+<p>On this form we want to specify the initial order. We therefore require fields from the <code>orderInfo</code> and <code>supplierInfo</code> process variable. When we expand the <code>Model Fields</code> section, we can see our 2 process variables (<code>orderInfo</code> and <code>supplierInfo</code>). These are both complex objects. To work with complex objects (as opposed to simple types like integers and booleans), we require a data-form for that specific object. We therefore first need to create a data-form for our <code>OrderInfo</code> and <code>SupplierInfo</code> objects.</p>
+</li>
+<li>
+<p>Go back to the project’s library view, click again on <strong>Add Asset</strong> and create a new form. Use the following details:</p>
+<p><img alt="Create Order Management Order Form" src="../../99_images/business_automation/order_management/create-order-management-order-form.png"/></p>
+</li>
+<li>
+<p>Using the Form Modeler constructs, create the following form:</p>
+<p><img alt="OrderManagement Order" src="../../99_images/business_automation/order_management/OrderManagement-Order-form.png"/></p>
+</li>
+<li>
+<p>To create this form, drag both the <code>item</code>, <code>urgency</code> and <code>targetPrice</code> onto the canvas and configure them as follows.</p>
+</li>
+<li>
+<p>List Box:</p>
+<p><img alt="Item Name OrderManagement-Order Field" src="../../99_images/business_automation/order_management/item-name-ordermanagement-order-field.png"/></p>
+</li>
+<li>
+<p>Radio Group:</p>
+<p><img alt="Urgency OrderManagement-Order Field" src="../../99_images/business_automation/order_management/urgency-ordermanagement-order-field.png"/></p>
+</li>
+<li>
+<p>Decimal Box:</p>
+<p><img alt="Target Price OrderManagement-Order Field" src="../../99_images/business_automation/order_management/target-price-order-management-order-field.png"/></p>
+</li>
+<li>
+<p>Save the form and create another new form for our <code>supplierInfo</code>. Use the following details.</p>
+<p><img alt="Supplier Info Form" src="../../99_images/business_automation/order_management/create-order-management-supplierinfo-form.png"/>.</p>
+</li>
+<li>
+<p>Using the Form Modeler constructs, create the following form:</p>
+<p><img alt="OrderManagement SupplierInfo" src="../../99_images/business_automation/order_management/OrderManagement-SupplierInfo-form.png"/></p>
+</li>
+<li>
+<p>To create this form, drag the <code>user</code> field onto the canvas and configure it as follows.</p>
+<p><img alt="User OrderManagement-SupplierInfo Field" src="../../99_images/business_automation/order_management/user-ordermanagement-supplierinfo-field.png"/></p>
+</li>
+<li>
+<p>Save the form and open the <code>OrderManagement</code> form (the first form we created).</p>
+</li>
+<li>
+<p>Drag the <code>orderInfo</code> process variable onto the canvas. In the pop-up form, set the <code>OrderManagement-Order</code> form we just created as the <strong>Nested Form</strong>:</p>
+<p><img alt="Order Management Order Subform Select" src="../../99_images/business_automation/order_management/ordermanagement-order-subform-select.png"/></p>
+</li>
+<li>
+<p>Drag the <code>supplierInfo</code> process variable ontoo the canvas. In the pop-up form, set the <code>OrderManagement-SupplierInfo</code> form we just created as the <strong>Nested Form</strong>:</p>
+<p><img alt="Order Management SupplierInfo Subform Select" src="../../99_images/business_automation/order_management/ordermanagement-supplierinfo-subform-select.png"/></p>
+</li>
+</ol>
+<h3 id="prepare-offer-form"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.6.2</span> Prepare Offer Form</h3>
+<p>Next, we will create the form for the <code>Prepare Offer</code> <strong>User Task</strong>.</p>
+<ol>
+<li>
+<p>Create a new form. Provide the following details:</p>
+<p><img alt="Create Prepare Offer Task Form" src="../../99_images/business_automation/order_management/create-prepare-offer-task-form.png"/> </p>
+</li>
+<li>
+<p>Our aim is to create a form that looks as such:</p>
+<p><img alt="PrepareOffer Task Form" src="../../99_images/business_automation/order_management/PrepareOffer-taskform.png"/></p>
+</li>
+<li>
+<p>As with the process start form, this user-task form operates on 2 variables, <code>orderInfo</code> and <code>supplierInfo</code>. And, as with the process start form, we need to create a data-object form for each of these variables. Technically, data-object forms for a certain data-object can be reused in multiple task-forms. However, creating a data-object form per task-form allows us to design these data-object forms aimed for that specific task.</p>
+</li>
+</ol>
+<p><strong>PrepareOffer-OrderInfo</strong>
+<img alt="PrepareOffer OrderInfo" src="../../99_images/business_automation/order_management/PrepareOffer-OrderInfo-form.png"/></p>
+<p><strong>PrepareOffer-SupplierInfo</strong>
+<img alt="PrepareOffer SupplierInfo" src="../../99_images/business_automation/order_management/PrepareOffer-SupplierInfo-form.png"/></p>
+<hr/>
+<p>Finally, we need to create the task form for the <code>Approve</code> task.</p>
+<ol>
+<li>
+<p>Create a new form. Provide the following details.</p>
+<p><img alt="Create Approve Task Form" src="../../99_images/business_automation/order_management/create-approve-task-form.png"/> .</p>
+</li>
+<li>
+<p>Our aim is create a form that looks like this:</p>
+<p><img alt="Approve Task Form" src="../../99_images/business_automation/order_management/Approve-taskform.png"/></p>
+</li>
+<li>
+<p>As with the other forms, this user-task form operates on 2 variables, <code>orderInfo</code>, <code>supplierInfo</code>. And, as with the other forms, we need to create a data-object form for each of these variables.</p>
+</li>
+</ol>
+<p><strong>Approve-SupplierInfo</strong> <img alt="Approve SupplierInfo SupplierInfo" src="../../99_images/business_automation/order_management/Approve-SupplierInfo-form.png"/></p>
+<p><strong>Approve-OrderInfo</strong> <img alt="Approve OrderInfo Form" src="../../99_images/business_automation/order_management/Approve-OrderInfo-form.png"/></p>
+<p><strong>Don’t forget to save all your forms!!!</strong></p>
+<p>The implementation of our process is complete. It’s now time to deploy and test our application.</p>
+<h2 id="deploying-the-process-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.7</span> Deploying the Process Service</h2>
+<p>With our <strong>Order Management</strong> project’s process, decisions and forms completed, we can now package our project in a Deployment Unit (KJAR) and deploy it on the Execution Server. To do this:</p>
+<ol>
+<li>
+<p>Go back to our project’s Library View (for example by clicking on the <code>Order Management</code> link in the breadcrumb navigation in the upper-left of the screen).</p>
+</li>
+<li>
+<p>Click on the <strong>Deploy</strong> button in the upper-right corner of the screen. This will package our project in a Deployment Unit (KJAR) and deploy it onto the Execution Server (KIE-Server).</p>
+</li>
+<li>
+<p>Go to the <strong>Execution Servers</strong> perspective by clicking on "Menu → Deploy → Execution Servers". You will see the <strong>Deployment Unit</strong> deployed on the Execution Server.</p>
+</li>
+</ol>
+<h2 id="execute-the-process"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.8</span> Execute the process</h2>
+<p>In this section, you will execute the process deployed on the Process Execution Server via the Business Central workbench.</p>
+<ol>
+<li>
+<p>Navigate to <strong>Menu → Manage → Process Definitions</strong>. If everything is correct, the <code>order-management</code> process will be listed. Click on the kebab icon of the <code>order-management</code> process and click on <strong>Start</strong>.</p>
+<p><img alt="Start Process" src="../../99_images/business_automation/order_management/start-process.png"/></p>
+</li>
+<li>
+<p>In the form that opens, pick the <strong>Huawei P10 Phone</strong> as the item and set the urgency to <strong>low</strong>. Set the target price to <strong>700</strong> and set the supplier name to the name of your own Business Central user (e.g. <code>bamAmdmin</code>). Click on <strong>Submit</strong>.</p>
+<p><img alt="Start process form" src="../../99_images/business_automation/order_management/start-process-form.png"/></p>
+</li>
+<li>
+<p>In the process instance details screen that opens, click on the <strong>Diagram</strong> tab to open the process instance diagram, which shows the current state of the process.</p>
+<p><img alt="Start Process" src="../../99_images/business_automation/order_management/process-instance-state-diagram-prepare.png"/></p>
+</li>
+<li>
+<p>The process is in a wait state at the <code>Prepare Offer</code> task. Navigateto <strong>Menu → Track</strong> Task Inbox**. Click on the <code>Prepare Offer</code> task to open its task window.</p>
+</li>
+<li>
+<p>Click on the <strong>Start</strong> button to start working on the task. Because the task has been assigned to a single user (via #{supplierInfo.user}), you don’t have to first <em>claim</em> the task.</p>
+</li>
+<li>
+<p>Select a random delivery date. Set the best offer to <strong>900</strong>. Click on <strong>Complete</strong>. </p>
+<p><img alt="Prepare Offer Complete Task" src="../../99_images/business_automation/order_management/prepare-offer-complete-task.png"/></p>
+</li>
+<li>
+<p>The process will continue to the <code>Auto Approve Order</code> decision node. Because of the target prices set, and the offered price, the decision will evaluale to <code>false</code>. Hence, the process will continue to the <code>Approve</code> task.</p>
+<p><img alt="Start Process" src="../../99_images/business_automation/order_management/process-instance-state-diagram-approve.png"/></p>
+</li>
+<li>
+<p>Go back to the <strong>Task Inbox</strong> and open the <code>Approve</code> task. Click on <strong>Claim</strong> and on <strong>Start</strong>. In this form we can approve or disapprove the order via the <strong>approved</strong> checkbox, and specify a <strong>rejection reason</strong> if we reject the order. Approve the task by checking the <strong>approved</strong> checkbox and clicking on <strong>Complete</strong>:</p>
+<p><img alt="Approve Complete Task" src="../../99_images/business_automation/order_management/approve-complete-task.png"/></p>
+</li>
+<li>
+<p>Go back to the process instance view and observe that the process instance is gone.</p>
+</li>
+<li>
+<p>Enable the <strong>Completed</strong> checkbox in the <strong>State</strong> filter on the left-hand-side of the screen. Observe that we can see our process instance in the list.</p>
+</li>
+<li>
+<p>Open the process instance, open it’s <strong>Diagram</strong> tab. Observe that the order has been accepted:</p>
+<p><img alt="Process Instance Completed OrderAccepted" src="../../99_images/business_automation/order_management/process-instance-completed-order-accepted.png"/></p>
+</li>
+</ol>
+<p>Run a couple more process instances with different values to test, for example, the functionality of the <code>Automated Approval Rules</code>.</p>
+<h2 id="correcting-problems-and-errors"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.9</span> Correcting problems and errors</h2>
+<p>During process instance execution, a lot of things can go wrong. Users might fill in incorrect data, remote services are not available, etc. In an ideal world, the process definition takes a lot of these possible problems into account in its design. E.g. the process definition might contain exception handling logic via boundary catching error events and retry-loops. However, there are situations in which an operator or administrator would like to manually change the process to another statem for example, restart an already completed <strong>User Task</strong>. In the latest version of IBM Business Automation Open Edition 8.0 this is now possible via the <strong>Process Instance interface</strong> in Business Central.</p>
+<ol>
+<li>
+<p>Start a new process instance of our <strong>Order Management</strong> process.</p>
+</li>
+<li>
+<p>Complete the <code>Prepare Offer</code> task in such a way that the order is not automatically approved and the process will hit the <code>Approve</code> <em>User Task</em> wait state.</p>
+</li>
+<li>
+<p>Go to the <strong>Process Instances</strong> view and select the process instance. Navigate to the <strong>Diagram</strong> tab. Observe that the process is waiting in the <code>Approve</code> <strong>User Task</strong>.</p>
+</li>
+<li>
+<p>Click on the <code>Prepare Offer</code> node to select it. In the <strong>Node Actions</strong> panel on the left-hand-side of the screen, verify that the <code>Prepare Offer</code> node is selected and click on <strong>Trigger</strong>. Observe that the <code>Prepare Offer</code> <strong>User Task</strong> has been activated.</p>
+</li>
+<li>
+<p>Although we have re-activated the <code>Prepare Offer</code> node, we have not yet de-activated the <code>Approve</code> task. Click on the active <code>Approve</code> task and expand the <strong>Node Instances</strong> section in the <strong>Node Actions</strong> panel. Click on the kebab icon of the active <code>Approve</code> instance and click on <strong>Cancel</strong>:</p>
+<p><img alt="Cancel node" src="../../99_images/business_automation/order_management/approve-node-cancel.png"/> 6. Open the <strong>Task Inbox</strong>. Observe that the <code>Approve</code> <strong>User Task</strong> is gone and that we have a new <code>Prepare Offer</code> task.</p>
+<ul>
+<li>Open the <code>Prepare Offer</code> task, set the price to a price which will trigger the rules to automatically approve the order, and complete the task. Go to the process instances view and observe that the process instance has been completed. Enable the <strong>Completed</strong> filter in the <strong>State</strong> filter panel on the left-hand-side of the screen. Open the completed process instance and open its <em>Diagram</em> tab.</li>
+</ul>
+<p><img alt="Process Instance Completed Order Accepted" src="../../99_images/business_automation/order_management/corrected-process-instance-completed.png"/></p>
+</li>
+</ol>
+<h2 id="execute-the-process-via-apis"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.10</span> Execute the process via APIs</h2>
+<p>The Execution Server provides a rich RESTful API that allows user to interact with the process engine and deployed processes via a REST. This powerful feature allows users to create modern user interface and
+applications in their technology of choice (e.g. Entando DXP, ReactJS/Redux, AngularJS, etc.) and integrate these applications with the process engine to create modern, process driven, enterprise applications.</p>
+<p>The Swagger interface provides the description and documentation of the Execution Server’s RESTful API. At the same time, it allows the APIs to be called from the UI. This enables developers and users to quickly test a, in this case, a deployed business process.</p>
+<ol>
+<li>
+<p>Navigate to the <a href="http://localhost:8080/kie-server/docs">KIE Server Swagger Page</a></p>
+</li>
+<li>
+<p>Locate the <strong>Process instances</strong> section. The Process Instances API provides a vast array of operations to interact with the process engine.</p>
+</li>
+<li>
+<p>Locate the <strong>POST</strong> operation for the resource <code>/server/containers/{containerId}/processes/{processId}/instances</code>. This is the RESTful operation with which we can start a new process instance. Expand the operation:</p>
+<p><img alt="Swagger Start" src="../../99_images/business_automation/order_management/start-process-instance-rest-operation.png"/></p>
+</li>
+<li>
+<p>Click on the <strong>Try it out</strong> button.</p>
+<ul>
+<li>
+<p>Set the <strong>containerId</strong> to <code>order-management</code> (in this case we use the alias of the container).</p>
+</li>
+<li>
+<p>Set the <strong>processId</strong> to <code>order-management.OrderManagement</code>.</p>
+</li>
+<li>
+<p>Set <strong>Parameter content type</strong> to <code>application/json</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Set the <strong>Response content type</strong> to <code>application/json</code>.</p>
+</li>
+<li>
+<p>Set the <strong>body</strong> to:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">   </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">     </span><span class="nt">"orderInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">     </span><span class="nt">"com.myspace.order\_management.OrderInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">         </span><span class="nt">"item"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Huawei P10"</span><span class="p">,</span><span class="w"> </span><span class="nt">"urgency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w"> </span><span class="nt">"price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"targetPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"700.0"</span><span class="w"> </span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="p">}</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">},</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">     </span><span class="nt">"supplierInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">     </span><span class="nt">"com.myspace.order\_management.SupplierInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bamAdmin"</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">      </span><span class="p">}</span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">   </span><span class="p">}</span>
+</code></pre></div>
+<p><img alt="Process Instance Rest Request" src="../../99_images/business_automation/order_management/send-new-process-instance-rest-request.png"/></p>
+</li>
+<li>
+<p>Click on the <em>Execute</em> button.</p>
+</li>
+<li>
+<p>If requested, provide the username and password of your <strong>Business Central</strong> and <strong>KIE-Server</strong> user (in this example we have been using u: <code>bamAdmin</code>, p:<code>ibmpam1!</code>).</p>
+<blockquote>
+<p>📘 INFO: If you're using the Linux environment on Skytap use the <em>pamadmin:pamadm1n</em> information</p>
+</blockquote>
+</li>
+<li>
+<p>Inspect the response. Note that the operation returns the process instance id of the started process.</p>
+</li>
+<li>
+<p>Go back to the Business Central workbench. Go the process instances view and inspect the process instance we have just started.</p>
+</li>
+</ol>
+<hr/>
+<p>The RESTful API provides many more operations. Let’s use the API to fetch our <strong>Task List</strong> and complete the <code>Request Offer</code> task.</p>
+<ol>
+<li>
+<p>In the Swagger API, navigate to the <strong>Process queries</strong> section.</p>
+</li>
+<li>
+<p>Find the <strong>GET</strong> operation for the resource <code>/server/queries/tasks/instances/pot-owners</code>. Expand the operation and click on the <strong>Try it out</strong> button.</p>
+</li>
+<li>
+<p>Make sure the <strong>*Response content type</strong> is set to <code>application/json</code>. Leave all the other fields set to their default values.</p>
+</li>
+<li>
+<p>Click on the <strong>Execute</strong> button. This will return all the tasks for our user (in the case of this example this is the <code>bamAdmin</code> user).</p>
+<p><img alt="Get Task Instances Potential Owner" src="../../99_images/business_automation/order_management/get-task-instances-potential-owner.png"/></p>
+</li>
+<li>
+<p>We can see the <code>Prepare Offer</code> task that is available in our inbox. Let’s complete this task.</p>
+</li>
+<li>
+<p>Go to the <strong>Task Instances</strong> section in the Swagger interface and locate the <strong>PUT</strong> operation of the <code>/server/containers/{containerId}/tasks/{taskInstanceId}/states/completed</code> resource. This is the operation with which we can complete a task.</p>
+<ul>
+<li>
+<p>Set the <strong>containerId</strong> to <code>order-management</code>.</p>
+</li>
+<li>
+<p>Set the <strong>taskInstanceId</strong> to the id of the task instance you want to complete. The task instance id  an be found in the list of task instances we got back from our previous REST operation.</p>
+</li>
+<li>
+<p>Set <strong>auto-progress</strong> to <code>true</code>. This controls the auto progression of the taks through the various  states of the task lifecycle (i.e. claimed, started, etc.)</p>
+</li>
+<li>
+<p>Set the <strong>Parameter content type</strong> to <code>application/json</code>.</p>
+</li>
+<li>
+<p>Set the <strong>Response content type</strong> to <code>application/json</code>.</p>
+</li>
+<li>
+<p>Set the <strong>body</strong> to:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">"supplierInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="nt">"com.myspace.order\_management.SupplierInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bamAdmin"</span><span class="p">,</span><span class="w"> </span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">          </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900"</span><span class="p">,</span><span class="w"> </span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">      </span><span class="nt">"deliveryDate"</span><span class="p">:</span><span class="s2">"2020-03-11T12:00:00.000Z"</span><span class="w"> </span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>📘 INFO: If you're using the Linux environment on Skytap use the following.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nt">"supplierInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="nt">"com.myspace.order\_management.SupplierInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pamadmin"</span><span class="p">,</span><span class="w"> </span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">          </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900"</span><span class="p">,</span><span class="w"> </span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">      </span><span class="nt">"deliveryDate"</span><span class="p">:</span><span class="s2">"2020-03-11T12:00:00.000Z"</span><span class="w"> </span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Click on the <strong>Execute</strong> button. If you’ve entered everything correctly, the task will be completed and the process will move to the next wait state, the <code>Prepare Offer</code> task. . Go back to the Business Central workbench. Go to the process instances view. Select the process instance of the task you’ve just completed. Observe that the <code>Prepare Offer</code> task has been completed and that the process is now waiting on the <code>Approve</code> <strong>User Task</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>The rest of the tasks can be completed in the same way via the API.</p>
+<h2 id="using-the-kie-server-client"><span class="enumerate-headings-plugin enumerate-heading-plugin">37.11</span> Using the KIE-Server Client</h2>
+<p>IBM Business Automation Open Edition 8.0 provides a KIE-Server Client API that allows the user to interact with  the KIE-Server from a Java client using a higher level API. It abstracts the data marshalling and unmarshalling and the creation and execution of the RESTful commands from the developer, allowing him/her to focus on developing business logic.</p>
+<p>In this section we will create a simple Java client for our Order Management process.</p>
+<ol>
+<li>
+<p>Create a new Maven Java JAR project in your favourite IDE (e.g. IntelliJ, Eclipse, Visual Studio Code).</p>
+</li>
+<li>
+<p>Add the following dependency to your project:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w"> </span><span class="nt">&lt;groupid&gt;</span>org.kie.server<span class="nt">&lt;/groupid&gt;</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>kie-server-client<span class="nt">&lt;/artifactId&gt;</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span><span class="nt">&lt;version&gt;</span>7.67.2.Final-redhat-00017<span class="nt">&lt;/version&gt;</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">  </span><span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nt">&lt;/dependency&gt;</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>Create a Java package in your <code>src/main/java</code> folder with the name<code>com.myspace.order_management</code>.</p>
+</li>
+<li>
+<p>Download the <code>OrderInfo.java</code> file from <a href="https://raw.githubusercontent.com/DuncanDoyle/order-management-rhpam-lab-client/master/src/main/java/com/myspace/order_management/OrderInfo.java">this</a> location and add it to the package you’ve just created.</p>
+</li>
+<li>
+<p>Download the <em>SupplierInfo.java</em> file from <a href="https://raw.githubusercontent.com/DuncanDoyle/order-management-rhpam-lab-client/master/src/main/java/com/myspace/order_management/SupplierInfo.java">this</a> location and add it to the package.</p>
+</li>
+<li>
+<p>Create a new Java class called <code>Main</code>. Add a <code>public static void main(String[] args)</code> method to your main class.</p>
+</li>
+<li>
+<p>Before we implement our method, we first define a number of constants that we will need when implementing our method (note that the values of your constants can be different depending on your environment, model namespace, etc.):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">KIE_SERVER_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"http://localhost:8080/kie-server/services/rest/server"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CONTAINER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"order-management"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">USERNAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"bamAdmin"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ibmpam1!"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PROCESS_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"order-management.OrderManagement"</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>📘 INFO: If you're using the Linux environment on Skytap use the following.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">KIE_SERVER_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"http://localhost:8080/kie-server/services/rest/server"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CONTAINER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"order-management"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">USERNAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"pamadmin"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"pamadm1n"</span><span class="p">;</span><span class="w"> </span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PROCESS_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"order-management.OrderManagement"</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>KIE-Server client API classes can mostly be retrieved from the <code>KieServicesFactory</code> class. We first need to create a <code>KieServicesConfiguration</code> instance that will hold our credentials and defines how we want our client to communicate with the server:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">KieServicesConfiguration</span><span class="w"> </span><span class="n">kieServicesConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServicesFactory</span><span class="p">.</span><span class="na">newRestConfiguration</span><span class="p">(</span><span class="n">KIE_SERVER_URL</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EnteredCredentialsProvider</span><span class="p">(</span><span class="n">USERNAME</span><span class="p">,</span><span class="w"> </span><span class="n">PASSWORD</span><span class="p">));</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>To allow the KIE-Server Client’s marshaller to marshall and unmarshall instances of our domain model, we need to add our domain model classes to the <code>KieServicesConfiguration</code>.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span><span class="w"> </span><span class="n">extraClasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">extraClasses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">OrderInfo</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">extraClasses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">SupplierInfo</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">kieServicesConfig</span><span class="p">.</span><span class="na">addExtraClasses</span><span class="p">(</span><span class="n">extraClasses</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Next, we create the <code>KieServicesClient</code>:</p>
+<p>~~~java
+KieServicesClient kieServicesClient = KieServicesFactory.newKieServicesClient(kieServicesConfig);
+   ~~</p>
+</li>
+<li>
+<p>From this client we retrieve our <code>ProcessServicesClient</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">ProcessServicesClient</span><span class="w"> </span><span class="n">processServicesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieServicesClient</span><span class="p">.</span><span class="na">getServicesClient</span><span class="p">(</span><span class="n">ProcessServicesClient</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>We now create a <code>Map</code> which we will use to pass the process input variables. We create a new <code>OrderInfo</code> instance and <code>SupplierInfo</code> instance and put them in the <code>Map</code>.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="n">inputData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">OrderInfo</span><span class="w"> </span><span class="n">orderInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderInfo</span><span class="p">();</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">orderInfo</span><span class="p">.</span><span class="na">setItem</span><span class="p">(</span><span class="s">"Huawei P10"</span><span class="p">);</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">orderInfo</span><span class="p">.</span><span class="na">setUrgency</span><span class="p">(</span><span class="s">"low"</span><span class="p">);</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">inputData</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"orderInfo"</span><span class="p">,</span><span class="w"> </span><span class="n">orderInfo</span><span class="p">);</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="n">SupplierInfo</span><span class="w"> </span><span class="n">supplierInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SupplierInfo</span><span class="p">();</span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="n">supplierInfo</span><span class="p">.</span><span class="na">setUser</span><span class="p">(</span><span class="s">"bamAdmin"</span><span class="p">);</span><span class="w"> </span><span class="n">inputData</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"supplierInfo"</span><span class="p">,</span><span class="w"> </span><span class="n">supplierInfo</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+<blockquote>
+<p>📘 INFO: If you're using the Linux environment on Skytap use <em>pamadmin</em>:<em>pamadm1n</em> as the username password</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="n">inputData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">OrderInfo</span><span class="w"> </span><span class="n">orderInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderInfo</span><span class="p">();</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">orderInfo</span><span class="p">.</span><span class="na">setItem</span><span class="p">(</span><span class="s">"Huawei P10"</span><span class="p">);</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">orderInfo</span><span class="p">.</span><span class="na">setUrgency</span><span class="p">(</span><span class="s">"low"</span><span class="p">);</span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="n">inputData</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"orderInfo"</span><span class="p">,</span><span class="w"> </span><span class="n">orderInfo</span><span class="p">);</span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">SupplierInfo</span><span class="w"> </span><span class="n">supplierInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SupplierInfo</span><span class="p">();</span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">supplierInfo</span><span class="p">.</span><span class="na">setUser</span><span class="p">(</span><span class="s">"pamadmin"</span><span class="p">);</span><span class="w"> </span><span class="n">inputData</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"supplierInfo"</span><span class="p">,</span><span class="w"> </span><span class="n">supplierInfo</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>We can now start a new process instance via the <code>ProcessServicesClient</code>.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">Long</span><span class="w"> </span><span class="n">processInstanceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processServicesClient</span><span class="p">.</span><span class="na">startProcess</span><span class="p">(</span><span class="n">CONTAINER_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PROCESS_ID</span><span class="p">,</span><span class="w"> </span><span class="n">inputData</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, we can print the process instance id to <code>System.out</code>.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"New *Order Management* process instance started with instance-id: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">processInstanceId</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p>Compile your project and run it. Observe the output in the console, which should say: <strong>New <em>Order Management</em> process instance started with instance-id</strong></p>
+</li>
+</ol>
+<hr/>
+<p>The complete project can be found here: <a href="https://github.com/timwuthenow/rhpam7-order-management-demo-repo">https://github.com/timwuthenow/rhpam7-order-management-demo-repo</a></p>
+<p>The KIE-Server Client provides more services to interact with the Execution Server:</p>
+<ul>
+<li>
+<p><code>UserTaskServicesClient</code>: provides functionality to interact with the <strong>UserTask</strong> services, for example to claim, start and complete a <strong>User Task</strong>.</p>
+</li>
+<li>
+<p><code>CaseServicesClient</code>: provides functionality to interact with the <strong>Case Management</strong> features of the Execution Server.</p>
+</li>
+<li>
+<p><code>ProcessAdminServicesClient</code>: provides the administration API for processes.</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+<p>We leave as an exercise to the reader to try to complete a <strong>User Task</strong>, of the process instance we’ve just created, using the <code>UserTaskServicesClient</code>.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Order Management Background" class="md-footer__link md-footer__link--prev" href="../02_create-order-management-app/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Order Management Background
+            </div>
+</div>
+</a>
+<a aria-label="Next: Introduction" class="md-footer__link md-footer__link--next" href="../../05_bam_kafka/00_introduction/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "toc.follow", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>

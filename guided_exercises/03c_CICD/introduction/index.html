@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
+<meta content="Tim Wuthenow" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
+<title>IBM Business Automation Open Edition 9.0 CI/CD Overview - Learning IBM Business Automation Open Edition</title>
+<link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ibm-business-automation-open-edition-90-cicd-overview">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Learning IBM Business Automation Open Edition
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              IBM Business Automation Open Edition 9.0 CI/CD Overview
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      IBM Business Automation Open Edition 9.0 Enablement
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../more/">
+      Learn more
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../00_get_tools/introduction/">
+        Guided exercises
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Learning IBM Business Automation Open Edition" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Learning IBM Business Automation Open Edition">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Learning IBM Business Automation Open Edition
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ibm/bamoe-university" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        IBM Business Automation Open Edition 9.0 Enablement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../more/">
+        Learn more
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Guided exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Guided exercises" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Guided exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1">
+          Get the tools for IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get the tools for IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Get the tools for IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/env-setup/">
+        Environment Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_get_tools/git-token/">
+        Git Token Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../00_intro/">Getting Started</a>
+<label for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/02_bamoe_basics/">
+        Overview of IBM Business Automation Manager Open Editions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/03_use_case_overview/">
+        Use Case Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../00_intro/04_env_setup/">
+        Environment Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          Getting Started with Kogito
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Getting Started with Kogito" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Getting Started with Kogito
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_walk_through/">
+        Project Creation and Walk through
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_local/">
+        Deploy Locally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01_getting_started/01_deploy_openshift/">
+        Deploy in OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          TechXchange 2024 (Session 1108)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2024 (Session 1108)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2024 (Session 1108)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/02_exploring_canvas_features-new/">
+        Exploring Canvas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/03_creating_versioning_business_services/">
+        Versioning Business Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/04_running_on_openshift/">
+        Running sample on OpenShift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/05_exploring_dev_ui_console/">
+        Exploring the Dev-UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/06_using_dmn_in_processes/">
+        Adding DMN to Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/07_adding_service_task/">
+        Adding Service Tasks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/08_adding_human_task/">
+        Adding Human Task
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_techXchange/09_running_on_openshift/">
+        Running on OpenShift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../03_process_automation/">Process Automation: Getting Started</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Process Automation: Getting Started" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Process Automation: Getting Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/00_intro_process/">
+        Running a basic process service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/01_using_dmn_bpmn/">
+        Using DMN Decisions in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_process_automation/02_using_service_tasks/">
+        Custom Logic with Service Tasks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          IBM Business Automation Open Edition 9.0 CI/CD Overview
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        IBM Business Automation Open Edition 9.0 CI/CD Overview
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lab-overview">
+    Lab Overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+    Pre-requisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installing-on-openshift">
+    Installing on OpenShift
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-automatic-deployment-on-github">
+    Configuring the automatic deployment on GitHub
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#maven-repository-setup">
+    Maven Repository Setup
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#first-run-of-the-pipeline-to-configure-persistent-volume-claims-for-the-workspaces">
+    First run of the Pipeline to configure Persistent Volume Claims for the workspaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-github-and-pipeline-integration">
+    Testing GitHub and Pipeline integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-web-application">
+    Using the web application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extra-information">
+    Extra information
+  </a>
+<nav aria-label="Extra information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interested-in-kogito">
+    Interested in Kogito?
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          DMN Exercises
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DMN Exercises" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          DMN Exercises
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/getting-started/">
+        Getting Started DMN Exercises - Insurance Price - Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        Intermediate DMN Exercises - Vacation Days - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-authoring/">
+        Vacation Days - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-deployment/">
+        Vacation Days - Consuming Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Exercises - Call Centre - Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-authoring/">
+        Call Centre - Authoring Decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-deployment/">
+        Call Centre - Consuming Decisions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          Order Management
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Order Management" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          Order Management
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/01_try-order-management-app/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/02_create-order-management-app/">
+        Order Management Background
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_order_management/lab-walkthrough/">
+        Lab Walk Through
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Working with event driven processes in IBAMOE
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Working with event driven processes in IBAMOE" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Working with event driven processes in IBAMOE
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/00_introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/01_lab-one-setup/">
+        Setup - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/02_start-event/">
+        Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/03_emitting-events/">
+        Emitting Events in Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_bam_kafka/04_auditing-events/">
+        Auditing through events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10">
+          TechXchange 2023 (Session 1717)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechXchange 2023 (Session 1717)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          TechXchange 2023 (Session 1717)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05_techXchange_2023/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/introduction/">
+        DMN Introduction Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/intermediate-lab-intro/">
+        DMN Intermediate Labs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04_dmn/advanced-lab-intro/">
+        Advanced DMN Lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06_KIE_BC/getting-started-bc/">
+        Getting started bc
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_12" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12">
+          Deploying PAM on OpenShift with Operators
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploying PAM on OpenShift with Operators" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          Deploying PAM on OpenShift with Operators
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/introduction/">
+        Using the Business Automation Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/trial-environment/">
+        Deploying a trial environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/version-upgrade/">
+        Versions and the Operator - Starting Processes with Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/reconciliation/">
+        Automatic reconciliation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configuration/">
+        Kie App Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/configmaps-deleteapp/">
+        ConfigMaps and Deleteting Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator/installer/">
+        Operator Wizard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_13" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tools" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/getting-started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/authoring-decisions/">
+        Authoring and testing decisions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tools/deploying-project/">
+        Deploying and consuming services
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lab-overview">
+    Lab Overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+    Pre-requisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installing-on-openshift">
+    Installing on OpenShift
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-automatic-deployment-on-github">
+    Configuring the automatic deployment on GitHub
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#maven-repository-setup">
+    Maven Repository Setup
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#first-run-of-the-pipeline-to-configure-persistent-volume-claims-for-the-workspaces">
+    First run of the Pipeline to configure Persistent Volume Claims for the workspaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-github-and-pipeline-integration">
+    Testing GitHub and Pipeline integration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-web-application">
+    Using the web application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extra-information">
+    Extra information
+  </a>
+<nav aria-label="Extra information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interested-in-kogito">
+    Interested in Kogito?
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="ibm-business-automation-open-edition-90-cicd-overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.</span> IBM Business Automation Open Edition 9.0 CI/CD Overview</h1>
+<p>This lab was forked from the KIE Live session delived by Rafael Soares on YouTube found <a href="https://youtu.be/AAq8oUvSOUU">here</a>. This lab has been updated to more current releases and also includes a provisioning of Nexus3 to deploy a Maven Repository in your environment. You do not need to do this if you have a Maven repository you can deploy your artifacts to. This lab will be using the OpenShift provided Pipelines built upon Tekton. With IBM Business Automation Open Edition 9.0, the projects are based on Maven artifact architectures, which provides an easy to build and deploy mechanism for all of your product needs. These can be done in Tekton as seen here, or with your favorite/enterprise provided CI/CD tools.</p>
+<p>The project in this lab is a Spring Boot hosted Decision Service that is utilizing the embedded KIE Server that will have a build and deploy triggered through the changes in your code base that are pushed to the specified build branch. With Decision Service projects, it is highly recommended that on all push events you consider a build of the project. This ensures that all the resources that are required are constantly available, breaking changes are identified immediately and if you want to release immediately, it's very easy to do so.</p>
+<h2 id="lab-overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.1</span> Lab Overview</h2>
+<p>Within this lab you will see how you can use OpenShift Pipelines (a.k.a Tekton) to automate the delivery of decision services implemented with IBAMOE. In this lab you will see:</p>
+<ul>
+<li>The automation of repeatable decisions using the <a href="https://www.drools.org/learn/dmn.html">DMN</a> specification;</li>
+<li>Decision tables implementation using XLS.</li>
+<li>Usage of the rules engine based on KIE Server and running on top of SpringBoot</li>
+<li>CI/CD Pipeline implemented using Tekton</li>
+<li>How to configure webhooks in your pipeline to deploy based on changes on a git repository</li>
+<li>Automated tests for decisions (with Test Scenarios ) that are considered during the pipeline execution</li>
+<li>Deployment with zero downtime with OpenShift rolling deployment strategy</li>
+</ul>
+<h2 id="pre-requisites"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.2</span> Pre-requisites</h2>
+<ul>
+<li>
+<p>Java 8</p>
+</li>
+<li>
+<p>OpenShift 4.10+</p>
+</li>
+<li>
+<p>OpenShift Command Line client (<code>oc</code>)</p>
+</li>
+<li>
+<p><a href="https://code.visualstudio.com/">VSCode</a></p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-red-hat-business-automation-bundle">VSCode Business Automation Extension</a></p>
+</li>
+</ul>
+<h2 id="installing-on-openshift"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.3</span> Installing on OpenShift</h2>
+<ol>
+<li>
+<p>Fork this repository, <a href="https://github.com/timwuthenow/business-automation-cicd-showcase.git">to get started</a>.</p>
+<p><img alt="Fork project" src="../../99_images/business_automation/cicd/github-fork-project.png?raw=true" title="Fork project"/></p>
+</li>
+<li>
+<p>Clone your fork to your local machine.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/<span class="si">${</span><span class="nv">yourgithubuser</span><span class="si">}</span>/business-automation-showcase.git
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>business-automation-showcase
+</code></pre></div>
+<ol>
+<li>
+<p>Run the provisioning script (Linux/MacOS):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sh<span class="w"> </span>provision.sh
+</code></pre></div>
+</li>
+<li>
+<p>When the script runs, you will be presented with a prompt to enter a namespace name, which is the namespace that will be created for your environment to be deployed in.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>business-automation-cicd-showcase<span class="w"> </span>%<span class="w"> </span>./provision.sh<span class="w"> </span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>Input<span class="w"> </span>a<span class="w"> </span>namespace<span class="w"> </span>root<span class="w"> </span>-<span class="w"> </span>first<span class="w"> </span>letter<span class="w"> </span>lowercase
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>namespace:<span class="w"> </span>tim-demo
+</code></pre></div>
+</li>
+<li>
+<p>When this completes you will get a console with a few links, as well as an admin password to the Nexus environment that was created.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>******************************************************************
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Use this URL in your GitHub Webhook configuration for automatic deployment
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>http://el-ba-cicd-event-listener-tim-demo-rhdm-kieserver-cicd.openshift.io
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>Use this URL to access the front-end application:                
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>http://decision-service-webclient-tim-demo-rhdm-kieserver-cicd.openshift.io
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>Use this URL to access the Nexus Repository:                
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>http://nexus3-tim-demo-rhdm-kieserver-cicd.openshift.io
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>Use this password for admin access to Nexus 3:                
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>long-strung-out-password-used-for-nexus-repo-admin
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>******************************************************************
+</code></pre></div>
+</li>
+</ol>
+<h2 id="configuring-the-automatic-deployment-on-github"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.4</span> Configuring the automatic deployment on GitHub</h2>
+<ol>
+<li>To configure the webhook for automated deployment, open your fork in your GitHub. Next, add a new webhook by opening "<strong>Settings</strong> -&gt; <strong>Webhook</strong> -&gt; <strong>Add webhook</strong> button".</li>
+</ol>
+<p><img alt="Add GitHub webhook" src="../../99_images/business_automation/cicd/github-new-webhook.png"/></p>
+<ol>
+<li>Fill the form with the information below:</li>
+<li>
+<p><strong>Payload URL</strong>:  provided after the provisioning. You can also get it using the command:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>oc<span class="w"> </span>get<span class="w"> </span>route<span class="w"> </span>el-ba-cicd-event-listener<span class="w"> </span>--template<span class="o">=</span><span class="s1">'http://{{.spec.host}}'</span><span class="k">)</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Content type</strong>: <code>application/json</code></p>
+</li>
+<li><strong>Secret</strong>: empty</li>
+<li><strong>Which events would you like to trigger this webhook?</strong>: <code>Just the push event</code>.</li>
+</ol>
+<p>At this point, you should already have a fully automated integration and deployment lifecycle for the business application. Any changes pushed to your repository will trigger the pipeline in your OpenShift cluster.</p>
+<h2 id="maven-repository-setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.5</span> Maven Repository Setup</h2>
+<p>Typically an environment would already have a Maven repository included, but if you wanted to set one up and use your own, this is a quick run through of what's required to get the Maven Repository to connect to the current location of the IBM Business Automation Open Edition 9.0 Maven artifacts which reside in the Red Hat Maven General Access Repository.</p>
+<p>From the console log you got earlier, you would have received two messages with routes and password infromation for the Nexus repository location (the 3rd item) and the admin password (the commands to get these are found within the <code>provision.sh</code> file). If you hold Control (Linux/Windows) or Command (Mac) and click the link in VSCode, you will go to the location of your newly provisioned Nexus3 repository.</p>
+<p><img alt="Route and Password" src="../../99_images/business_automation/cicd/route-and-password.png" title="Console"/></p>
+<p>By default, the Nexus repository includes a Mirror of <a href="https://repo1.maven.org/maven2/">Maven Central</a> which anyone can publish to following <a href="https://maven.apache.org/repository/guide-central-repository-upload.html">this documentation</a> and is the typical environment for Community releases, but enterprise releases of Open Source Software can be found here as well. The practice within Red Hat, has been to publish artifacts to its own repository found <a href="https://maven.repository.redhat.com/ga/">here</a> as these are the enterprise releases and outside of community. No access is required to pull from this repository. We will configure our newly minted Nexus repository to have a Mirror of the Red Hat Maven General Access Repository so that for any product releases that are used, it will pull them from Red Hat Maven General Access Repository and publish them in the Nexus repository as a proxy. This is common in most enterprise environments instead of a direct connection to the repositories to offset downtime, have security checks, etc.</p>
+<p>To setup the mirrow follow these steps:</p>
+<ol>
+<li>From the route that was produced from the console output (or you can run <code>oc get route | grep nexus</code> where you will need to paste the output) and use that link to get to the Nexus admin screen.</li>
+<li>
+<p>From here, using the admin password that was a part of your console output. Click <code>Sign In</code>. Alternatively the command to run is below.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>oc<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="k">$(</span>oc<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>template<span class="w"> </span>--template<span class="w"> </span><span class="s1">'{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nexus<span class="k">)</span><span class="w"> </span>--<span class="w"> </span>cat<span class="w"> </span>/nexus-data/admin.password<span class="k">)</span><span class="s2">"</span><span class="w">  </span>
+</code></pre></div>
+<p><img alt="Nexus Login" src="../../99_images/business_automation/cicd/nexus-login.png" title="Nexus Login"/></p>
+</li>
+<li>
+<p>Copying the password, login as <code>Admin</code> with the password from the previous command.
+   <img alt="Login with template password" src="../../99_images/business_automation/cicd/admin-password.png" title="Admin Password"/></p>
+</li>
+<li>
+<p>You will now have a Wizard popup to walk you through some setup, we're going to do very minimal changes: you can change the password (e.g. <code>password</code>). Typically in this development/throwaway environment, enabling anonymous access is the best way to do this, so select that option <code>Enable anonymous access</code>. Then click finish.</p>
+<p><img alt="Password Change" src="../../99_images/business_automation/cicd/password-change.png" title="Change password - any is fine" width="50%"/></p>
+<p><img alt="Anonymous Access" src="../../99_images/business_automation/cicd/anonymous-access.png" title="Enable Anonymous Access" width="50%"/></p>
+</li>
+<li>
+<p>Now that the repository is ready to be configured, we are going to create a mirror of the Red Hat Maven General Access Repository so that we can pull resources through the proxy instead of direct. To do this, click the Gear icon (<span class="twemoji"><svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7.429 1.525a6.593 6.593 0 0 1 1.142 0c.036.003.108.036.137.146l.289 1.105c.147.56.55.967.997 1.189.174.086.341.183.501.29.417.278.97.423 1.53.27l1.102-.303c.11-.03.175.016.195.046.219.31.41.641.573.989.014.031.022.11-.059.19l-.815.806c-.411.406-.562.957-.53 1.456a4.588 4.588 0 0 1 0 .582c-.032.499.119 1.05.53 1.456l.815.806c.08.08.073.159.059.19a6.494 6.494 0 0 1-.573.99c-.02.029-.086.074-.195.045l-1.103-.303c-.559-.153-1.112-.008-1.529.27-.16.107-.327.204-.5.29-.449.222-.851.628-.998 1.189l-.289 1.105c-.029.11-.101.143-.137.146a6.613 6.613 0 0 1-1.142 0c-.036-.003-.108-.037-.137-.146l-.289-1.105c-.147-.56-.55-.967-.997-1.189a4.502 4.502 0 0 1-.501-.29c-.417-.278-.97-.423-1.53-.27l-1.102.303c-.11.03-.175-.016-.195-.046a6.492 6.492 0 0 1-.573-.989c-.014-.031-.022-.11.059-.19l.815-.806c.411-.406.562-.957.53-1.456a4.587 4.587 0 0 1 0-.582c.032-.499-.119-1.05-.53-1.456l-.815-.806c-.08-.08-.073-.159-.059-.19a6.44 6.44 0 0 1 .573-.99c.02-.029.086-.075.195-.045l1.103.303c.559.153 1.112.008 1.529-.27.16-.107.327-.204.5-.29.449-.222.851-.628.998-1.189l.289-1.105c.029-.11.101-.143.137-.146zM8 0c-.236 0-.47.01-.701.03-.743.065-1.29.615-1.458 1.261l-.29 1.106c-.017.066-.078.158-.211.224a5.994 5.994 0 0 0-.668.386c-.123.082-.233.09-.3.071L3.27 2.776c-.644-.177-1.392.02-1.82.63a7.977 7.977 0 0 0-.704 1.217c-.315.675-.111 1.422.363 1.891l.815.806c.05.048.098.147.088.294a6.084 6.084 0 0 0 0 .772c.01.147-.038.246-.088.294l-.815.806c-.474.469-.678 1.216-.363 1.891.2.428.436.835.704 1.218.428.609 1.176.806 1.82.63l1.103-.303c.066-.019.176-.011.299.071.213.143.436.272.668.386.133.066.194.158.212.224l.289 1.106c.169.646.715 1.196 1.458 1.26a8.094 8.094 0 0 0 1.402 0c.743-.064 1.29-.614 1.458-1.26l.29-1.106c.017-.066.078-.158.211-.224a5.98 5.98 0 0 0 .668-.386c.123-.082.233-.09.3-.071l1.102.302c.644.177 1.392-.02 1.82-.63.268-.382.505-.789.704-1.217.315-.675.111-1.422-.364-1.891l-.814-.806c-.05-.048-.098-.147-.088-.294a6.1 6.1 0 0 0 0-.772c-.01-.147.039-.246.088-.294l.814-.806c.475-.469.679-1.216.364-1.891a7.992 7.992 0 0 0-.704-1.218c-.428-.609-1.176-.806-1.82-.63l-1.103.303c-.066.019-.176.011-.299-.071a5.991 5.991 0 0 0-.668-.386c-.133-.066-.194-.158-.212-.224L10.16 1.29C9.99.645 9.444.095 8.701.031A8.094 8.094 0 0 0 8 0zm1.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" fill-rule="evenodd"></path></svg></span>) to open the settings screen.
+    <img alt="Nexus Settings" src="../../99_images/business_automation/cicd/settings-nexus.png" title="Open the settings screen"/></p>
+</li>
+<li>
+<p>From here click <code>Repositories</code> to view the current repositories and also to be able to create another.
+    <img alt="Click Repositories" src="../../99_images/business_automation/cicd/open-repos.png" title="Open Repositories"/></p>
+</li>
+<li>
+<p>Here you will see a list of default repositorues. By default, Nexus will include the connection to <em>Maven_Central</em>, but we'd also like to add the Red Hat Maven General Access Repository connection to pull the resources from this repository. To do so, click <code>Create Repository</code> to build a new repository.
+    <img alt="Create Repository" src="../../99_images/business_automation/cicd/create-repository.png" title="Click Create Repository"/></p>
+</li>
+<li>
+<p>Scroll down and we're going to create a <code>maven2 (proxy)</code>. The reason we're doing a proxy is that we're going to allow our repository to reach out to the Red Hat Maven General Access Repository to retrieve artifacts it does not already have, but if it has previously pulled them, will be stored in the Nexus repository's cache. This way if there are new releases, you can pull as required, but are not taking the entire repository as required.
+    <img alt="Maven2 Proxy" src="../../99_images/business_automation/cicd/maven2-proxy.png" title="Click maven2 (proxy)"/></p>
+</li>
+<li>
+<p>On the form that opens, you will add the following information (the name red_hat_ga needs to be exact to match the lab expectations):</p>
+</li>
+<li><em>Name</em>: <code>red_hat_ga</code></li>
+<li><em>What type of artifacts does this repository store</em>: <code>Release</code></li>
+<li>
+<p><em>Remote Storage</em>: <code>https://maven.repository.redhat.com/ga</code></p>
+<p><img alt="Form settings" src="../../99_images/business_automation/cicd/nexus-form.png" title="Enter the values to match"/></p>
+</li>
+<li>
+<p>Click <code>Create repository</code> at the bottom to deploy the proxy instance of the Red Hat Maven General Access Repository</p>
+<p><img alt="Finish the form" src="../../99_images/business_automation/cicd/create-button.png"/></p>
+</li>
+<li>
+<p>Your repositories should now be setup and look similar to the below.</p>
+<p><img alt="Completed Repository" src="../../99_images/business_automation/cicd/repo-finished.png" title="You now should have a red_hat_ga repository available"/></p>
+</li>
+</ol>
+<h2 id="first-run-of-the-pipeline-to-configure-persistent-volume-claims-for-the-workspaces"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.6</span> First run of the Pipeline to configure Persistent Volume Claims for the workspaces</h2>
+<p>With the first run of the pipeline, you may have to run the pipeline manually. To do so, login to the OpenShift console for your project. You can see the console URL by running <code>oc whoami --show-console</code> and that will return the console link, Command/Control click it to open from VS Code.</p>
+<p>Once logged in, make sure to go to our project that you created in the <code>provision.sh</code> script. Follow these steps to run the pipeline for the first time.</p>
+<ol>
+<li>
+<p>Make sure you change your project to the one you created in <code>provision.sh</code>. From the cluster home page, you can click <code>Pipelines</code> and then click <code>Pipelines</code></p>
+<p><img alt="Navigate to Pipelines" src="../../99_images/business_automation/cicd/pipelines-open.png"/></p>
+</li>
+<li>
+<p>From the Pipelines screen, confirm your namespace matches what you created in the first part of the lab and after that, click the <em>kebab</em> icon to open the menu to <code>Start Pipeline</code>.</p>
+<p><img alt="Start Pipeline Menu" src="../../99_images/business_automation/cicd/start-pipeline.png"/></p>
+</li>
+<li>
+<p>Once you click start pipeline, a form will come up to set some settings for the pipeline. These should only have to be the first time you run this pipeline. You will modify the ones below if you followed the previous section for the workspaces to align to the ConfigMap of <code>settings.xml</code> used by Maven to build and the Persistent Volumes used for workspace data (git clones and the Maven artifacts).</p>
+</li>
+<li>
+<p><em>maven-local-repo</em>: click the dropdown menu and select <code>PersistentVolumeClaim</code> and in the <em>Select a PVC</em> dropdown that appears, select <code>maven-repo-pvc</code></p>
+<p><img alt="Maven PVC" src="../../99_images/business_automation/cicd/pvc-maven.png"/></p>
+</li>
+<li>
+<p><em>maven-settings</em>: click the drop down and select <code>Config Map</code> and select from the new dropdown <code>custom-maven-settings</code></p>
+<p><img alt="Maven settings" src="../../99_images/business_automation/cicd/maven-settings.png"/></p>
+</li>
+<li>
+<p><em>shared-workspace</em>: click the dropdown menu and select <code>PersistentVolumeClaim</code> and in the <em>Select a PVC</em> dropdown, select <code>source-workspace-pvc</code></p>
+<p><img alt="Final Pipeline Form" src="../../99_images/business_automation/cicd/final-form.png"/></p>
+</li>
+<li>
+<p>With this complete you can click the <code>Start</code> button to begin the pipeline</p>
+<p><img alt="Run the pipeline" src="../../99_images/business_automation/cicd/begin-pipeline.png"/></p>
+</li>
+</ol>
+<h2 id="testing-github-and-pipeline-integration"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.7</span> Testing GitHub and Pipeline integration</h2>
+<p>If you run this test, a new deployment should be triggered. The pipeline will deploy the decision service for the first time.</p>
+<ol>
+<li>
+<p>In your terminal, access your project folder.</p>
+</li>
+<li>
+<p>Commit and push. You can use this empty commit sample if you need:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"an empty commit to test the pipeline"</span><span class="w"> </span>--allow-empty
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+</code></pre></div>
+<ol>
+<li>In OpenShift, access: "<strong>Pipelines</strong> -&gt; <strong>ba-cicd-pipeline</strong> -&gt; <strong>Pipeline Runs</strong> " and check the progress of your application deployment.
+    <img alt="Pipeline progress" src="../../99_images/business_automation/cicd/ocp-demo-pipeline-run.png?raw=true" title="Pipeline progress"/></li>
+</ol>
+<h2 id="using-the-web-application"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.8</span> Using the web application</h2>
+<p>The web application allows you to interact with the deployed rules and decisions in a specific Decision Server (KieServer or Kogito runtime). To use the deployed web app to interact with the deployed decisions, first you need to set the KIE Server URL in the web app settings.</p>
+<ol>
+<li>
+<p>The deployed decision service is now deployed and accessible. Get your deployed KIE Server route. You can use the command:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"http://"</span><span class="k">$(</span>oc<span class="w"> </span>get<span class="w"> </span>route<span class="w"> </span>business-application-service-route<span class="w"> </span>-n<span class="w"> </span>rhdm-kieserver-cicd<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'FNR &gt; 1 {print $2}'</span><span class="k">)</span><span class="s2">"/rest/server"</span>
+</code></pre></div>
+</li>
+<li>
+<p>Open your web application. The URL was provided in the installation step. If you lost it, use the command</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>oc<span class="w"> </span>get<span class="w"> </span>route<span class="w"> </span>decision-service-webclient<span class="w"> </span>--template<span class="o">=</span><span class="s1">'http://{{.spec.host}}'</span><span class="w"> </span>-n<span class="w"> </span>rhdm-kieserver-cicd
+</code></pre></div>
+<ol>
+<li>In the web application, click on the settings icon on the top right corner. In the field <code>Kie Server Base URL</code>, insert KIE Server URL.</li>
+<li>You can use the "Test Connection" button to validate the communication between the two services, then Save.</li>
+<li>You should be able to test the available decisions and rules.</li>
+</ol>
+<p><img alt="Decision Result in Web app" src="../../99_images/business_automation/cicd/webapplication-dmn-result.png?raw=true" title="Decision Result in Web app"/></p>
+<p>With this, the whole demo is now set up and ready to use.</p>
+<blockquote>
+<p>NOTE: If you get interested in see how this webapp was developed the src code is available <a href="https://github.com/rafaeltuelho/decision-service-webclient">here</a></p>
+</blockquote>
+<h2 id="extra-information"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.9</span> Extra information</h2>
+<p>The provisioning script <code>provision.sh</code> will:</p>
+<ul>
+<li>Create a new namespace called rhdm-kieserver-cicd</li>
+<li>Install OpenShift Pipelines</li>
+<li>Create the pipeline resources</li>
+<li>Deploy a front-end application that you can use to interact with the decision service once you deploy it.</li>
+</ul>
+<p>At the moment there are 4 projects in this repository:</p>
+<ul>
+<li><a href="decisions-showcase/">decisions-showcase</a>: Decision use cases using Business Rules (Drools) and Decision Logic (DMN)</li>
+<li><a href="business-application-service/">business-application-service</a>: Spring Boot runtime based Kie Server exposing the API for Decisions provided with this Showcase demo</li>
+<li><a href="cicd/">cicd</a>: Tekton Pipeline resources to implement a fully automated CI/CD pipeline for your Business Application Services</li>
+<li><a href="monitoring/">monitoring</a>: working in progress...</li>
+</ul>
+<p>To see a detailed instruction on each service and each deployment processes (with images), check:</p>
+<ul>
+<li><a href="cicd/readme.md">Provisioning and testing the CI/CD Pipeline</a></li>
+<li><a href="https://github.com/rafaeltuelho/decision-service-webclient/blob/main/README.md">Provisioning and testing the webclient application</a></li>
+</ul>
+<h3 id="interested-in-kogito"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.9.1</span> Interested in Kogito?</h3>
+<p>Check out the <a href="https://github.com/jbossdemocentral/business-automation-cicd-showcase/tree/kogito-quarkus">kogito-quarkus</a> branch to see this same demo but using Kogito based Decision Services instead of KieServer.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Custom Logic with Service Tasks" class="md-footer__link md-footer__link--prev" href="../../03_process_automation/02_using_service_tasks/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Custom Logic with Service Tasks
+            </div>
+</div>
+</a>
+<a aria-label="Next: Introduction" class="md-footer__link md-footer__link--next" href="../../04_dmn/introduction/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "toc.follow", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>
