@@ -1,6 +1,6 @@
 # Learn business automation
 
-Access the labs currently at: https://bamoe.university will be coming to IBM Open Source community soon!
+Access the labs currently at: http://bamoe-university.com will be coming to IBM Open Source community soon!
 
 ---
 
