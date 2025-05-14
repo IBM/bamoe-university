@@ -6,10 +6,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
-<title>IBM Business Automation Open Edition 9.0 CI/CD Overview - Learning IBM Business Automation Open Edition</title>
+<title>IBM Business Automation Open Edition 9.2.x CI/CD Overview - Learning IBM Business Automation Open Edition</title>
 <link href="../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#ibm-business-automation-open-edition-90-cicd-overview">
+<a class="md-skip" href="#ibm-business-automation-open-edition-92x-cicd-overview">
           Skip to content
         </a>
 </div>
@@ -48,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              IBM Business Automation Open Edition 9.0 CI/CD Overview
+              IBM Business Automation Open Edition 9.2.x CI/CD Overview
             
           </span>
 </div>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -368,11 +368,11 @@
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          IBM Business Automation Open Edition 9.0 CI/CD Overview
+          IBM Business Automation Open Edition 9.2.x CI/CD Overview
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -765,11 +765,11 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="ibm-business-automation-open-edition-90-cicd-overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.</span> IBM Business Automation Open Edition 9.0 CI/CD Overview</h1>
-<p>This lab was forked from the KIE Live session delived by Rafael Soares on YouTube found <a href="https://youtu.be/AAq8oUvSOUU">here</a>. This lab has been updated to more current releases and also includes a provisioning of Nexus3 to deploy a Maven Repository in your environment. You do not need to do this if you have a Maven repository you can deploy your artifacts to. This lab will be using the OpenShift provided Pipelines built upon Tekton. With IBM Business Automation Open Edition 9.0, the projects are based on Maven artifact architectures, which provides an easy to build and deploy mechanism for all of your product needs. These can be done in Tekton as seen here, or with your favorite/enterprise provided CI/CD tools.</p>
+<h1 id="ibm-business-automation-open-edition-92x-cicd-overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.</span> IBM Business Automation Open Edition 9.2.x CI/CD Overview</h1>
+<p>This lab was forked from the KIE Live session delived by Rafael Soares on YouTube found <a href="https://youtu.be/AAq8oUvSOUU">here</a>. This lab has been updated to more current releases and also includes a provisioning of Nexus3 to deploy a Maven Repository in your environment. You do not need to do this if you have a Maven repository you can deploy your artifacts to. This lab will be using the OpenShift provided Pipelines built upon Tekton. With IBM Business Automation Open Edition 9.2.x, the projects are based on Maven artifact architectures, which provides an easy to build and deploy mechanism for all of your product needs. These can be done in Tekton as seen here, or with your favorite/enterprise provided CI/CD tools.</p>
 <p>The project in this lab is a Spring Boot hosted Decision Service that is utilizing the embedded KIE Server that will have a build and deploy triggered through the changes in your code base that are pushed to the specified build branch. With Decision Service projects, it is highly recommended that on all push events you consider a build of the project. This ensures that all the resources that are required are constantly available, breaking changes are identified immediately and if you want to release immediately, it's very easy to do so.</p>
 <h2 id="lab-overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.1</span> Lab Overview</h2>
-<p>Within this lab you will see how you can use OpenShift Pipelines (a.k.a Tekton) to automate the delivery of decision services implemented with IBAMOE. In this lab you will see:</p>
+<p>Within this lab you will see how you can use OpenShift Pipelines (a.k.a Tekton) to automate the delivery of decision services implemented with BAMOE. In this lab you will see:</p>
 <ul>
 <li>The automation of repeatable decisions using the <a href="https://www.drools.org/learn/dmn.html">DMN</a> specification;</li>
 <li>Decision tables implementation using XLS.</li>
@@ -863,7 +863,7 @@
 </ol>
 <p>At this point, you should already have a fully automated integration and deployment lifecycle for the business application. Any changes pushed to your repository will trigger the pipeline in your OpenShift cluster.</p>
 <h2 id="maven-repository-setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">26.5</span> Maven Repository Setup</h2>
-<p>Typically an environment would already have a Maven repository included, but if you wanted to set one up and use your own, this is a quick run through of what's required to get the Maven Repository to connect to the current location of the IBM Business Automation Open Edition 9.0 Maven artifacts which reside in the Red Hat Maven General Access Repository.</p>
+<p>Typically an environment would already have a Maven repository included, but if you wanted to set one up and use your own, this is a quick run through of what's required to get the Maven Repository to connect to the current location of the IBM Business Automation Open Edition 9.2.x Maven artifacts which reside in the Red Hat Maven General Access Repository.</p>
 <p>From the console log you got earlier, you would have received two messages with routes and password infromation for the Nexus repository location (the 3rd item) and the admin password (the commands to get these are found within the <code>provision.sh</code> file). If you hold Control (Linux/Windows) or Command (Mac) and click the link in VSCode, you will go to the location of your newly provisioned Nexus3 repository.</p>
 <p><img alt="Route and Password" src="../../99_images/business_automation/cicd/route-and-password.png" title="Console"/></p>
 <p>By default, the Nexus repository includes a Mirror of <a href="https://repo1.maven.org/maven2/">Maven Central</a> which anyone can publish to following <a href="https://maven.apache.org/repository/guide-central-repository-upload.html">this documentation</a> and is the typical environment for Community releases, but enterprise releases of Open Source Software can be found here as well. The practice within Red Hat, has been to publish artifacts to its own repository found <a href="https://maven.repository.redhat.com/ga/">here</a> as these are the enterprise releases and outside of community. No access is required to pull from this repository. We will configure our newly minted Nexus repository to have a Mirror of the Red Hat Maven General Access Repository so that for any product releases that are used, it will pull them from Red Hat Maven General Access Repository and publish them in the Nexus repository as a proxy. This is common in most enterprise environments instead of a direct connection to the repositories to offset downtime, have security checks, etc.</p>
@@ -1019,7 +1019,7 @@
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 6, 2023 14:35:12">2023-07-06</span>
 </small>
 </div>
 </article>

@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
 <title>Auditing through events - Learning IBM Business Automation Open Edition</title>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -367,7 +367,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../03c_CICD/introduction/">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
@@ -670,10 +670,10 @@
 <h1 id="auditing-with-kafka"><span class="enumerate-headings-plugin enumerate-heading-plugin">42.</span> Auditing with Kafka</h1>
 <p>When using the Kafka extension in IBM Business Automation Open Edition 8.0, every transaction for processes, cases and tasks execution can be tracked via events. For each of these categories, we'll have an event emitted to a Kafka topic, in other words, we'll have three topics here: <code>jbpm-processes-events</code>, <code>jbpm-tasks-events</code>, <code>jbpm-cases-events</code>.</p>
 <p>To enable this feature, you need to add the <code>jbpm-event-emitters-kafka</code> library to the engine, KIE Server. This can either be downloaded in the <a href="https://search.maven.org/artifact/org.jbpm/jbpm-event-emitters-kafka/">community repository for jBPM</a> or via the Red Hat customer portal: <a href="https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&amp;product=rhpam&amp;version=7.10.0">rhpam-7.10.0-maven-repository.zip</a>.</p>
-<p>The maven repository have ~1.5GB. In order to facilitate the execution of this lab, you can download the <code>jbpm-event-emmiters-kafka</code> for IBAMOE {{ version }} <a href="https://drive.google.com/file/d/1kKnhGMj1Z691vXGanQkgLfGkfGXXmKa7/view?usp=sharing">here</a>; <strong>FIGURE OUT THE REPLACEMENT</strong></p>
+<p>The maven repository have ~1.5GB. In order to facilitate the execution of this lab, you can download the <code>jbpm-event-emmiters-kafka</code> for BAMOE {{ version }} <a href="https://drive.google.com/file/d/1kKnhGMj1Z691vXGanQkgLfGkfGXXmKa7/view?usp=sharing">here</a>; <strong>FIGURE OUT THE REPLACEMENT</strong></p>
 <ol>
 <li>
-<p>Stop IBAMOE.</p>
+<p>Stop BAMOE.</p>
 </li>
 <li>
 <p>Download the <code>jbpm-event-emitters-kafka</code>. It's name will be similar to <code>jbpm-event-emitters-kafka-7.67.2.Final-redhat-00017.jar</code>.</p>
@@ -685,7 +685,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Next,startIBAMOE server.</p>
+<p>Next,startBAMOE server.</p>
 </li>
 </ol>
 <p>Let's check the auditing behavior.</p>
@@ -730,7 +730,7 @@
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="September 14, 2024 15:40:09">2024-09-14</span>
 </small>
 </div>
 </article>

@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
 <title>Setup - Starting Processes with Events - Learning IBM Business Automation Open Edition</title>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#ibamoe-90-kafka-extension">
+<a class="md-skip" href="#bamoe-920-kafka-extension">
           Skip to content
         </a>
 </div>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -367,7 +367,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../03c_CICD/introduction/">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
@@ -667,18 +667,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="ibamoe-90-kafka-extension"><span class="enumerate-headings-plugin enumerate-heading-plugin">39.</span> IBAMOE 9.0 Kafka extension</h1>
-<p>In order to be able to start processes based on new events, we will need to configure the IBAMOEKafka extension.</p>
-<p>The IBAMOE Kafka extension allows the KIE Server (process and decision engine) to react to events and publish events to kafka topics.</p>
+<h1 id="bamoe-920-kafka-extension"><span class="enumerate-headings-plugin enumerate-heading-plugin">39.</span> BAMOE 9.2.0 Kafka extension</h1>
+<p>In order to be able to start processes based on new events, we will need to configure the BAMOEKafka extension.</p>
+<p>The BAMOE Kafka extension allows the KIE Server (process and decision engine) to react to events and publish events to kafka topics.</p>
 <blockquote>
-<p>📘 INFO: There are several options in IBAMOE to customize the Kafka address, topic names, etc. In our case, we’re using the default Kafka address, which is, localhost:9092. More customization information can be found in the official Red Hat product documentation: <a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.13/html-single/integrating_red_hat_process_automation_manager_with_other_products_and_components/index#kieserver-kafka-proc_integrating-amq-streams">Configuring a KIE Server to send and receive Kafka messages from the process.</a></p>
+<p>📘 INFO: There are several options in BAMOE to customize the Kafka address, topic names, etc. In our case, we’re using the default Kafka address, which is, localhost:9092. More customization information can be found in the official Red Hat product documentation: <a href="https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.13/html-single/integrating_red_hat_process_automation_manager_with_other_products_and_components/index#kieserver-kafka-proc_integrating-amq-streams">Configuring a KIE Server to send and receive Kafka messages from the process.</a></p>
 </blockquote>
-<p>In this setup steps, we will configure IBAMOE only in the <em>server level</em> - <em>we are not yet configuring the business project</em>. We will see how to configure the project as we move forward on the labs.</p>
+<p>In this setup steps, we will configure BAMOE only in the <em>server level</em> - <em>we are not yet configuring the business project</em>. We will see how to configure the project as we move forward on the labs.</p>
 <h2 id="enabling-the-kafka-extension"><span class="enumerate-headings-plugin enumerate-heading-plugin">39.1</span> Enabling the Kafka extension</h2>
 <p>We can configure the engine to support different capabilities. In order to enable processes to be started through eventing, we only need to enable the extension via system property.</p>
 <ol>
 <li>
-<p>With IBAMOE up and running, execute the following, where <code>$JBOSS_HOME</code> is the installation directory of the JBoss EAP instance you're running KIE Server from:</p>
+<p>With BAMOE up and running, execute the following, where <code>$JBOSS_HOME</code> is the installation directory of the JBoss EAP instance you're running KIE Server from:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nv">$JBOSS_HOME</span>/bin/jboss-cli.sh<span class="w"> </span>-c
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">[</span>standalone@localhost:9990<span class="w"> </span>/<span class="o">]</span><span class="w"> </span>/system-property<span class="o">=</span>org.kie.kafka.server.ext.disabled:add<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="nb">false</span><span class="o">)</span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="o">[</span>standalone@localhost:9990<span class="w"> </span>/<span class="o">]</span><span class="w"> </span>:shutdown<span class="o">(</span><span class="nv">restart</span><span class="o">=</span><span class="nb">true</span><span class="o">)</span>
@@ -686,7 +686,7 @@
 </li>
 </ol>
 <p>The first command will enable the Kafka extension. Next, we're restarting EAP so that the new configuration is active. You can check EAP logs to confirm it is restarting.</p>
-<p>The following output will show up in IBAMOE logs:</p>
+<p>The following output will show up in BAMOE logs:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">INFO  [org.kie.server.services.impl.KieServerImpl] (ServerService Thread Pool -- 74) Kafka KIE Server extension has been successfully registered as server extension</span>
 </code></pre></div>
 <p>This is the only configuration you will need in a server level to be able to start processes using events.</p>
@@ -695,7 +695,7 @@
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 5, 2022 20:55:30">2022-10-05</span>
 </small>
 </div>
 </article>

@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
 <title>Using the Business Automation Operator - Learning IBM Business Automation Open Edition</title>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -367,7 +367,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../03c_CICD/introduction/">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
@@ -688,22 +688,22 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="red-hat-pam-operator-on-openshift-4"><span class="enumerate-headings-plugin enumerate-heading-plugin">45.</span> Red Hat PAM Operator on OpenShift 4</h1>
-<p>In this lab we will use the enhanced Business Automation Operator <strong>7.10+</strong> to deploy a number of IBM Business Automation Open Edition 9.0 environments on OpenShift <strong>4.</strong></p>
+<p>In this lab we will use the enhanced Business Automation Operator <strong>7.10+</strong> to deploy a number of IBM Business Automation Open Edition 9.2.x environments on OpenShift <strong>4.</strong></p>
 <h2 id="goal"><span class="enumerate-headings-plugin enumerate-heading-plugin">45.1</span> Goal</h2>
 <ul>
 <li>Install the Business Automation Operator on OCP 4.</li>
-<li>Use the Business Automation Operator 8.0.4 to deploy a number of IBM Business Automation Open Edition 9.0 environments.</li>
+<li>Use the Business Automation Operator 8.0.7 to deploy a number of IBM Business Automation Open Edition 9.2.x environments.</li>
 <li>Change the KIE-App deployment CRDs to show reconciliation.</li>
 <li>Change Operator ConfigMaps to make advanced configuration changes to the KIE-App.</li>
 </ul>
 <h2 id="problem-statement"><span class="enumerate-headings-plugin enumerate-heading-plugin">45.2</span> Problem Statement</h2>
-<p>In this lab, the goal is to provision and manage various IBM Business Automation Open Edition 9.0 architectures using the Business Automation Operator on OpenShift 4.</p>
+<p>In this lab, the goal is to provision and manage various IBM Business Automation Open Edition 9.2.x architectures using the Business Automation Operator on OpenShift 4.</p>
 <ul>
-<li>We deploy an IBAMOE Trial environment, which is a basic ephemeral environment that does not require any form of storage (e.g. persistent volume, database).</li>
+<li>We deploy an BAMOE Trial environment, which is a basic ephemeral environment that does not require any form of storage (e.g. persistent volume, database).</li>
 <li>We explore Operator reconciliation features by removing provisioned resources like Services and Deployment Configs.</li>
 <li>We alter the deployment through the Operator to show how the provisioned environment changes.</li>
 <li>We change a KIE configuration parameter in the Business Automation Operator ConfigMap to demonstrate advanced configuration changes.</li>
-<li>We provision a more sophisticated Production environment, to show creation of PVCs, deployment of databases and integration with IBAMOE Smart Router.</li>
+<li>We provision a more sophisticated Production environment, to show creation of PVCs, deployment of databases and integration with BAMOE Smart Router.</li>
 <li>We use the Operator Installer console to install a new KIE-App deployment.</li>
 </ul>
 <h2 id="first-steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">45.3</span> First steps</h2>
@@ -749,13 +749,13 @@ If you attending to an enablement with a provisioned environment. We provisioned
 
 1. Click on **Business Automation** to access the **Business Automation** Operator instance in your project. 
 
-    ![IBAMOE Operator](../99_images/business_automation/operator/operator-lab-ba-operator-overview.png){:width="650px"} -->
+    ![BAMOE Operator](../99_images/business_automation/operator/operator-lab-ba-operator-overview.png){:width="650px"} -->
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 21, 2023 15:04:35">2023-11-21</span>
 </small>
 </div>
 </article>

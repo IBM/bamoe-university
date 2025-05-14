@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
 <title>ConfigMaps and Deleteting Projects - Learning IBM Business Automation Open Edition</title>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -367,7 +367,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../03c_CICD/introduction/">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
@@ -678,9 +678,9 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="configmaps"><span class="enumerate-headings-plugin enumerate-heading-plugin">50.</span> ConfigMaps</h1>
-<p>The Operator stores its configuration in a number of <em>ConfigurationMaps</em>. These ConfigurationMaps can be used to change more advanced configurations that can not be configured in the KieApp YAML. In the case the Operator upgrades the version of your IBAMOE environment, the Operator is aware that one of the ConfigMaps has changed and will make a backup of it during the upgrade.</p>
+<p>The Operator stores its configuration in a number of <em>ConfigurationMaps</em>. These ConfigurationMaps can be used to change more advanced configurations that can not be configured in the KieApp YAML. In the case the Operator upgrades the version of your BAMOE environment, the Operator is aware that one of the ConfigMaps has changed and will make a backup of it during the upgrade.</p>
 <h2 id="viewing-and-editing-configmaps"><span class="enumerate-headings-plugin enumerate-heading-plugin">50.1</span> Viewing and editing ConfigMaps</h2>
-<p>A powerful feature of OpenShift are ConfigMaps which provide mechanisms to inject containers with configuration data while keeping containers agnostic of OpenShift Container Platform. A ConfigMap can be used to store fine-grained information like individual properties or coarse-grained information like entire configuration files or JSON blobs. In this section, we will modify some of the default health properties that are different than the defaults provided with IBAMOE and we want them to roll out to every container that gets created with the operator.</p>
+<p>A powerful feature of OpenShift are ConfigMaps which provide mechanisms to inject containers with configuration data while keeping containers agnostic of OpenShift Container Platform. A ConfigMap can be used to store fine-grained information like individual properties or coarse-grained information like entire configuration files or JSON blobs. In this section, we will modify some of the default health properties that are different than the defaults provided with BAMOE and we want them to roll out to every container that gets created with the operator.</p>
 <ol>
 <li>
 <p>In the OpenShift Console, open <strong>Workloads → Config Maps</strong>. <img alt="Config Maps" src="../../99_images/business_automation/operator/operator-lab-config-maps.png" width="650px"/></p>
@@ -717,7 +717,7 @@
 </li>
 </ol>
 <h2 id="deleting-an-application"><span class="enumerate-headings-plugin enumerate-heading-plugin">50.2</span> Deleting an application</h2>
-<p>Apart from provisioning an IBAMOE application, the Operator also allows us to easily delete an application.</p>
+<p>Apart from provisioning an BAMOE application, the Operator also allows us to easily delete an application.</p>
 <ol>
 <li>
 <p>Navigate to <strong>Operators → Installed Operators → Business Automation → KieApp</strong>.</p>
@@ -726,7 +726,7 @@
 <p>Click on the kebab icon of the <code>rhpam-trial</code> KieApp and click <strong>Delete</strong>. <img alt="Delete trial" src="../../99_images/business_automation/operator/operator-lab-rhpam-trial-delete-kie-app.png" width="650px"/></p>
 </li>
 <li>
-<p>Navigate back to <strong>Workloads → Deployment Configs</strong> and note that the IBAMOE Deployment Configs have been removed. <img alt="Validate deletion" src="../../99_images/business_automation/operator/operator-lab-rhpam-trial-dc-deleted.png" width="650px"/></p>
+<p>Navigate back to <strong>Workloads → Deployment Configs</strong> and note that the BAMOE Deployment Configs have been removed. <img alt="Validate deletion" src="../../99_images/business_automation/operator/operator-lab-rhpam-trial-dc-deleted.png" width="650px"/></p>
 </li>
 </ol>
 <hr/>
@@ -734,7 +734,7 @@
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 5, 2022 20:55:30">2022-10-05</span>
 </small>
 </div>
 </article>

@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A set of demos and guided-exercises about business automation with Apache KIE projects" name="description"/>
-<meta content="Tim Wuthenow" name="author"/>
+<meta content="IBM Technical Sales" name="author"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.3.8" name="generator"/>
 <title>Environment Setup - Learning IBM Business Automation Open Edition</title>
@@ -113,7 +113,7 @@
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../..">
-      IBM Business Automation Open Edition 9.0 Enablement
+      IBM Business Automation Open Edition 9.2.x Enablement
     </a>
 </li>
 <li class="md-tabs__item">
@@ -156,7 +156,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
-        IBM Business Automation Open Edition 9.0 Enablement
+        IBM Business Automation Open Edition 9.2.x Enablement
       </a>
 </li>
 <li class="md-nav__item">
@@ -447,7 +447,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../03c_CICD/introduction/">
-        IBM Business Automation Open Edition 9.0 CI/CD Overview
+        IBM Business Automation Open Edition 9.2.x CI/CD Overview
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
@@ -793,17 +793,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="environment-setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.</span> Environment Setup</h1>
 <p>This section will cover the deployment of some of the tools locally that you will use in these exercises.
-<strong>IBM Business Automation Open Edition 9.0</strong></p>
-<p>In order to follow these guided labs, you should have IBAMOE 8.0+ in your local environment. IBAMOE is flexible in how you design. The developer runtime tools are predominantly focused in VSCode (download <a href="https://code.visualstudio.com">here</a>) with Maven builds targeted at a more cloud native strategy. There are also runtime options available through the utilization of the KIE Server (Knowledge is Everything) to execute. This enablement session will go through both, but the evolution of the jBPM/Drools projects are definitely more towards the Kogito runtimes versus the Java EE-based KIE Server.</p>
-<p>If you need to setup IBAMOE locally, you can use this repository to help you get up and running quickly: <a href="https://github.com/timwuthenow/ibamoe-setup">IBM Business Automation Open Edition 9.0 Environment Setup</a>. This will provide the files as two different forms, a locally built environment that will persist, or the option to have an ephemeral container that will lose the data stored between sessions. Both forms will provide a Business Central and KIE Server environment for use.</p>
+<strong>IBM Business Automation Open Edition 9.2.x</strong></p>
+<p>In order to follow these guided labs, you should have BAMOE 8.0+ in your local environment. BAMOE is flexible in how you design. The developer runtime tools are predominantly focused in VSCode (download <a href="https://code.visualstudio.com">here</a>) with Maven builds targeted at a more cloud native strategy. There are also runtime options available through the utilization of the KIE Server (Knowledge is Everything) to execute. This enablement session will go through both, but the evolution of the jBPM/Drools projects are definitely more towards the Kogito runtimes versus the Java EE-based KIE Server.</p>
+<p>If you need to setup BAMOE locally, you can use this repository to help you get up and running quickly: <a href="https://github.com/timwuthenow/ibamoe-setup">IBM Business Automation Open Edition 9.2.x Environment Setup</a>. This will provide the files as two different forms, a locally built environment that will persist, or the option to have an ephemeral container that will lose the data stored between sessions. Both forms will provide a Business Central and KIE Server environment for use.</p>
 <h2 id="vs-code"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1</span> VS Code</h2>
-<p>For running through the exercises, it is highly recommended that you get <strong>Visual Studio Code</strong> as this is the IDE that IBM Business Automation Open Edition 9.0 most supports for activities regarding both decisions and processes. To get Visual Studio Code go to <a href="https://code.visualstudio.com/download">the Visual Studio Code download page</a> and download for your platform.</p>
+<p>For running through the exercises, it is highly recommended that you get <strong>Visual Studio Code</strong> as this is the IDE that IBM Business Automation Open Edition 9.2.x most supports for activities regarding both decisions and processes. To get Visual Studio Code go to <a href="https://code.visualstudio.com/download">the Visual Studio Code download page</a> and download for your platform.</p>
 <h2 id="git-maven-and-java"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2</span> Git, Maven and Java</h2>
-<p>These labs are going to assume you are already running , a running version of git, Maven 3.6.2+ and OpenJDK 11+. To get these added to your environment, you can follow the steps in this section. IBM Business Automation Open Edition 9.0 is built around git source code control and Maven archetypes. You will need these tools to do most of the content in these quick walk throughs.</p>
+<p>These labs are going to assume you are already running , a running version of git, Maven 3.6.2+ and OpenJDK 11+. To get these added to your environment, you can follow the steps in this section. IBM Business Automation Open Edition 9.2.x is built around git source code control and Maven archetypes. You will need these tools to do most of the content in these quick walk throughs.</p>
 <h3 id="git"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.1</span> Git</h3>
 <p>Git is the open-source solution for source code management. To get git, go to <a href="https://git-scm.com">here</a> to install it if you don't have it already. All of the major source code management systems work with the git command line and is ultimately platform-agnostic to those.</p>
 <h3 id="maven"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.2</span> Maven</h3>
-<p>With IBM Business Automation Open Edition 9.0, the components are built around a Maven architecture predominantly. What this ultimately means is your workstation needs to be able to communicate with one to many different Maven Repositories. These labs will use two in particular, the <a href="https://maven.repository.redhat.com/ga/">Red Hat General Availability repository</a> and <a href="https://repo1.maven.org/maven2/">Maven Central</a>. You could easily replace the two repositories with a local environment one hosting the Maven dependencies as a mirror or based in a disconnected installation, but this is the easiest developer workflow for acquiring new dependencies. The reason we are pointing to the Red Hat Maven repository, at least in the short term, is that the builds for IBM Business Automation Open Edition 9.0 are being deployed there as they are the same binaries used within both the IBM and Red Hat products during the transition of Red Hat Process Automation Manager (RHPAM)/Red Hat Decision Manager (RHDM) from Red Hat into IBM Automation under the name of IBM Business Automation Open Edition 9.0 ( IBAMOE). The settings.xml file included below will use the local Maven repository at your <strong>USER_HOME</strong>/.m2/repository, which when configuring Maven would be the default M2_HOME that's created.</p>
+<p>With IBM Business Automation Open Edition 9.2.x, the components are built around a Maven architecture predominantly. What this ultimately means is your workstation needs to be able to communicate with one to many different Maven Repositories. These labs will use two in particular, the <a href="https://maven.repository.redhat.com/ga/">Red Hat General Availability repository</a> and <a href="https://repo1.maven.org/maven2/">Maven Central</a>. You could easily replace the two repositories with a local environment one hosting the Maven dependencies as a mirror or based in a disconnected installation, but this is the easiest developer workflow for acquiring new dependencies. The reason we are pointing to the Red Hat Maven repository, at least in the short term, is that the builds for IBM Business Automation Open Edition 9.2.x are being deployed there as they are the same binaries used within both the IBM and Red Hat products during the transition of Red Hat Process Automation Manager (RHPAM)/Red Hat Decision Manager (RHDM) from Red Hat into IBM Automation under the name of IBM Business Automation Open Edition 9.2.x ( BAMOE). The settings.xml file included below will use the local Maven repository at your <strong>USER_HOME</strong>/.m2/repository, which when configuring Maven would be the default M2_HOME that's created.</p>
 <details><summary>Example settings.xml file</summary><blockquote>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">&lt;settings</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0"</span>
@@ -918,11 +918,11 @@
 <h4 id="mac-alternative"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.2.2</span> Mac Alternative</h4>
 <p>The easiest way to acquire Maven is to use <strong>homebrew</strong> and run the command <code>brew install maven</code>, which at the time of writing will install Maven 3.8.6.</p>
 <h3 id="java"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.3</span> Java</h3>
-<p>The assumption in these exercises are that you will utilize a supported JDK. These were tested with <code>openjdk 11.0.11 2021-04-20</code>, but other ones are supported. You should be using at least Java 11 with IBM Business Automation Open Edition 9.0 to ensure your best experience with the tooling.</p>
+<p>The assumption in these exercises are that you will utilize a supported JDK. These were tested with <code>openjdk 11.0.11 2021-04-20</code>, but other ones are supported. You should be using at least Java 11 with IBM Business Automation Open Edition 9.2.x to ensure your best experience with the tooling.</p>
 <h2 id="kafka"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3</span> Kafka</h2>
 <p>The Kafka setup requires <code>docker-compose</code> to run locally, to get this capability, you can use either Docker or Podman for this capability. To see which is right for you, <a href="https://www.redhat.com/sysadmin/podman-compose-docker-compose">read this article</a>. Coming later in 2022 will be the labs shifted to using an OpenShift deployment of AMQ Streams to minimize the local installations required.</p>
 <p>Event-driven processes can react to the events that happens in the ecosystem. Kafka is an open-source even streaming platform, and currently, one of the most popular tools. In this type of architecture, we have the Kafka <code>topics</code> used as the communication layer in between the services. Each service can now be considered a <code>consumer</code>or a <code>producer</code>, in other words, each service can publish or consume events to/from the <code>topics</code>.</p>
-<p>IBM supports the integration between IBAMOE and AMQ Streams (Kafka). To follow the labs, you should have an accessible Kafka server. The KIE Server (process engine) will communicate with the topics that we will create in the Kafka server.</p>
+<p>IBM supports the integration between BAMOE and AMQ Streams (Kafka). To follow the labs, you should have an accessible Kafka server. The KIE Server (process engine) will communicate with the topics that we will create in the Kafka server.</p>
 <p>If you don't have an environment available you can get a Kafka (Strimzi) server quickly running by using Docker. Let's clone the project to the enablement folder.</p>
 <ol>
 <li>
@@ -967,13 +967,13 @@
 </li>
 </ol>
 <h2 id="next-steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5</span> Next steps</h2>
-<p>At this point you should have IBAMOE, and Kafka on your environment. Before proceeding to the next steps, make sure you have both IBAMOE and Kafka server up and running.</p>
+<p>At this point you should have BAMOE, and Kafka on your environment. Before proceeding to the next steps, make sure you have both BAMOE and Kafka server up and running.</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 1, 2022 15:22:30">2022-12-01</span>
 </small>
 </div>
 </article>
